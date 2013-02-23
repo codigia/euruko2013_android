@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:gravity="left|center_vertical"
+    android:orientation="horizontal" >
+
+    <CheckedTextView
+        android:id="@+id/newsCheckbox"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abs__action_bar_default_height"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/checkbox"
+        android:checked="true"
+        android:clickable="true"
+        android:drawableLeft="@drawable/news"
+        android:drawablePadding="2dp"
+        android:gravity="left|center_vertical"
+        android:text="News" />
+
+    <CheckedTextView
+        android:id="@+id/agendaCheckbox"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abs__action_bar_default_height"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/checkbox"
+        android:checked="false"
+        android:clickable="true"
+        android:drawableLeft="@drawable/calendar"
+        android:drawablePadding="2dp"
+        android:gravity="center"
+        android:text="Agenda" />
+
+    <CheckedTextView
+        android:id="@+id/twitterCheckbox"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abs__action_bar_default_height"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/checkbox"
+        android:checked="false"
+        android:clickable="true"
+        android:drawableLeft="@drawable/twitter"
+        android:drawablePadding="2dp"
+        android:gravity="center"
+        android:text="Twitter" />
+
+    <CheckedTextView
+        android:id="@+id/mapCheckbox"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abs__action_bar_default_height"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/checkbox"
+        android:checked="false"
+        android:clickable="true"
+        android:drawableLeft="@drawable/maps"
+        android:drawablePadding="2dp"
+        android:gravity="center"
+        android:text="Map" />
+
+</LinearLayout>

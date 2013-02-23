@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:minHeight="280dp" >
+
+    <ImageView
+        android:id="@+id/topicPic"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/im1" />
+
+    <TextView
+        android:id="@+id/startTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:shadowColor="#000000"
+        android:shadowRadius="5"
+        android:text="10:00"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/endTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startTime"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:shadowColor="#000000"
+        android:shadowRadius="5"
+        android:text="10:45"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/profilePic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="180dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/avatar_sa" />
+    
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/title"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/profilePic"
+        android:background="#30000000"
+        android:gravity="right"
+        android:paddingLeft="10dp"
+        android:shadowColor="#000000"
+        android:shadowRadius="5"
+        android:text="Title"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/who"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="230dp"
+        android:layout_toRightOf="@+id/profilePic"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:text="Who"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+{ "news" : [
+	{
+		"time" : 1359578707,
+		"title" : "Sponsorship packages online!",
+		"body" : "Sponsorship packages online!"
+	},
+	{
+		"time" : 1359233107,
+		"title" : "Tickets will be available soon",
+		"body" : "Tickets will be available soon!"
+	},
+	{
+		"time" : 1359060307,
+		"title" : "Sponsorship packages update",
+		"body" : "Sponsorship packages will be announced on 30/01"
+	},
+	{
+		"time" : 1359060307,
+		"title" : "Website launch on 28/01",
+		"body" : "The euruko2013 Athens website is now online!"
+	}
+]}

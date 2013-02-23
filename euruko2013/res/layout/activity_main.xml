@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffeeeeee" >
+
+    <ListView
+        android:id="@+id/news"
+        style="@style/MyListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/content_back"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/transparent"
+        android:dividerHeight="0px" >
+
+    </ListView>
+
+    <ListView
+        android:id="@+id/agenda"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/content_back"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/transparent"
+        android:dividerHeight="0px" >
+
+    </ListView>
+
+    <ListView
+        android:id="@+id/speakers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/content_back"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/transparent"
+        android:dividerHeight="0px" >
+
+    </ListView>
+
+    <ListView
+        android:id="@+id/twitter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/content_back"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/transparent"
+        android:dividerHeight="0px" >
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/about"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/content_back"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/transparent"
+        android:dividerHeight="0px" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#0000ff"
+            android:text="About app!" >
+    
+        </TextView>
+
+    </LinearLayout>
+
+    <org.hypest.erk13.MyMapView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:apiKey="0jzqJH9626WBJEreDRlMpF25wOGo55T4VccuL1A"
+    />
+<!--         android:apiKey="0jzqJH9626WBycSZ7kH8kgRz0T6Ziq3D8OH78tg" -->
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/shadow"
+        android:visibility="gone" />
+
+</RelativeLayout>
