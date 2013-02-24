@@ -24,12 +24,14 @@ import twitter4j.conf.ConfigurationBuilder;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ListView;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.google.android.maps.MapView;
+import com.readystatesoftware.maps.OnSingleTapListener;
+import com.readystatesoftware.maps.TapControlledMapView;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingMapActivity;
 
@@ -85,12 +87,21 @@ public class MainActivity extends SlidingMapActivity {
         mv.setVisibility(View.GONE);
         findViewById(R.id.about).setVisibility(View.GONE);
         mView = findViewById(R.id.mainView);
-        
-        Markers markers = new Markers(this, R.drawable.ruby_marker, mv);
+
+        final Markers markers = new Markers(this, R.drawable.ruby_marker, mv);
         markers.add("Badminton Theater", "The EuRuKo2013 venue!", 37.986067f,
                 23.774682f);
         mv.setBuiltInZoomControls(true);
         mv.getOverlays().add(markers);
+
+        ((TapControlledMapView) mv)
+        .setOnSingleTapListener(new OnSingleTapListener() {
+            @Override
+            public boolean onSingleTap(MotionEvent e) {
+                markers.hideAllBalloons();
+                return true;
+            }
+        });
 
         //Load partially transparent black background
 
