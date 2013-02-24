@@ -8,17 +8,18 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.GeoPoint;
-import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
+import com.readystatesoftware.mapviewballoons.BalloonItemizedOverlay;
 
-public class Markers extends ItemizedOverlay<OverlayItem> {
+public class Markers extends BalloonItemizedOverlay<OverlayItem> {
 
     private List<OverlayItem> locations = new ArrayList<OverlayItem>();
     private Drawable marker;
 
-    public Markers(Context ctx, int defaultMarkerId) {
-        super(boundCenterBottom(ctx.getResources().getDrawable(defaultMarkerId)));
+    public Markers(Context ctx, int defaultMarkerId, MapView map) {
+        super(boundCenterBottom(ctx.getResources().getDrawable(defaultMarkerId)),
+                map);
         marker = ctx.getResources().getDrawable(defaultMarkerId);
     }
 

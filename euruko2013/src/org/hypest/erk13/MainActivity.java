@@ -24,6 +24,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
@@ -85,7 +86,7 @@ public class MainActivity extends SlidingMapActivity {
         findViewById(R.id.about).setVisibility(View.GONE);
         mView = findViewById(R.id.mainView);
         
-        Markers markers = new Markers(this, R.drawable.ruby_marker);
+        Markers markers = new Markers(this, R.drawable.ruby_marker, mv);
         markers.add("Badminton Theater", 37.986067f, 23.774682f);
         mv.setBuiltInZoomControls(true);
         mv.getOverlays().add(markers);
