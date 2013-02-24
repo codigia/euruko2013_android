@@ -87,7 +87,8 @@ public class MainActivity extends SlidingMapActivity {
         mView = findViewById(R.id.mainView);
         
         Markers markers = new Markers(this, R.drawable.ruby_marker, mv);
-        markers.add("Badminton Theater", 37.986067f, 23.774682f);
+        markers.add("Badminton Theater", "The EuRuKo2013 venue!", 37.986067f,
+                23.774682f);
         mv.setBuiltInZoomControls(true);
         mv.getOverlays().add(markers);
 

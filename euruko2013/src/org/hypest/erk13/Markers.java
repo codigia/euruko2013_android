@@ -23,9 +23,9 @@ public class Markers extends BalloonItemizedOverlay<OverlayItem> {
         marker = ctx.getResources().getDrawable(defaultMarkerId);
     }
 
-    public void add(String name, float lat, float lng) {
+    public void add(String name, String subtitle, float lat, float lng) {
         GeoPoint myPlace = new GeoPoint((int)(lat * 1E6), (int)(lng * 1E6));
-        locations.add(new OverlayItem(myPlace, name, name));
+        locations.add(new OverlayItem(myPlace, name, subtitle));
         populate();
     }
 
