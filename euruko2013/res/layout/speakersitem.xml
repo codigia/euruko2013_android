@@ -6,13 +6,13 @@
 
     <ImageView
         android:id="@+id/profilePic"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:scaleType="fitCenter"
         android:src="@drawable/twitter" />
     
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_toRightOf="@+id/profilePic"
@@ -24,15 +24,16 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/bio"
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/title"
-        android:layout_below="@+id/title"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
+        android:layout_height="46dp"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/profilePic"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
         android:text="TextView"
         android:textColor="#888888"
-        android:textSize="14sp" />
+        android:textSize="16sp"
+        android:textStyle="bold" />
     
 </RelativeLayout>

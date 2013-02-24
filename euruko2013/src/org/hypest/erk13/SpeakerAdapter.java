@@ -46,18 +46,19 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
             
             Speaker r = mRecords.get(position);
             if (r != null) {
-                TextView tt = (TextView) v.findViewById(R.id.title);
-                TextView bio = (TextView) v.findViewById(R.id.bio);
-                if (tt != null) {
-                      tt.setText(r.title);
+                TextView name = (TextView) v.findViewById(R.id.name);
+                if(name != null){
+                      name.setText(r.name);
                 }
-                if(bio != null){
-                      bio.setText(r.bio);
+
+                TextView title = (TextView) v.findViewById(R.id.title);
+                if (title != null) {
+                      title.setText(r.title);
                 }
 
                 ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
                 if (profilePic != null) {
-                    profilePic.setImageDrawable(r.avatar);
+                    profilePic.setImageResource(r.avatarId);
                 }
            }
             return v;

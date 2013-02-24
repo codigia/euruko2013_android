@@ -502,17 +502,13 @@ public void onNavSelected(TAB tab) {
 
     private List<Speaker> getSpeakers() {
         ArrayList<Speaker> speakers = new ArrayList<Speaker>();
-        try {
-            JSONObject speakersJSONObject = new JSONObject(readJSON(R.raw.speakers));
-            JSONArray speakersJSON = speakersJSONObject.getJSONArray("speakers");
-            for (int k = 0; k < speakersJSON.length(); k++) {
-                Speaker item = new Speaker(speakersJSON.getJSONObject(k));
-                speakers.add(item);
-            }
-        } catch (JSONException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
+        speakers.add(new Speaker(
+                "Matz",
+                "Yukihiro 'Matz' Matsumoto",
+                "Ruby Chief Architect",
+                R.drawable.avatar_matz,
+                R.drawable.avatar_matz,
+                "Yukihiro 'Matz' Matsumoto, Ruby creator & chief designer of Ruby, will grace us with his presence this summer in Athens."));
 
         return speakers;
     }
