@@ -294,7 +294,6 @@ public class MainActivity extends SlidingMapActivity {
             Twitter twitter = factory.getInstance();
             
             try {
-                final ArrayList<MyTweet> myTweets = new ArrayList<MyTweet>();
                 Query query = new Query("euruko");
                 QueryResult result;
                 do {
