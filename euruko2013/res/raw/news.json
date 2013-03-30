@@ -1,22 +1,38 @@
 { "news" : [
 	{
+		"time" : 1364446800,
+		"title" : "Call for Presentations",
+		"body" : "<p>We are very excited to announce that Call for Presentations for EuRuKo 2013 <a href='http://cfp.euruko2013.org/proposals'>is now open</a> and you can send your proposals until <strong>April 23rd</strong>! We have put a lot of effort in order to create a selection process that will encourage submissions by everyone irrespective of publicity, gender, race, domain, etc, guarantee a high quality conference and at the same time be fun for all participants. The process has been refined with feedback from the community and all the details can be found <a href='http://cfp.euruko2013.org/about'>here</a>.</p>
+
+<p>So mark the dates and get engaged:</p>
+
+<ul>
+<li>Submit your proposal! We are pretty sure that almost everyone has something interesting to share!</li>
+
+<li>Help refine the proposals: comment, suggest, criticise and show your love :)</li>
+
+<li>Spread the news to the proper channels: your local ruby user groups, your blog, your circles!</li>
+</ul>
+
+<p>&#8230;and one last thing: you know how hard it is to find a ticket for EuRuKo usually, right? They tend to sell out in seconds. Well, this year, we are reserving a priority line for active participants in the CfP process along some other goodies that may come later.</p>
+
+<p>So, what are you waiting for? <a href='http://cfp.euruko2013.org'>Join the party</a>!</p>",
+		"link" : "http://euruko2013.org/blog/2013-03-28-call-for-presentations/"
+	},
+	{
 		"time" : 1359578707,
-		"title" : "Sponsorship packages online!",
-		"body" : "Sponsorship packages online!"
+		"title" : "Sponsorship packages online!"
 	},
 	{
 		"time" : 1359233107,
-		"title" : "Tickets will be available soon",
-		"body" : "Tickets will be available soon!"
+		"title" : "Tickets will be available soon"
 	},
 	{
 		"time" : 1359060307,
-		"title" : "Sponsorship packages update",
-		"body" : "Sponsorship packages will be announced on 30/01"
+		"title" : "Sponsorship packages will be announced on 30/01"
 	},
 	{
 		"time" : 1359060307,
-		"title" : "Website launch on 28/01",
-		"body" : "The euruko2013 Athens website is now online!"
+		"title" : "Website launch on 28/01"
 	}
 ]}

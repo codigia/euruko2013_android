@@ -1,6 +1,5 @@
 package org.hypest.erk13;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class NewsRecord {
@@ -10,13 +9,9 @@ public class NewsRecord {
     public String link;
     
     public NewsRecord(JSONObject json) {
-        try {
-            time = json.getLong("time");
-            title = json.getString("title");
-            body = json.getString("body");
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        time = Utils.JSON.getLong(json, "time") * 1000;
+        title = Utils.JSON.getString(json, "title");
+        body = Utils.JSON.getString(json, "body");
+        link = Utils.JSON.getString(json, "link");
     }
 }
