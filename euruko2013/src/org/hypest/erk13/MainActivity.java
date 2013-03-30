@@ -71,6 +71,11 @@ public class MainActivity extends SlidingMapActivity {
         setBehindContentView(R.layout.main_menu);
         setSlidingActionBarEnabled(false);
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setIcon(R.drawable.menubutton);
+        
         mMainMenu = getSlidingMenu();
         mMainMenu.setMode(SlidingMenu.LEFT);
         mMainMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
@@ -102,70 +107,6 @@ public class MainActivity extends SlidingMapActivity {
                 return true;
             }
         });
-
-        //Load partially transparent black background
-
-//        //Inflate the custom view
-//        customNav = LayoutInflater.from(this).inflate(R.layout.custom_nav, null);
-//
-//        ((CheckedTextView) customNav.findViewById(R.id.newsCheckbox)).setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onNavSelected(TAB.NEWS);
-//            }
-//        });
-//        ((CheckedTextView) customNav.findViewById(R.id.agendaCheckbox)).setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onNavSelected(TAB.AGENDA);
-//            }
-//        });
-//        ((CheckedTextView) customNav.findViewById(R.id.twitterCheckbox)).setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onNavSelected(TAB.TWITTER);
-//            }
-//        });
-//        ((CheckedTextView) customNav.findViewById(R.id.mapCheckbox)).setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onNavSelected(TAB.POI);
-//            }
-//        });
-
-        //Attach to the action bar
-//        getSupportActionBar().setCustomView(customNav);
-//        getSupportActionBar().setDisplayShowCustomEnabled(true);
-
-//        mSherlock.getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_transparent_eurk2));
-//        getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_transparent_eurk2));
-//        mSherlock.getActionBar().setBackgroundDrawable(getResources().getDrawable(R.color.ab_transparent));
-
-        getSupportActionBar().setHomeButtonEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(false);
-        getSupportActionBar().setIcon(R.drawable.menubutton);
-        
-//        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-//        ActionBar.Tab tab = getSupportActionBar().newTab();
-//        tab.setText("");
-//        tab.setTabListener(this);
-//        tab.setIcon(R.drawable.news);
-//        tab.setTag(TAB.NEWS);
-//        getSupportActionBar().addTab(tab);
-//
-//        tab = getSupportActionBar().newTab();
-//        tab.setText("");
-//        tab.setTabListener(this);
-//        tab.setIcon(R.drawable.twitter);
-//        tab.setTag(TAB.TWITTER);
-//        getSupportActionBar().addTab(tab);
-//        
-//        tab = getSupportActionBar().newTab();
-//        tab.setText("");
-//        tab.setTabListener(this);
-//        tab.setIcon(R.drawable.maps);
-//        tab.setTag(TAB.POI);
-//        getSupportActionBar().addTab(tab);
 
         List<Speaker> speakers = getSpeakers();
         SpeakerAdapter speakersadapter = new SpeakerAdapter(this,
