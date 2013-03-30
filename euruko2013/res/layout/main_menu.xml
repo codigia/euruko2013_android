@@ -7,7 +7,7 @@
         android:id="@+id/menuitems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#a9050e"
+        android:background="#d22b30"
         android:orientation="vertical"
         android:visibility="visible" >
     
