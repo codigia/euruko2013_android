@@ -41,7 +41,8 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
             View v = convertView;
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.speakersitem, null);
+				v = vi.inflate(position % 2 == 0 ? R.layout.speakersitem
+						: R.layout.speakersitem_mirror, null);
             }
             
             Speaker r = mRecords.get(position);
