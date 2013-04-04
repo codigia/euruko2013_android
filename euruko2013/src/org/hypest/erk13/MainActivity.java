@@ -462,7 +462,21 @@ public void onNavSelected(TAB tab) {
                 "Ruby Chief Architect",
                 R.drawable.avatar_matz,
                 R.drawable.avatar_matz,
-                "Yukihiro 'Matz' Matsumoto, Ruby creator & chief designer of Ruby, will grace us with his presence this summer in Athens."));
+                "Yukihiro “Matz” Matsumoto is the mastermind behind the inception of Ruby. Since 1993 he has been designing our precious jewel up to its latest 2.0 version. Meanwhile he has been working on mruby, a lightweight Ruby implementation. This summer, he will be celebrating with us the 20th anniversary of Ruby."));
+        speakers.add(new Speaker(
+                "Koichi",
+                "Koichi Sasada",
+                "Ruby Chief Architect",
+                R.drawable.avatar_koichi,
+                R.drawable.avatar_koichi,
+                "Koichi knows the inside outs of the Ruby VM. He has developed YARV (Yet another Ruby VM) which became the official Ruby VM when Ruby 1.9 was released. We believe he will give lots of insights in the Ruby VM, the new performance improments in Ruby 2.0 and will hint at the future of the Ruby VM."));
+        speakers.add(new Speaker(
+                "Klabnik",
+                "Steve Klabnik",
+                "Instructor & Open Source lead",
+                R.drawable.avatar_klabnik,
+                R.drawable.avatar_klabnik,
+                "Steve enjoys turning coffee into code, writing, philosophy, and physical activity. He is a contributor to many high visibility open source projects such as Sinatra, Resque, Rubinius and of course the venerable Ruby on Rails web framework. His talks are always insightful and inspiring. We shouldn't expect anything less for EuRuKo."));
 
         return speakers;
     }
