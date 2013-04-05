@@ -466,7 +466,7 @@ public void onNavSelected(TAB tab) {
         speakers.add(new Speaker(
                 "Koichi",
                 "Koichi Sasada",
-                "Ruby Chief Architect",
+                "Ruby core commiter (CRuby's VM, YARV)",
                 R.drawable.avatar_koichi,
                 R.drawable.avatar_koichi,
                 "Koichi knows the inside outs of the Ruby VM. He has developed YARV (Yet another Ruby VM) which became the official Ruby VM when Ruby 1.9 was released. We believe he will give lots of insights in the Ruby VM, the new performance improments in Ruby 2.0 and will hint at the future of the Ruby VM."));
