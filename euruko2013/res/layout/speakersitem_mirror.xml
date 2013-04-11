@@ -13,9 +13,14 @@
         android:src="@drawable/twitter" />
 
     <ImageView
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_alignParentRight="true"
+        android:layout_width="168dp"
+        android:layout_height="168dp"
+        android:layout_alignRight="@+id/profilePic"
+        android:layout_alignTop="@+id/profilePic"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="-20dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginBottom="20dp"
         android:scaleType="fitCenter"
         android:src="@drawable/circle_border" />
 
