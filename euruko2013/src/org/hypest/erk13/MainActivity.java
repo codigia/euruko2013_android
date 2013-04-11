@@ -22,6 +22,8 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -119,7 +121,15 @@ public class MainActivity extends SlidingMapActivity {
 			final Markers markers = new Markers(MainActivity.this,
 					R.drawable.ruby_marker, mViewMap);
 			markers.add("Badminton Theater", "The EuRuKo2013 venue!",
-					37.986067f, 23.774682f);
+					37.986067f, 23.774682f, new Runnable() {
+						@Override
+						public void run() {
+							Intent browserIntent = new Intent(
+									Intent.ACTION_VIEW,
+									Uri.parse("http://euruko2013.org/#venue"));
+							mContext.startActivity(browserIntent);
+						}
+					});
 	        mViewMap.setBuiltInZoomControls(true);
 	        mViewMap.getOverlays().add(markers);
 

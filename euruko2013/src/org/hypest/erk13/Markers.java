@@ -15,17 +15,20 @@ import com.readystatesoftware.mapviewballoons.BalloonItemizedOverlay;
 public class Markers extends BalloonItemizedOverlay<OverlayItem> {
 
     private List<OverlayItem> locations = new ArrayList<OverlayItem>();
+    private List<Runnable> runnables = new ArrayList<Runnable>();
     private Drawable marker;
 
-    public Markers(Context ctx, int defaultMarkerId, MapView map) {
-        super(boundCenterBottom(ctx.getResources().getDrawable(defaultMarkerId)),
-                map);
-        marker = ctx.getResources().getDrawable(defaultMarkerId);
-    }
+	public Markers(Context ctx, int defaultMarkerId, MapView map) {
+		super(boundCenterBottom(ctx.getResources().getDrawable(
+						defaultMarkerId)), map);
+		marker = ctx.getResources().getDrawable(defaultMarkerId);
+	}
 
-    public void add(String name, String subtitle, float lat, float lng) {
+    public void add(String name, String subtitle, float lat, float lng,
+    		Runnable runnable) {
         GeoPoint myPlace = new GeoPoint((int)(lat * 1E6), (int)(lng * 1E6));
         locations.add(new OverlayItem(myPlace, name, subtitle));
+        runnables.add(runnable);
         populate();
     }
 
@@ -47,5 +50,11 @@ public class Markers extends BalloonItemizedOverlay<OverlayItem> {
         super.draw(canvas, mapView, shadow);
 
         boundCenterBottom(marker);
+    }
+
+    @Override
+    protected boolean onBalloonTap(int index, OverlayItem item) {
+    	runnables.get(index).run();
+    	return true;
     }
 }
