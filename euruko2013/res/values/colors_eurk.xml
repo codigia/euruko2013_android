@@ -17,6 +17,7 @@
 -->
 
 <resources>
+    <color name="mainback">#ffeeeeee</color>
     <color name="pressed_eurk">#CCca3c32</color>
     <color name="ab_transparent">#b0ff0000</color>
     <color name="transparent">#00000000</color>

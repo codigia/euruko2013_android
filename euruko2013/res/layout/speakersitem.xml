@@ -8,9 +8,17 @@
         android:id="@+id/profilePic"
         android:layout_width="128dp"
         android:layout_height="128dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
         android:scaleType="fitCenter"
         android:src="@drawable/twitter" />
-    
+
+    <ImageView
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/circle_border" />
+
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"

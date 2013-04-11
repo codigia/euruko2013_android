@@ -3,7 +3,7 @@
     android:id="@+id/mainView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffeeeeee" >
+    android:background="@color/mainback" >
 
     <ListView
         android:id="@+id/news"
