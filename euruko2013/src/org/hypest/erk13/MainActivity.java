@@ -24,6 +24,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ListView;
@@ -103,41 +104,47 @@ public class MainActivity extends SlidingMapActivity {
 
         hideAllBut(mViewNews);
 
-        final Markers markers = new Markers(this, R.drawable.ruby_marker, mViewMap);
-        markers.add("Badminton Theater", "The EuRuKo2013 venue!", 37.986067f,
-                23.774682f);
-        mViewMap.setBuiltInZoomControls(true);
-        mViewMap.getOverlays().add(markers);
-
-        ((TapControlledMapView) mViewMap)
-		    .setOnSingleTapListener(new OnSingleTapListener() {
-		        @Override
-		        public boolean onSingleTap(MotionEvent e) {
-		            markers.hideAllBalloons();
-		            return true;
-		        }
-		    });
-
-        List<Speaker> speakers = getSpeakers();
-        SpeakerAdapter speakersadapter = new SpeakerAdapter(this,
-                R.layout.speakersitem,
-                speakers);
-        mViewSpeakers.setAdapter(speakersadapter);
-
         List<NewsRecord> news = getNewsItems();
         NewsRecordAdapter newsadapter = new NewsRecordAdapter(this,
                 R.layout.newsitem,
                 news);
         mViewNews.setAdapter(newsadapter);
 
-        
-        List<AgendaItem> agenda = getAgendaItems();
-        AgendaItemAdapter agendaAdapter = new AgendaItemAdapter(this, speakers,
-                agenda);
-        mViewAgenda.setAdapter(agendaAdapter);
-
-        new TwitterTask().execute("#euruko");
+        new Handler().post(mDelayedLoad);
     }
+
+    private Runnable mDelayedLoad = new Runnable() {
+		@Override
+		public void run() {
+			final Markers markers = new Markers(MainActivity.this,
+					R.drawable.ruby_marker, mViewMap);
+			markers.add("Badminton Theater", "The EuRuKo2013 venue!",
+					37.986067f, 23.774682f);
+	        mViewMap.setBuiltInZoomControls(true);
+	        mViewMap.getOverlays().add(markers);
+
+	        ((TapControlledMapView) mViewMap)
+			    .setOnSingleTapListener(new OnSingleTapListener() {
+			        @Override
+			        public boolean onSingleTap(MotionEvent e) {
+			            markers.hideAllBalloons();
+			            return true;
+			        }
+			    });
+
+	        List<Speaker> speakers = getSpeakers();
+			SpeakerAdapter speakersadapter = new SpeakerAdapter(
+					MainActivity.this, R.layout.speakersitem, speakers);
+	        mViewSpeakers.setAdapter(speakersadapter);
+
+	        List<AgendaItem> agenda = getAgendaItems();
+			AgendaItemAdapter agendaAdapter = new AgendaItemAdapter(
+					MainActivity.this, speakers, agenda);
+	        mViewAgenda.setAdapter(agendaAdapter);
+
+	        new TwitterTask().execute("#euruko");
+		}
+	};
 
     private class TwitterTask extends AsyncTask<String, Integer, Long> {
         final ArrayList<MyTweet> myTweets = new ArrayList<MyTweet>();
