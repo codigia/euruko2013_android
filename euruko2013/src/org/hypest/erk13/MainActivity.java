@@ -36,7 +36,6 @@ import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingMapActivity;
 
 public class MainActivity extends SlidingMapActivity {
-//    ActionBarSherlock mSherlock = ActionBarSherlock.wrap(this);
 
     enum TAB {
         NEWS,
@@ -50,9 +49,18 @@ public class MainActivity extends SlidingMapActivity {
     static final Object LOCK = new Object();
     Runnable mResult;
     Context mContext;
-    View mView;
+    View mMainView;
     View customNav;
     SlidingMenu mMainMenu;
+
+    List<View> mViews;
+
+    ListView mViewNews;
+    ListView mViewAgenda;
+    ListView mViewSpeakers;
+    ListView mViewTwitter;
+    MapView mViewMap;
+    View mViewAbout;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,184 +68,81 @@ public class MainActivity extends SlidingMapActivity {
 
         mContext = this;
         
-//        mSherlock.requestFeature((int) Window.FEATURE_ACTION_BAR_OVERLAY);
-        
-//        requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-        
-//        mSherlock.setUiOptions(ActivityInfo.UIOPTION_SPLIT_ACTION_BAR_WHEN_NARROW);
-//        mSherlock.setContentView(R.layout.activity_main);
-
         setContentView(R.layout.activity_main);
         setBehindContentView(R.layout.main_menu);
         setSlidingActionBarEnabled(false);
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-//        getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setIcon(R.drawable.menubutton);
         
         mMainMenu = getSlidingMenu();
         mMainMenu.setMode(SlidingMenu.LEFT);
         mMainMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
-//        mMainMenu.setShadowWidthRes(R.dimen.main_menu_shadow_width);
-//        mMainMenu.setShadowDrawable(R.drawable.bar_shadow_side_reverse);
         mMainMenu.setBehindOffsetRes(R.dimen.main_menu_slidingmenu_offset);
         mMainMenu.setBehindScrollScale(0.0f);
         mMainMenu.setFadeDegree(0.35f);
 
-        findViewById(R.id.agenda).setVisibility(View.GONE);
-        findViewById(R.id.speakers).setVisibility(View.GONE);
-        findViewById(R.id.twitter).setVisibility(View.GONE);
-        MapView mv = (MapView) findViewById(R.id.mapview);
-        mv.setVisibility(View.GONE);
-        findViewById(R.id.about).setVisibility(View.GONE);
-        mView = findViewById(R.id.mainView);
+        mViews = new ArrayList<View>();
 
-        final Markers markers = new Markers(this, R.drawable.ruby_marker, mv);
+        mViewNews = (ListView) findViewById(R.id.news);
+        mViewAgenda = (ListView) findViewById(R.id.agenda);
+        mViewSpeakers = (ListView) findViewById(R.id.speakers);
+        mViewTwitter = (ListView) findViewById(R.id.twitter);
+        mViewMap = (MapView) findViewById(R.id.mapview);
+        mViewAbout = findViewById(R.id.about);
+
+        mViews.add(mViewNews);
+        mViews.add(mViewAgenda);
+        mViews.add(mViewSpeakers);
+        mViews.add(mViewTwitter);
+        mViews.add(mViewMap);
+        mViews.add(mViewAbout);
+
+        mMainView = findViewById(R.id.mainView);
+
+        hideAllBut(mViewNews);
+
+        final Markers markers = new Markers(this, R.drawable.ruby_marker, mViewMap);
         markers.add("Badminton Theater", "The EuRuKo2013 venue!", 37.986067f,
                 23.774682f);
-        mv.setBuiltInZoomControls(true);
-        mv.getOverlays().add(markers);
+        mViewMap.setBuiltInZoomControls(true);
+        mViewMap.getOverlays().add(markers);
 
-        ((TapControlledMapView) mv)
-        .setOnSingleTapListener(new OnSingleTapListener() {
-            @Override
-            public boolean onSingleTap(MotionEvent e) {
-                markers.hideAllBalloons();
-                return true;
-            }
-        });
+        ((TapControlledMapView) mViewMap)
+		    .setOnSingleTapListener(new OnSingleTapListener() {
+		        @Override
+		        public boolean onSingleTap(MotionEvent e) {
+		            markers.hideAllBalloons();
+		            return true;
+		        }
+		    });
 
         List<Speaker> speakers = getSpeakers();
         SpeakerAdapter speakersadapter = new SpeakerAdapter(this,
                 R.layout.speakersitem,
                 speakers);
-        ListView lv = (ListView) findViewById(R.id.speakers);
-        lv.setAdapter(speakersadapter);
+        mViewSpeakers.setAdapter(speakersadapter);
 
         List<NewsRecord> news = getNewsItems();
         NewsRecordAdapter newsadapter = new NewsRecordAdapter(this,
                 R.layout.newsitem,
                 news);
-        lv = (ListView) findViewById(R.id.news);
-        lv.setAdapter(newsadapter);
+        mViewNews.setAdapter(newsadapter);
 
         
         List<AgendaItem> agenda = getAgendaItems();
         AgendaItemAdapter agendaAdapter = new AgendaItemAdapter(this, speakers,
                 agenda);
-        lv = (ListView) findViewById(R.id.agenda);
-        lv.setAdapter(agendaAdapter);
+        mViewAgenda.setAdapter(agendaAdapter);
 
         new TwitterTask().execute("#euruko");
-
-//        AsyncTwitterFactory factory = new AsyncTwitterFactory(cb.build());
-//        AsyncTwitter twitter = factory.getInstance();
-//        twitter.addListener(new TwitterAdapter() {
-//            @Override
-//            public void searched(final QueryResult result) {
-//                List<Status> tweets = result.getTweets();
-//                final ArrayList<MyTweet> myTweets = new ArrayList<MyTweet>();
-////                myTweets.add(null);
-//                for (Status tweet : tweets) {
-//                    MyTweet myt = new MyTweet(tweet);
-//                    myt.fetchProfilePic();
-//                    
-//                    myTweets.add(myt);
-//                }
-//
-//                mView.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        ListView lv = (ListView) mView.findViewById(R.id.twitter);
-//                        
-//                        TweetAdapter tweetsadapter = new TweetAdapter(mContext,
-//                                myTweets);
-//                        
-//                        lv.setAdapter(tweetsadapter);
-//                    }
-//                });
-//            };
-//            
-//            @Override
-//            public void onException(TwitterException e, TwitterMethod method) {
-//                if (method == TwitterMethod.UPDATE_STATUS) {
-//                    e.printStackTrace();
-//                    synchronized (LOCK) {
-//                        LOCK.notify();
-//                    }
-//                } else {
-//                    synchronized (LOCK) {
-//                        LOCK.notify();
-//                    }
-//                    Debug.waitForDebugger();
-//                    throw new AssertionError("Should not happen");
-//                }
-//            }
-//        });
-//        twitter.search(new Query("#euruko"));
-////        synchronized (LOCK) {
-////            try {
-////                LOCK.wait();
-////            } catch (InterruptedException e1) {
-////                // TODO Auto-generated catch block
-////                e1.printStackTrace();
-////            }
-////        }
-         
-        
-        
-//        Twitter twitter = new TwitterFactory().getInstance();
-//        QueryResult result;
-//        try {
-//            result = twitter.search(new Query("#euruko"));
-//        } catch (TwitterException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//            finish();
-//            return;
-//        }
-//        List<Tweet> tweets = result.getTweets();
-//
-//        lv = (ListView) findViewById(R.id.twitter);
-//        
-//        TweetAdapter tweetsadapter = new TweetAdapter(this,
-//                R.layout.newsitem,
-//                new ArrayList<Tweet>(tweets));
-//        
-//        lv.setAdapter(tweetsadapter);
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(android.view.Menu menu) {
-//        return mSherlock.dispatchCreateOptionsMenu((android.view.Menu) menu);
-//    }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        menu.add("Twitter")
-//            .setIcon(R.drawable.twitter)
-//
-////        menu.add("News")
-////            .setIcon(R.drawable.news);
-////
-////        menu.add("POI")
-////            .setIcon(R.drawable.maps);
-//
-//        return true;
-//    }
 
     private class TwitterTask extends AsyncTask<String, Integer, Long> {
         final ArrayList<MyTweet> myTweets = new ArrayList<MyTweet>();
 
         protected Long doInBackground(String... urls) {
-            int count = urls.length;
-            String totalQuery = "";
-            for (int i = 0; i < count; i++) {
-                totalQuery += " " + urls[i];
-                if (isCancelled()) break;
-            }
-
             ConfigurationBuilder cb = new ConfigurationBuilder();
             cb.setDebugEnabled(true)
               .setOAuthConsumerKey("wusQ8BNzpdDGBYmFmuqRSQ")
@@ -271,14 +176,13 @@ public class MainActivity extends SlidingMapActivity {
         }
 
         protected void onProgressUpdate(Integer... progress) {
-//            setProgressPercent(progress[0]);
         }
 
         protected void onPostExecute(Long result) {
-            mView.post(new Runnable() {
+            mMainView.post(new Runnable() {
                 @Override
                 public void run() {
-                    ListView lv = (ListView) mView.findViewById(R.id.twitter);
+                    ListView lv = (ListView) mMainView.findViewById(R.id.twitter);
                     
                     TweetAdapter tweetsadapter = new TweetAdapter(mContext,
                             myTweets);
@@ -292,165 +196,36 @@ public class MainActivity extends SlidingMapActivity {
     public void onMainMenuClick(View view) {
         switch(view.getId()) {
         case R.id.menuNews:
-            onNavSelected(TAB.NEWS);
+        	hideAllBut(mViewNews);
             break;
         case R.id.menuCalendar:
-            onNavSelected(TAB.AGENDA);
+        	hideAllBut(mViewAgenda);
             break;
         case R.id.menuSpeakers:
-            onNavSelected(TAB.SPEAKERS);
+        	hideAllBut(mViewSpeakers);
             break;
         case R.id.menuTwitter:
-            onNavSelected(TAB.TWITTER);
+        	hideAllBut(mViewTwitter);
             break;
         case R.id.menuMap:
-            onNavSelected(TAB.POI);
+        	hideAllBut(mViewMap);
             break;
         case R.id.menuAbout:
-            onNavSelected(TAB.ABOUT);
+        	hideAllBut(mViewAbout);
             break;
         }
 
         mMainMenu.showContent();
     }
 
-public void onNavSelected(TAB tab) {
-//    CheckedTextView nc = (CheckedTextView) customNav.findViewById(R.id.newsCheckbox);
-//    CheckedTextView ac = (CheckedTextView) customNav.findViewById(R.id.agendaCheckbox);
-//    CheckedTextView tc = (CheckedTextView) customNav.findViewById(R.id.twitterCheckbox);
-//    CheckedTextView mc = (CheckedTextView) customNav.findViewById(R.id.mapCheckbox);
-    switch(tab) {
-        case NEWS:
-//            if (!nc.isChecked()) 
-            {
-                findViewById(R.id.news).setVisibility(View.VISIBLE);
-                findViewById(R.id.agenda).setVisibility(View.GONE);
-                findViewById(R.id.speakers).setVisibility(View.GONE);
-                findViewById(R.id.twitter).setVisibility(View.GONE);
-                findViewById(R.id.mapview).setVisibility(View.GONE);
-                findViewById(R.id.about).setVisibility(View.GONE);
-            }
-//            nc.setChecked(true);
-//            ac.setChecked(false);
-//            tc.setChecked(false);
-//            mc.setChecked(false);
-            break;
-        case AGENDA:
-//            if (!ac.isChecked()) 
-            {
-                findViewById(R.id.news).setVisibility(View.GONE);
-                findViewById(R.id.agenda).setVisibility(View.VISIBLE);
-                findViewById(R.id.speakers).setVisibility(View.GONE);
-                findViewById(R.id.twitter).setVisibility(View.GONE);
-                findViewById(R.id.mapview).setVisibility(View.GONE);
-                findViewById(R.id.about).setVisibility(View.GONE);
-            }
-//            nc.setChecked(false);
-//            ac.setChecked(true);
-//            tc.setChecked(false);
-//            mc.setChecked(false);
-            break;
-        case SPEAKERS:
-//          if (!ac.isChecked()) 
-          {
-              findViewById(R.id.news).setVisibility(View.GONE);
-              findViewById(R.id.agenda).setVisibility(View.GONE);
-              findViewById(R.id.speakers).setVisibility(View.VISIBLE);
-              findViewById(R.id.twitter).setVisibility(View.GONE);
-              findViewById(R.id.mapview).setVisibility(View.GONE);
-              findViewById(R.id.about).setVisibility(View.GONE);
-          }
-//          nc.setChecked(false);
-//          ac.setChecked(true);
-//          tc.setChecked(false);
-//          mc.setChecked(false);
-          break;
-        case TWITTER:
-//            if (!tc.isChecked()) 
-            {
-                findViewById(R.id.news).setVisibility(View.GONE);
-                findViewById(R.id.agenda).setVisibility(View.GONE);
-                findViewById(R.id.speakers).setVisibility(View.GONE);
-                findViewById(R.id.twitter).setVisibility(View.VISIBLE);
-                findViewById(R.id.mapview).setVisibility(View.GONE);
-                findViewById(R.id.about).setVisibility(View.GONE);
-            }
-//            nc.setChecked(false);
-//            ac.setChecked(false);
-//            tc.setChecked(true);
-//            mc.setChecked(false);
-            break;
-        case POI:
-//            if (!mc.isChecked()) 
-            {
-                findViewById(R.id.news).setVisibility(View.GONE);
-                findViewById(R.id.agenda).setVisibility(View.GONE);
-                findViewById(R.id.speakers).setVisibility(View.GONE);
-                findViewById(R.id.twitter).setVisibility(View.GONE);
-                findViewById(R.id.mapview).setVisibility(View.VISIBLE);
-                findViewById(R.id.about).setVisibility(View.GONE);
-            }
-//            nc.setChecked(false);
-//            ac.setChecked(false);
-//            tc.setChecked(false);
-//            mc.setChecked(true);
-            break;
-        case ABOUT:
-//          if (!mc.isChecked()) 
-          {
-              findViewById(R.id.news).setVisibility(View.GONE);
-              findViewById(R.id.agenda).setVisibility(View.GONE);
-              findViewById(R.id.speakers).setVisibility(View.GONE);
-              findViewById(R.id.twitter).setVisibility(View.GONE);
-              findViewById(R.id.mapview).setVisibility(View.GONE);
-              findViewById(R.id.about).setVisibility(View.VISIBLE);
-          }
-//          nc.setChecked(false);
-//          ac.setChecked(false);
-//          tc.setChecked(false);
-//          mc.setChecked(true);
-          break;
+    private void hideAllBut(View showView) {
+    	for (View v : mViews) {
+			v.setVisibility(v == showView ? View.VISIBLE : View.GONE);
+    	}
     }
-}
-
-//    @Override
-//    public void onTabReselected(Tab tab, FragmentTransaction transaction) {
-//    }
-//
-//    @Override
-//    public void onTabSelected(Tab tab, FragmentTransaction transaction) {
-////        mSelected.setText("Selected: " + tab.getText());
-//        switch((TAB) tab.getTag()) {
-//            case NEWS:
-//                findViewById(R.id.news).setVisibility(View.VISIBLE);
-//                break;
-//            case TWITTER:
-//                findViewById(R.id.twitter).setVisibility(View.VISIBLE);
-//                break;
-//            case POI:
-//                findViewById(R.id.mapview).setVisibility(View.VISIBLE);
-//                break;
-//        }
-//    }
-//
-//    @Override
-//    public void onTabUnselected(Tab tab, FragmentTransaction transaction) {
-//        switch((TAB) tab.getTag()) {
-//            case NEWS:
-//                findViewById(R.id.news).setVisibility(View.GONE);
-//                break;
-//            case TWITTER:
-//                findViewById(R.id.twitter).setVisibility(View.GONE);
-//                break;
-//            case POI:
-//                findViewById(R.id.mapview).setVisibility(View.GONE);
-//                break;
-//        }
-//    }
 
     @Override
     protected boolean isRouteDisplayed() {
-        // TODO Auto-generated method stub
         return false;
     }
 
@@ -491,7 +266,6 @@ public void onNavSelected(TAB tab) {
                 news.add(item);
             }
         } catch (JSONException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
 
@@ -508,7 +282,6 @@ public void onNavSelected(TAB tab) {
                 agenda.add(item);
             }
         } catch (JSONException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
 
@@ -526,16 +299,13 @@ public void onNavSelected(TAB tab) {
                 writer.write(buffer, 0, n);
             }
         } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             try {
                 is.close();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

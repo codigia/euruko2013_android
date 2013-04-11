@@ -14,7 +14,6 @@
         android:cacheColorHint="@color/transparent"
         android:divider="@color/transparent"
         android:dividerHeight="0px" >
-
     </ListView>
 
     <ListView
@@ -25,7 +24,6 @@
         android:cacheColorHint="@color/transparent"
         android:divider="@color/transparent"
         android:dividerHeight="0px" >
-
     </ListView>
 
     <ListView
@@ -36,7 +34,6 @@
         android:cacheColorHint="@color/transparent"
         android:divider="@color/transparent"
         android:dividerHeight="0px" >
-
     </ListView>
 
     <ListView
@@ -47,7 +44,6 @@
         android:cacheColorHint="@color/transparent"
         android:divider="@color/transparent"
         android:dividerHeight="0px" >
-
     </ListView>
 
     <LinearLayout
@@ -64,7 +60,6 @@
             android:layout_height="match_parent"
             android:background="#0000ff"
             android:text="About app!" >
-    
         </TextView>
 
     </LinearLayout>
