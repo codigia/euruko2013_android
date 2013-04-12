@@ -11,7 +11,16 @@
         android:background="#d22b30"
         android:orientation="vertical"
         android:visibility="visible" >
-    
+
+        <ImageView
+            android:id="@+id/menuLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:src="@drawable/logo_title"
+            android:scaleType="fitStart"
+            android:onClick="onMainMenuClick" />
+
         <RelativeLayout
             android:id="@+id/menuNews"
             android:layout_width="match_parent"

@@ -15,6 +15,8 @@ public class SpeakerActivity extends BaseActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+        setTitle("Speaker");
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         int speakerIndex = getIntent().getIntExtra(EXTRA_SPEAKER_ID, -1);

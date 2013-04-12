@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.google.android.maps.MapView;
@@ -87,6 +88,9 @@ public abstract class BaseActivity extends SlidingMapActivity {
     View customNav;
     SlidingMenu mMainMenu;
 
+    View mCustomActionBarView;
+    TextView mCustomActionBarTitleView;
+
     List<View> mViews;
 
     ListView mViewNews;
@@ -96,7 +100,7 @@ public abstract class BaseActivity extends SlidingMapActivity {
     MapView mViewMap;
     View mViewAbout;
 
-    protected abstract int getContentViewId(); 
+    protected abstract int getContentViewId();
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -106,14 +110,19 @@ public abstract class BaseActivity extends SlidingMapActivity {
         
         setContentView(getContentViewId());
         setBehindContentView(R.layout.main_menu);
-        setSlidingActionBarEnabled(false);
+        setSlidingActionBarEnabled(true);
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setIcon(R.drawable.menubutton);
         getSupportActionBar().setCustomView(R.layout.custom_actionbar);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
-        
+
+        mCustomActionBarView = getSupportActionBar().getCustomView();
+		mCustomActionBarTitleView = (TextView) mCustomActionBarView
+				.findViewById(R.id.title);
+		setBarTitle(getTitle());
+
         mMainMenu = getSlidingMenu();
         mMainMenu.setMode(SlidingMenu.LEFT);
         mMainMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
@@ -124,6 +133,11 @@ public abstract class BaseActivity extends SlidingMapActivity {
         mViews = new ArrayList<View>();
 
         mMainView = findViewById(R.id.mainView);
+    }
+
+    protected void setBarTitle(CharSequence title) {
+    	setTitle(title);
+    	mCustomActionBarTitleView.setText(title);
     }
 
     protected Runnable mDelayedLoad = new Runnable() {
@@ -226,6 +240,9 @@ public abstract class BaseActivity extends SlidingMapActivity {
     		Intent intent = new Intent();
 
             switch(view.getId()) {
+            case R.id.menuLogo:
+                toggle();
+                break;
             case R.id.menuNews:
         		intent.putExtra(EXTRA_MENU, TAB.NEWS.toString());
                 break;
@@ -279,6 +296,8 @@ public abstract class BaseActivity extends SlidingMapActivity {
     	for (View v : mViews) {
 			v.setVisibility(v == showView ? View.VISIBLE : View.GONE);
     	}
+
+    	setBarTitle((CharSequence) showView.getTag());
     }
 
     @Override

@@ -26,6 +26,13 @@ public class MainActivity extends BaseActivity {
         mViewMap = (MapView) findViewById(R.id.mapview);
         mViewAbout = findViewById(R.id.about);
 
+        mViewNews.setTag("News");
+        mViewAgenda.setTag("Agenda");
+        mViewSpeakers.setTag("Speakers");
+        mViewTwitter.setTag("#euruko");
+        mViewMap.setTag("Map");
+        mViewAbout.setTag("About");
+
         mViews.add(mViewNews);
         mViews.add(mViewAgenda);
         mViews.add(mViewSpeakers);
