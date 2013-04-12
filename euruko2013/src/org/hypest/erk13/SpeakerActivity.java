@@ -15,8 +15,6 @@ public class SpeakerActivity extends BaseActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-        setTitle("Speaker");
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         int speakerIndex = getIntent().getIntExtra(EXTRA_SPEAKER_ID, -1);
@@ -28,19 +26,16 @@ public class SpeakerActivity extends BaseActivity {
 
 		Speaker r = sSpeakers.get(speakerIndex);
 
-        TextView name = (TextView) findViewById(R.id.name);
-        if(name != null){
-              name.setText(r.name);
+        setBarTitle(r.name);
+
+        TextView speakerTitle = (TextView) findViewById(R.id.speakerTitle);
+        if (speakerTitle != null) {
+        	speakerTitle.setText(r.title);
         }
 
-        TextView title = (TextView) findViewById(R.id.title);
-        if (title != null) {
-              title.setText(r.title);
-        }
-
-        TextView bio = (TextView) findViewById(R.id.bio);
-        if (bio != null) {
-              bio.setText(r.bio);
+        TextView speakerBio = (TextView) findViewById(R.id.speakerBio);
+        if (speakerBio != null) {
+        	speakerBio.setText(r.bio);
         }
 
         ImageView profilePic = (ImageView) findViewById(R.id.profilePic);

@@ -7,7 +7,8 @@
 	<RelativeLayout
 	    android:id="@+id/whole"
 	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" >
+	    android:layout_height="wrap_content"
+            android:paddingTop="10dp" >
 	
 	    <ImageView
 	        android:id="@+id/profilePic"
@@ -19,37 +20,23 @@
 	        android:src="@drawable/twitter" />
 	
 	    <TextView
-	        android:id="@+id/name"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/profilePic"
-	        android:gravity="center"
-	        android:paddingLeft="10dp"
-	        android:paddingRight="10dp"
-	        android:paddingTop="10dp"
-	        android:text="Yukihiro 'Matz' Matsumoto"
-	        android:textColor="#888888"
-	        android:textSize="18sp"
-	        android:textStyle="bold" />
-
-	    <TextView
-	        android:id="@+id/title"
+	        android:id="@+id/speakerTitle"
 	        android:layout_width="match_parent"
 	        android:layout_height="46dp"
-	        android:layout_below="@+id/name"
+	        android:layout_below="@+id/profilePic"
 	        android:gravity="center"
 	        android:paddingLeft="10dp"
 	        android:paddingRight="10dp"
 	        android:text="TextView"
 	        android:textColor="#888888"
 	        android:textSize="16sp"
-	        android:textStyle="bold" />
+	        android:textStyle="bold|italic" />
 
 	    <TextView
-	        android:id="@+id/bio"
+	        android:id="@+id/speakerBio"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/title"
+	        android:layout_below="@+id/speakerTitle"
 	        android:gravity="left"
 	        android:paddingLeft="10dp"
 	        android:paddingRight="10dp"
