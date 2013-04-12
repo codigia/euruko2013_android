@@ -111,6 +111,8 @@ public abstract class BaseActivity extends SlidingMapActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setIcon(R.drawable.menubutton);
+        getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
         
         mMainMenu = getSlidingMenu();
         mMainMenu.setMode(SlidingMenu.LEFT);

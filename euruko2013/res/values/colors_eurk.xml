@@ -26,4 +26,6 @@
     <color name="main_menu_back">#ffffffff</color>
 
     <color name="full_separator">#ff888888</color>
+
+    <color name="white">#ffffffff</color>
 </resources>

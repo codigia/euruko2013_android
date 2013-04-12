@@ -40,14 +40,14 @@
     </style>
 
     <style name="eurk_solid_ActionBar" parent="@style/Widget.Sherlock.Light.ActionBar.Solid">
-        <item name="background">@drawable/logo_title</item>
+        <item name="background">@color/white</item>
         <item name="backgroundStacked">@drawable/ab_stacked_solid_eurk</item>
         <item name="backgroundSplit">@drawable/ab_bottom_solid_eurk</item>
         <item name="progressBarStyle">@style/eurk_ProgressBar</item>
         <item name="displayOptions">showHome|homeAsUp</item>
         <item name="icon">@drawable/menubutton</item>
         
-        <item name="android:background">@drawable/logo_title</item>
+        <item name="android:background">@color/white</item>
         <item name="android:backgroundStacked">@drawable/ab_stacked_solid_eurk</item>
         <item name="android:backgroundSplit">@drawable/ab_bottom_solid_eurk</item>
         <item name="android:progressBarStyle">@style/eurk_ProgressBar</item>
