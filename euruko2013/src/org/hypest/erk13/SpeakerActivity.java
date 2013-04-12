@@ -36,6 +36,11 @@ public class SpeakerActivity extends BaseActivity {
               title.setText(r.title);
         }
 
+        TextView bio = (TextView) findViewById(R.id.bio);
+        if (bio != null) {
+              bio.setText(r.bio);
+        }
+
         ImageView profilePic = (ImageView) findViewById(R.id.profilePic);
         if (profilePic != null) {
             profilePic.setImageResource(r.avatarId);
