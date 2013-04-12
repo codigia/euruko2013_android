@@ -2,6 +2,7 @@ package org.hypest.erk13;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +14,12 @@ import android.widget.TextView;
 
 public class SpeakerAdapter extends ArrayAdapter<Speaker> {
 
-    private Context mContext;
+    private Activity mActivity;
     private List<Speaker> mRecords;
 
-    public SpeakerAdapter(Context context, int textViewResourceId, List<Speaker> records) {
-            super(context, textViewResourceId, records);
-            mContext = context;
+    public SpeakerAdapter(Activity activity, int textViewResourceId, List<Speaker> records) {
+            super(activity, textViewResourceId, records);
+            mActivity = activity;
             mRecords = records;
     }
 
@@ -41,7 +42,7 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
 	public View getView(final int position, View convertView, ViewGroup parent) {
             View v = convertView;
             if (v == null) {
-                LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater vi = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				v = vi.inflate(position % 2 == 0 ? R.layout.speakersitem
 						: R.layout.speakersitem_mirror, null);
             }
@@ -66,7 +67,7 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
                 v.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						MainActivity.viewSpeaker(mContext, position);
+						MainActivity.viewSpeaker(mActivity, position);
 					}
 				});
            }

@@ -21,6 +21,7 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -47,8 +48,11 @@ public abstract class BaseActivity extends SlidingMapActivity {
         POI,
         ABOUT
     }
-    
-	static String EXTRA_SPEAKER_ID;
+
+    static int REQUEST_NAVIGATE = 1;
+
+	static String EXTRA_SPEAKER_ID = "extra_speaker_id";
+	static String EXTRA_MENU = "extra_menu";
 
 	static ArrayList<Speaker> sSpeakers = new ArrayList<Speaker>();
     static 
@@ -216,6 +220,35 @@ public abstract class BaseActivity extends SlidingMapActivity {
     }
 
     public void onMainMenuClick(View view) {
+    	if (!(this instanceof MainActivity)) {
+    		Intent intent = new Intent();
+
+            switch(view.getId()) {
+            case R.id.menuNews:
+        		intent.putExtra(EXTRA_MENU, TAB.NEWS.toString());
+                break;
+            case R.id.menuCalendar:
+        		intent.putExtra(EXTRA_MENU, TAB.AGENDA.toString());
+                break;
+            case R.id.menuSpeakers:
+        		intent.putExtra(EXTRA_MENU, TAB.SPEAKERS.toString());
+                break;
+            case R.id.menuTwitter:
+        		intent.putExtra(EXTRA_MENU, TAB.TWITTER.toString());
+                break;
+            case R.id.menuMap:
+        		intent.putExtra(EXTRA_MENU, TAB.POI.toString());
+                break;
+            case R.id.menuAbout:
+        		intent.putExtra(EXTRA_MENU, TAB.ABOUT.toString());
+                break;
+            }
+
+    		setResult(RESULT_OK, intent);
+    		finish();
+    		return;
+    	}
+
         switch(view.getId()) {
         case R.id.menuNews:
         	hideAllBut(mViewNews);
@@ -323,9 +356,45 @@ public abstract class BaseActivity extends SlidingMapActivity {
         return false;
     }
 
-    public static void viewSpeaker(Context context, int index) {
-    	Intent intent = new Intent(context, SpeakerActivity.class);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	if (resultCode != RESULT_OK) {
+    		return;
+    	}
+
+    	if (requestCode != REQUEST_NAVIGATE) {
+    		super.onActivityResult(requestCode, resultCode, data);
+    		return;
+    	}
+
+    	TAB tab = TAB.valueOf(data.getStringExtra(EXTRA_MENU));
+    	
+        switch(tab) {
+        case NEWS:
+        	hideAllBut(mViewNews);
+            break;
+        case AGENDA:
+        	hideAllBut(mViewAgenda);
+            break;
+        case SPEAKERS:
+        	hideAllBut(mViewSpeakers);
+            break;
+        case TWITTER:
+        	hideAllBut(mViewTwitter);
+            break;
+        case POI:
+        	hideAllBut(mViewMap);
+            break;
+        case ABOUT:
+        	hideAllBut(mViewAbout);
+            break;
+        }
+
+    }
+
+    public static void viewSpeaker(Activity activity, int index) {
+    	Intent intent = new Intent(activity, SpeakerActivity.class);
     	intent.putExtra(EXTRA_SPEAKER_ID, index);
-    	context.startActivity(intent);
+    	activity.startActivityForResult(intent, REQUEST_NAVIGATE);
     }
 }

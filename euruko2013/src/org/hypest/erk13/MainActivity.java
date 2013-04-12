@@ -41,7 +41,9 @@ public class MainActivity extends BaseActivity {
                 news);
         mViewNews.setAdapter(newsadapter);
 
-        hideAllBut(mViewNews);
+        if (!getIntent().hasExtra(EXTRA_MENU)) {
+        	hideAllBut(mViewNews);
+        }
 
         new Handler().post(mDelayedLoad);
     }
