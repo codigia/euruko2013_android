@@ -27,5 +27,7 @@
 
     <color name="full_separator">#ff888888</color>
 
+    <color name="border">#ffcccccc</color>
+    
     <color name="white">#ffffffff</color>
 </resources>
