@@ -90,6 +90,10 @@ public class TweetAdapter extends ArrayAdapter<MyTweet> {
                         }
                     });
                 }
+            } else {
+                LayoutInflater vi = (LayoutInflater) mContext
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                v = vi.inflate(R.layout.tweet_rate_exceeded, null);
             }
             return v;
     }

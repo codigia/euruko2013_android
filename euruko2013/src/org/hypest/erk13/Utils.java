@@ -7,25 +7,23 @@ public class Utils {
 
 	public static class JSON {
 		public static Long getLong(JSONObject json, String name) {
-			Long num = null;
 			try {
-				num = json.getLong(name);
+				if (json.has(name)) return (Long) json.getLong(name);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 
-			return num;
+			return null;
 		}
 
 		public static String getString(JSONObject json, String name) {
-			String string = null;
 			try {
-				string = json.getString(name);
+				if (json.has(name)) return json.getString(name);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 
-			return string;
+			return null;
 		}
 	}
 }
