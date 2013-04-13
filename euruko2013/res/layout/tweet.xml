@@ -47,7 +47,8 @@
             android:paddingLeft="10dp"
             android:text="TextView"
             android:textColor="#888888"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:autoLink="web" />
     
     </RelativeLayout>
 
