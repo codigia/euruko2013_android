@@ -1,5 +1,7 @@
 package org.hypest.erk13;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,14 +19,25 @@ public class SpeakerActivity extends BaseActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        int speakerIndex = getIntent().getIntExtra(EXTRA_SPEAKER_ID, -1);
+        String speakerId = getIntent().getStringExtra(EXTRA_SPEAKER_ID);
 		
-		if (speakerIndex < 0) {
+		if (speakerId == null) {
 			finish();
 			return;
 		}
 
-		Speaker r = sSpeakers.get(speakerIndex);
+		Speaker r = null;
+		for (Speaker s : sSpeakers) {
+			if (s.id.equals(speakerId)) {
+				r = s;
+				break;
+			}
+		}
+		
+		if (r == null) {
+			finish();
+			return;
+		}
 
         setBarTitle(r.name);
 
@@ -43,4 +56,10 @@ public class SpeakerActivity extends BaseActivity {
             profilePic.setImageResource(r.avatarId);
         }
 	}
+
+    public static void viewSpeaker(Activity activity, String id) {
+    	Intent intent = new Intent(activity, SpeakerActivity.class);
+    	intent.putExtra(EXTRA_SPEAKER_ID, id);
+    	activity.startActivityForResult(intent, REQUEST_NAVIGATE);
+    }
 }

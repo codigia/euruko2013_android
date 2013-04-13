@@ -108,50 +108,55 @@
                 android:textStyle="bold" />
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_alignTop="@+id/profilePic"
-                android:layout_alignBottom="@+id/profilePic" >
-                
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/line_fading" />
-
-            </RelativeLayout>
-
-            <ImageView
-                android:id="@+id/profilePic"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_below="@+id/speechTitle"
-                android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/avatar_sa" />
-
-            <ImageView
-                android:id="@+id/profilePicMask"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_alignLeft="@+id/profilePic"
-                android:layout_alignTop="@+id/profilePic"
-                android:background="@drawable/circle_mask" />
-
-            <TextView
-                android:id="@+id/who"
+                android:id="@+id/speakerContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/profilePic"
-                android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:text="Who"
-                android:textColor="@color/maintext"
-                android:textSize="16sp"
-                android:textStyle="italic" />
+                android:layout_below="@+id/speechTitle"
+                android:layout_marginTop="30dp" >
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_alignTop="@+id/profilePic"
+                    android:layout_alignBottom="@+id/profilePic" >
+                    
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/line_fading" />
     
+                </RelativeLayout>
+    
+                <ImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/avatar_sa" />
+    
+                <ImageView
+                    android:id="@+id/profilePicMask"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignLeft="@+id/profilePic"
+                    android:layout_alignTop="@+id/profilePic"
+                    android:background="@drawable/circle_mask" />
+    
+                <TextView
+                    android:id="@+id/who"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profilePic"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="Who"
+                    android:textColor="@color/maintext"
+                    android:textSize="12sp"
+                    android:textStyle="italic" />
+            </RelativeLayout>    
         </RelativeLayout>
 
         <include layout="@layout/card_borders"/>

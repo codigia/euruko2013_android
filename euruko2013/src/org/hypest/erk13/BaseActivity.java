@@ -21,7 +21,6 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -411,11 +410,5 @@ public abstract class BaseActivity extends SlidingMapActivity {
             break;
         }
 
-    }
-
-    public static void viewSpeaker(Activity activity, int index) {
-    	Intent intent = new Intent(activity, SpeakerActivity.class);
-    	intent.putExtra(EXTRA_SPEAKER_ID, index);
-    	activity.startActivityForResult(intent, REQUEST_NAVIGATE);
     }
 }

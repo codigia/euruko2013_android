@@ -3,9 +3,11 @@ package org.hypest.erk13;
 import java.util.Hashtable;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -14,14 +16,14 @@ import android.widget.TextView;
 public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
 
     static final int resId = R.layout.agenda_item;
-    private Context mContext;
+    private Activity mActivity;
     private Hashtable<String, Speaker> mSpeakers;
     private List<AgendaItem> mAgendaItems;
 
-    public AgendaItemAdapter(Context context,
+    public AgendaItemAdapter(Activity activity,
             List<Speaker> speakers, List<AgendaItem> agendaItems) {
-        super(context, resId, agendaItems);
-        mContext = context;
+        super(activity, resId, agendaItems);
+        mActivity = activity;
         mAgendaItems = agendaItems;
 
         mSpeakers = new Hashtable<String, Speaker>();
@@ -49,7 +51,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
     public View getView(int position, View convertView, ViewGroup parent) {
             View v = convertView;
             if (v == null) {
-                LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater vi = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(resId, null);
             }
             
@@ -70,7 +72,23 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
                 Speaker speaker = null;
                 if (mSpeakers.containsKey(r.who)) {
                     speaker = mSpeakers.get(r.who);
+
+                    final String speakerId = speaker.id;
+
+					View speakerContainer = v
+							.findViewById(R.id.speakerContainer);
+					if (speakerContainer != null) {
+						speakerContainer
+								.setOnClickListener(new OnClickListener() {
+									@Override
+									public void onClick(View v) {
+										SpeakerActivity.viewSpeaker(mActivity,
+												speakerId);
+									}
+								});
+					}
                 }
+
                 if (speaker != null) {
                     TextView su = (TextView) v.findViewById(R.id.who);
                     if (su != null) {
@@ -79,21 +97,9 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
                     ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
                     if (profilePic != null) {
                         profilePic.setImageResource(speaker.avatarId);
-                        
-    //                    profilePic.setOnClickListener(new OnClickListener() {
-    //                        @Override
-    //                        public void onClick(View v) {
-    //                            Intent i = new Intent(Intent.ACTION_VIEW);
-    //                            i.setData(Uri.parse("http://twitter.com/" + r.tweet.getFromUser()));
-    //                            mContext.startActivity(i);
-    //                        }
-    //                    });
                     }
                 }
-
-//                ImageView topicPic = (ImageView) v.findViewById(R.id.topicPic);
-//                topicPic.setImageDrawable(r.icon);
-           }
+            }
             return v;
     }
 }

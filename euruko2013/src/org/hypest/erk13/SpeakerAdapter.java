@@ -46,7 +46,7 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
 				v = vi.inflate(R.layout.speakersitem, null);
             }
             
-            Speaker r = mRecords.get(position);
+            final Speaker r = mRecords.get(position);
             if (r != null) {
                 TextView name = (TextView) v.findViewById(R.id.name);
                 if(name != null){
@@ -66,7 +66,7 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
                 v.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						MainActivity.viewSpeaker(mActivity, position);
+						SpeakerActivity.viewSpeaker(mActivity, r.id);
 					}
 				});
            }
