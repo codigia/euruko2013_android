@@ -3,16 +3,15 @@
     android:id="@+id/whole"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp" >
+    android:padding="10dp" >
 
     <RelativeLayout
         android:id="@+id/innerContainer"
         android:layout_width="match_parent"
-        android:layout_height="148dp"
-        android:layout_below="@+id/borderTop"
-        android:layout_toRightOf="@+id/borderLeft"
-        android:layout_toLeftOf="@+id/borderRight"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:clipChildren="true"
         android:clipToPadding="true"
         android:background="@color/card" >
@@ -21,8 +20,8 @@
             android:id="@+id/profilePic"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/avatar_matz" />
     
@@ -30,15 +29,14 @@
             android:id="@+id/profilePicMask"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/circle_mask" />
     
         <View
             android:layout_width="138dp"
             android:layout_height="138dp"
-            android:layout_marginLeft="4.5dp"
-            android:layout_marginTop="4.5dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/circle_border" />
     
         <TextView
@@ -74,45 +72,6 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <View
-        android:id="@+id/borderTop"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/borderLeft"
-        android:layout_toLeftOf="@+id/borderRight"
-        android:background="@color/border" />
-
-    <View
-        android:id="@+id/borderLeft"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:layout_alignTop="@+id/borderTop"
-        android:layout_alignBottom="@+id/shadowBottom"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:background="@color/border" />
-
-    <View
-        android:id="@+id/borderRight"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/borderTop"
-        android:layout_alignBottom="@+id/shadowBottom"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@color/border" />
-
-    <View
-        android:id="@+id/shadowBottom"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_below="@+id/innerContainer"
-        android:layout_toRightOf="@+id/borderLeft"
-        android:layout_toLeftOf="@+id/borderRight"
-        android:layout_marginLeft="-2dp"
-        android:layout_marginRight="-2dp"
-        android:background="@drawable/shadow_bottom" />
+    <include layout="@layout/card_borders"/>
     
 </RelativeLayout>
