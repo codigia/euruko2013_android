@@ -74,12 +74,10 @@
     />
 <!--         android:apiKey="0jzqJH9626WBycSZ7kH8kgRz0T6Ziq3D8OH78tg" -->
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <View
+        android:id="@+id/shadowTop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/shadow"
-        android:visibility="gone" />
+        android:layout_height="5dp"
+        android:background="@drawable/shadow_bottom" />
 
 </RelativeLayout>
