@@ -63,7 +63,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
                 if (et != null) {
                       et.setText(r.getEndTimeFormatted());
                 }
-                TextView tt = (TextView) v.findViewById(R.id.title);
+                TextView tt = (TextView) v.findViewById(R.id.speechTitle);
                 if (tt != null) {
                       tt.setText(r.title);
                 }
@@ -91,8 +91,8 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
                     }
                 }
 
-                ImageView topicPic = (ImageView) v.findViewById(R.id.topicPic);
-                topicPic.setImageDrawable(r.icon);
+//                ImageView topicPic = (ImageView) v.findViewById(R.id.topicPic);
+//                topicPic.setImageDrawable(r.icon);
            }
             return v;
     }

@@ -31,13 +31,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp" >
 
-        <View
-            android:id="@+id/dateBubble"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/circle_border_filled"
-            android:visibility="invisible" />
-
         <RelativeLayout
             android:layout_width="65dp"
             android:layout_height="10dp"
@@ -75,6 +68,7 @@
         android:layout_toRightOf="@+id/dateBubbleContainer"
         android:paddingTop="5dp"
         android:paddingBottom="10dp"
+        android:paddingRight="10dp"
         android:clipChildren="true"
         android:clipToPadding="true" >
 
@@ -83,80 +77,79 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/dateBubbleContainer"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:clipChildren="true"
             android:clipToPadding="true"
             android:background="@color/card" >
-    
-            <ImageView
-                android:id="@+id/topicPic"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_alignParentTop="true"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/im1" />
         
+            <TextView
+                android:id="@+id/endTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:text="10:45"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/speechTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Title"
+                android:textColor="@color/maintext"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_alignTop="@+id/profilePic"
+                android:layout_alignBottom="@+id/profilePic" >
+                
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/line_fading" />
+
+            </RelativeLayout>
+
             <ImageView
                 android:id="@+id/profilePic"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="180dp"
+                android:layout_below="@+id/speechTitle"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/avatar_sa" />
-        
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#50000000" >
 
-                <TextView
-                    android:id="@+id/endTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="5dp"
-                    android:shadowColor="#000000"
-                    android:shadowRadius="5"
-                    android:text="10:45"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:visibility="invisible" />
-            
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/title"
-                    android:layout_alignParentRight="true"
-                    android:layout_toRightOf="@id/profilePic"
-                    android:gravity="right"
-                    android:paddingLeft="10dp"
-                    android:shadowColor="#000000"
-                    android:shadowRadius="5"
-                    android:text="Title"
-                    android:textColor="#ffffff"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-            
-            </RelativeLayout>
-            
+            <ImageView
+                android:id="@+id/profilePicMask"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignLeft="@+id/profilePic"
+                android:layout_alignTop="@+id/profilePic"
+                android:background="@drawable/circle_mask" />
+
             <TextView
                 android:id="@+id/who"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="230dp"
-                android:layout_toRightOf="@+id/profilePic"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
+                android:layout_below="@+id/profilePic"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
                 android:text="Who"
-                android:textColor="#333333"
-                android:textSize="18sp"
+                android:textColor="@color/maintext"
+                android:textSize="16sp"
                 android:textStyle="italic" />
     
         </RelativeLayout>
