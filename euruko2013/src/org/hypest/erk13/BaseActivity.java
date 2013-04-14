@@ -410,4 +410,10 @@ public abstract class BaseActivity extends SlidingMapActivity {
         i.setData(Uri.parse(getString(R.string.gaia_sponsor_url)));
         startActivity(i);
     }
+
+    public void gotoCodigia(View v) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(getString(R.string.codigia_url)));
+        startActivity(i);
+    }
 }

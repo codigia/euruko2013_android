@@ -9,6 +9,7 @@
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="20dp"
         android:orientation="vertical" >
 
         <ImageView
@@ -28,22 +29,38 @@
             android:textSize="14sp"
             android:text="@string/about" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textStyle="bold|italic"
-            android:text="@string/about_gaia_title" />
-
         <ImageView
             android:id="@+id/gaiaSponsorLogo"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="62dp"
             android:src="@drawable/logo_gaia"
             android:scaleType="fitCenter"
             android:onClick="gotoGaiaSponsor" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:text="@string/about_gaia_title" />
+
+        <ImageView
+            android:id="@+id/codigiaLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/logo_codigia"
+            android:scaleType="fitCenter"
+            android:onClick="gotoCodigia" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:text="@string/about_codigia_title" />
 
     </LinearLayout>
 </ScrollView>

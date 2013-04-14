@@ -6,7 +6,9 @@
     <string name="title_activity_main">EuRuko2013</string>
 
     <string name="about"><![CDATA[<html><p>EuRuKo (the European Ruby Conference) is an annual conference which focuses on the Ruby programming language, with an informal atmosphere.</p><p>Lots of opportunities to listen, to talk, to hack, to have fun and where delegates experience distinct and insightful content from speakers of the highest calibre.</p></html>]]></string>
-    <string name="about_gaia_title">Proud Gaia sponsor:</string>
+    <string name="about_codigia_title">app development</string>
+    <string name="about_gaia_title">Proud Gaia sponsor!</string>
 
+    <string name="codigia_url">http://codigia.com</string>
     <string name="gaia_sponsor_url">http://www.skroutz.gr</string>
 </resources>
