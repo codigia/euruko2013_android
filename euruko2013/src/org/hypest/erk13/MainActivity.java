@@ -4,7 +4,11 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
 
 import com.google.android.maps.MapView;
 
@@ -41,6 +45,11 @@ public class MainActivity extends BaseActivity {
         mViews.add(mViewAbout);
 
         mMainView = findViewById(R.id.mainView);
+
+        TextView aboutTextView = (TextView) findViewById(R.id.aboutEuruko);
+		aboutTextView.setText(Html.fromHtml(getString(R.string.about)),
+				BufferType.SPANNABLE);
+        aboutTextView.setMovementMethod(LinkMovementMethod.getInstance());
 
         List<NewsRecord> news = getNewsItems();
         NewsRecordAdapter newsadapter = new NewsRecordAdapter(this,
