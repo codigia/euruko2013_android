@@ -48,7 +48,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
     };
     
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
             View v = convertView;
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -73,20 +73,20 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
                 if (mSpeakers.containsKey(r.who)) {
                     speaker = mSpeakers.get(r.who);
 
-                    final String speakerId = speaker.id;
-
-					View speakerContainer = v
-							.findViewById(R.id.speakerContainer);
-					if (speakerContainer != null) {
-						speakerContainer
-								.setOnClickListener(new OnClickListener() {
-									@Override
-									public void onClick(View v) {
-										SpeakerActivity.viewSpeaker(mActivity,
-												speakerId);
-									}
-								});
-					}
+//                    final String speakerId = speaker.id;
+//
+//					View speakerContainer = v
+//							.findViewById(R.id.speakerContainer);
+//					if (speakerContainer != null) {
+//						speakerContainer
+//								.setOnClickListener(new OnClickListener() {
+//									@Override
+//									public void onClick(View v) {
+//										SpeakerActivity.viewSpeaker(mActivity,
+//												speakerId);
+//									}
+//								});
+//					}
                 }
 
                 if (speaker != null) {
@@ -94,11 +94,19 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
                     if (su != null) {
                         su.setText(speaker.name);
                     }
-                    ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
+				ImageView profilePic = (ImageView) v
+						.findViewById(R.id.profilePic);
                     if (profilePic != null) {
                         profilePic.setImageDrawable(speaker.avatar);
                     }
                 }
+
+                v.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						SpeechActivity.viewSpeech(mActivity, position);
+					}
+				});
             }
             return v;
     }

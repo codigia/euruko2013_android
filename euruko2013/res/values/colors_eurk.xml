@@ -34,5 +34,7 @@
     <color name="border">#ffe0e0e0</color>
     <color name="mask">@color/card</color>
     
+    <color name="dots">#ffaaaaaa</color>
+
     <color name="white">#ffffffff</color>
 </resources>

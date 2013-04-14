@@ -52,9 +52,11 @@ public abstract class BaseActivity extends SlidingMapActivity {
     static int REQUEST_NAVIGATE = 1;
 
 	static String EXTRA_SPEAKER_ID = "extra_speaker_id";
+	static String EXTRA_SPEECH_ID = "extra_speech_id";
 	static String EXTRA_MENU = "extra_menu";
 
 	static ArrayList<Speaker> sSpeakers = new ArrayList<Speaker>();
+	static ArrayList<AgendaItem> sSpeeches = new ArrayList<AgendaItem>();
 
     static final Object LOCK = new Object();
     Runnable mResult;
@@ -298,19 +300,19 @@ public abstract class BaseActivity extends SlidingMapActivity {
     }
 
     private List<AgendaItem> getAgendaItems() {
-        ArrayList<AgendaItem> agenda = new ArrayList<AgendaItem>();
+    	sSpeeches = new ArrayList<AgendaItem>();
         try {
             JSONObject agendaJSONObject = new JSONObject(readJSON(R.raw.agenda));
             JSONArray agendaJSON = agendaJSONObject.getJSONArray("agenda");
             for (int k = 0; k < agendaJSON.length(); k++) {
                 AgendaItem item = new AgendaItem(agendaJSON.getJSONObject(k));
-                agenda.add(item);
+                sSpeeches.add(item);
             }
         } catch (JSONException e1) {
             e1.printStackTrace();
         }
 
-        return agenda;
+        return sSpeeches;
     }
 
     private List<Speaker> getSpeakers() {

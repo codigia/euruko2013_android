@@ -21,10 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SpeakerActivity"
-            android:label="@string/title_activity_main" >
-        </activity>
+        <activity android:name=".SpeakerActivity" />
+        <activity android:name=".SpeechActivity" />
         <uses-library android:name="com.google.android.maps"/>
     </application>
 

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/mainback" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true" >
+    	
+    	<RelativeLayout
+    	    android:id="@+id/whole"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+            android:paddingTop="10dp" >
+
+            <RelativeLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/profileContainer"
+                android:layout_alignBottom="@+id/profileContainer" >
+
+                <View
+                    android:id="@+id/dotted_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginRight="-10dp"
+                    android:background="@drawable/line_dotted" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/startTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/profileContainer"
+                android:layout_alignBottom="@+id/profileContainer"
+                android:background="@color/mainback"
+                android:gravity="center"
+                android:layout_marginLeft="15dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="4dp"
+                android:text="10:00"
+                android:textColor="@color/maintext"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/profileContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@color/mainback"
+                android:onClick="gotoSpeaker" >
+
+                <ImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/twitter" />
+    
+                <ImageView
+                    android:id="@+id/profilePicMask"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignLeft="@+id/profilePic"
+                    android:layout_alignTop="@+id/profilePic"
+                    android:background="@drawable/circle_mask_grey" />
+    
+                <View
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circle_border" />
+            </RelativeLayout>
+
+            <TextView
+    	        android:id="@+id/speechTitle"
+    	        android:layout_width="match_parent"
+    	        android:layout_height="wrap_content"
+    	        android:layout_below="@+id/profileContainer"
+    	        android:gravity="center"
+                android:layout_marginTop="20dp"
+    	        android:paddingLeft="10dp"
+    	        android:paddingRight="10dp"
+    	        android:text="TextView"
+    	        android:textColor="@color/maintext"
+    	        android:textSize="20sp"
+    	        android:textStyle="bold" />
+    
+    	    <TextView
+    	        android:id="@+id/speechDescription"
+    	        android:layout_width="match_parent"
+    	        android:layout_height="wrap_content"
+    	        android:layout_below="@+id/speechTitle"
+    	        android:gravity="left"
+                android:layout_marginTop="10dp"
+    	        android:paddingLeft="10dp"
+    	        android:paddingRight="10dp"
+    	        android:text="TextView"
+    	        android:textColor="@color/maintext"
+    	        android:textSize="14sp"
+                android:textStyle="italic" />
+    	    
+        </RelativeLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/shadowTop"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/shadow_bottom" />
+
+</RelativeLayout>
+
