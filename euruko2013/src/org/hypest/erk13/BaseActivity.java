@@ -404,4 +404,10 @@ public abstract class BaseActivity extends SlidingMapActivity {
         }
 
     }
+
+    public void gotoGaiaSponsor(View v) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(getString(R.string.gaia_sponsor_url)));
+        startActivity(i);
+    }
 }

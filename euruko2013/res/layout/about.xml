@@ -28,5 +28,22 @@
             android:textSize="14sp"
             android:text="@string/about" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:text="@string/about_gaia_title" />
+
+        <ImageView
+            android:id="@+id/gaiaSponsorLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:src="@drawable/logo_gaia"
+            android:scaleType="fitCenter"
+            android:onClick="gotoGaiaSponsor" />
+
     </LinearLayout>
 </ScrollView>
