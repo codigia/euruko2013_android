@@ -60,7 +60,7 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
 
                 ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
                 if (profilePic != null) {
-                    profilePic.setImageResource(r.avatarId);
+                    profilePic.setImageDrawable(r.avatar);
                 }
 
                 v.setOnClickListener(new OnClickListener() {

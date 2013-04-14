@@ -53,7 +53,7 @@ public class SpeakerActivity extends BaseActivity {
 
         ImageView profilePic = (ImageView) findViewById(R.id.profilePic);
         if (profilePic != null) {
-            profilePic.setImageResource(r.avatarId);
+            profilePic.setImageDrawable(r.avatar);
         }
 	}
 

@@ -96,7 +96,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
                     }
                     ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
                     if (profilePic != null) {
-                        profilePic.setImageResource(speaker.avatarId);
+                        profilePic.setImageDrawable(speaker.avatar);
                     }
                 }
             }

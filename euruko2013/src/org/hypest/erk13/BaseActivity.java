@@ -55,30 +55,6 @@ public abstract class BaseActivity extends SlidingMapActivity {
 	static String EXTRA_MENU = "extra_menu";
 
 	static ArrayList<Speaker> sSpeakers = new ArrayList<Speaker>();
-    static 
-    {
-	    sSpeakers.add(new Speaker(
-	            "Matz",
-	            "Yukihiro 'Matz' Matsumoto",
-	            "Ruby Chief Architect",
-	            R.drawable.avatar_matz,
-	            R.drawable.avatar_matz,
-	            "Yukihiro “Matz” Matsumoto is the mastermind behind the inception of Ruby. Since 1993 he has been designing our precious jewel up to its latest 2.0 version. Meanwhile he has been working on mruby, a lightweight Ruby implementation. This summer, he will be celebrating with us the 20th anniversary of Ruby."));
-	    sSpeakers.add(new Speaker(
-	            "Koichi",
-	            "Koichi Sasada",
-	            "Ruby core commiter (CRuby's VM, YARV)",
-	            R.drawable.avatar_koichi,
-	            R.drawable.avatar_koichi,
-	            "Koichi knows the inside outs of the Ruby VM. He has developed YARV (Yet another Ruby VM) which became the official Ruby VM when Ruby 1.9 was released. We believe he will give lots of insights in the Ruby VM, the new performance improments in Ruby 2.0 and will hint at the future of the Ruby VM."));
-	    sSpeakers.add(new Speaker(
-	            "Klabnik",
-	            "Steve Klabnik",
-	            "Instructor & Open Source lead",
-	            R.drawable.avatar_klabnik,
-	            R.drawable.avatar_klabnik,
-	            "Steve enjoys turning coffee into code, writing, philosophy, and physical activity. He is a contributor to many high visibility open source projects such as Sinatra, Resque, Rubinius and of course the venerable Ruby on Rails web framework. His talks are always insightful and inspiring. We shouldn't expect anything less for EuRuKo."));
-    }
 
     static final Object LOCK = new Object();
     Runnable mResult;
@@ -166,6 +142,7 @@ public abstract class BaseActivity extends SlidingMapActivity {
 			        }
 			    });
 
+	        getSpeakers();
 			SpeakerAdapter speakersadapter = new SpeakerAdapter(
 					BaseActivity.this, R.layout.speakersitem, sSpeakers);
 	        mViewSpeakers.setAdapter(speakersadapter);
@@ -334,6 +311,22 @@ public abstract class BaseActivity extends SlidingMapActivity {
         }
 
         return agenda;
+    }
+
+    private List<Speaker> getSpeakers() {
+    	sSpeakers = new ArrayList<Speaker>();
+        try {
+            JSONObject speakersJSONObject = new JSONObject(readJSON(R.raw.speakers));
+            JSONArray speakersJSON = speakersJSONObject.getJSONArray("speakers");
+            for (int k = 0; k < speakersJSON.length(); k++) {
+                Speaker item = new Speaker(speakersJSON.getJSONObject(k));
+                sSpeakers.add(item);
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
+        return sSpeakers;
     }
 
     String readJSON(int assetId) {
