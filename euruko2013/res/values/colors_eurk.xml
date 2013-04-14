@@ -29,7 +29,9 @@
     <color name="full_separator">#ff888888</color>
 
     <color name="card">#ffffffff</color>
-    <color name="border">#ffcccccc</color>
+    <color name="card_trans">#ffffffff</color>
+
+    <color name="border">#ffe0e0e0</color>
     <color name="mask">@color/card</color>
     
     <color name="white">#ffffffff</color>

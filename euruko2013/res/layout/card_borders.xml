@@ -38,7 +38,7 @@
         android:layout_below="@+id/innerContainer"
         android:layout_toRightOf="@+id/borderLeft"
         android:layout_toLeftOf="@+id/borderRight"
-        android:layout_marginLeft="-2dp"
-        android:layout_marginRight="-2dp"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginRight="-1dp"
         android:background="@drawable/shadow_bottom" />
 </merge>
