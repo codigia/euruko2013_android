@@ -1,0 +1,9 @@
+<com.readystatesoftware.maps.TapControlledMapView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mapview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="true"
+    android:apiKey="0jzqJH9626WBJEreDRlMpF25wOGo55T4VccuL1A"
+/>
+<!--         android:apiKey="0jzqJH9626WBycSZ7kH8kgRz0T6Ziq3D8OH78tg" -->

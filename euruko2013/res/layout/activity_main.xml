@@ -5,74 +5,12 @@
     android:layout_height="wrap_content"
     android:background="@color/mainback" >
 
-    <ListView
-        android:id="@+id/news"
-        style="@style/MyListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/content_back"
-        android:cacheColorHint="@color/transparent"
-        android:divider="@color/transparent"
-        android:dividerHeight="0px" >
-    </ListView>
-
-    <ListView
-        android:id="@+id/agenda"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/content_back"
-        android:cacheColorHint="@color/transparent"
-        android:divider="@color/transparent"
-        android:dividerHeight="0px" >
-    </ListView>
-
-    <ListView
-        android:id="@+id/speakers"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/content_back"
-        android:cacheColorHint="@color/transparent"
-        android:divider="@color/transparent"
-        android:dividerHeight="0px" >
-    </ListView>
-
-    <ListView
-        android:id="@+id/twitter"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/content_back"
-        android:cacheColorHint="@color/transparent"
-        android:divider="@color/transparent"
-        android:dividerHeight="0px" >
-    </ListView>
-
-    <ScrollView
-        android:id="@+id/about"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        android:background="@color/content_back"
-        android:cacheColorHint="@color/transparent" >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1300dp"
-            android:minHeight="1300dp"
-            android:background="#0000ff"
-            android:text="About app!" >
-        </TextView>
-
-    </ScrollView>
-
-    <com.readystatesoftware.maps.TapControlledMapView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/mapview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:clickable="true"
-        android:apiKey="0jzqJH9626WBJEreDRlMpF25wOGo55T4VccuL1A"
-    />
-<!--         android:apiKey="0jzqJH9626WBycSZ7kH8kgRz0T6Ziq3D8OH78tg" -->
+    <include layout="@layout/news"/>
+    <include layout="@layout/agenda"/>
+    <include layout="@layout/speakers"/>
+    <include layout="@layout/twitter"/>
+    <include layout="@layout/map"/>
+    <include layout="@layout/about"/>
 
     <View
         android:id="@+id/shadowTop"
