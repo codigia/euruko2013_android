@@ -1,5 +1,5 @@
 <resources>
-    <dimen name="main_menu_height">64dp</dimen>
+    <dimen name="main_menu_height">58dp</dimen>
     <dimen name="main_menu_shadow_width">10dp</dimen>
     <dimen name="main_menu_slidingmenu_offset">80dp</dimen>
 </resources>
