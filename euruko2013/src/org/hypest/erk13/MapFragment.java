@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapFragment extends SupportMapFragment {
 
+	View mMapView;
 	GoogleMap mMap;
 	List<Marker> mMarkers = new ArrayList<Marker>();
 
@@ -29,7 +30,13 @@ public class MapFragment extends SupportMapFragment {
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 
-		return inflater.inflate(R.layout.map, null);
+		if (mMapView == null) {
+			mMapView = inflater.inflate(R.layout.map, null);
+		} else {
+			((ViewGroup) (mMapView.getParent())).removeView(mMapView);
+		}
+
+		return mMapView;
 	}
 
 	@Override
