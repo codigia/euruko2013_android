@@ -2,7 +2,6 @@ package org.hypest.erk13;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +13,12 @@ import android.widget.TextView;
 
 public class SpeakerAdapter extends ArrayAdapter<Speaker> {
 
-    private Activity mActivity;
+    private BaseActivity mBaseActivity;
     private List<Speaker> mRecords;
 
-    public SpeakerAdapter(Activity activity, int textViewResourceId, List<Speaker> records) {
-            super(activity, textViewResourceId, records);
-            mActivity = activity;
+    public SpeakerAdapter(BaseActivity baseActivity, int textViewResourceId, List<Speaker> records) {
+            super(baseActivity, textViewResourceId, records);
+            mBaseActivity = baseActivity;
             mRecords = records;
     }
 
@@ -42,7 +41,8 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
 	public View getView(final int position, View convertView, ViewGroup parent) {
             View v = convertView;
             if (v == null) {
-                LayoutInflater vi = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LayoutInflater vi = (LayoutInflater) mBaseActivity
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				v = vi.inflate(R.layout.speakersitem, null);
             }
             
@@ -63,10 +63,11 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
                     profilePic.setImageDrawable(r.avatar);
                 }
 
+                final BaseActivity ba = mBaseActivity;
                 v.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						SpeakerActivity.viewSpeaker(mActivity, r.id);
+						ba.viewSpeaker(r.id);
 					}
 				});
            }

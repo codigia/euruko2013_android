@@ -16,7 +16,8 @@ public class Speaker {
     public String bio;
     public Drawable avatar;
     
-    public Speaker(JSONObject json) {
+    @SuppressWarnings("deprecation")
+	public Speaker(JSONObject json) {
         try {
 	        this.id = json.getString("id");
 	        this.name = json.getString("name");

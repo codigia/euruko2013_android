@@ -5,12 +5,10 @@
     android:layout_height="wrap_content"
     android:background="@color/mainback" >
 
-    <include layout="@layout/news"/>
-    <include layout="@layout/agenda"/>
-    <include layout="@layout/speakers"/>
-    <include layout="@layout/twitter"/>
-    <include layout="@layout/map"/>
-    <include layout="@layout/about"/>
+    <FrameLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <View
         android:id="@+id/shadowTop"

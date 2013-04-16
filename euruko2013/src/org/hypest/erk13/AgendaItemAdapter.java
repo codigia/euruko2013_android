@@ -3,7 +3,6 @@ package org.hypest.erk13;
 import java.util.Hashtable;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +15,14 @@ import android.widget.TextView;
 public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
 
     static final int resId = R.layout.agenda_item;
-    private Activity mActivity;
+    private BaseActivity mBaseActivity;
     private Hashtable<String, Speaker> mSpeakers;
     private List<AgendaItem> mAgendaItems;
 
-    public AgendaItemAdapter(Activity activity,
+    public AgendaItemAdapter(BaseActivity baseActivity,
             List<Speaker> speakers, List<AgendaItem> agendaItems) {
-        super(activity, resId, agendaItems);
-        mActivity = activity;
+        super(baseActivity, resId, agendaItems);
+        mBaseActivity = baseActivity;
         mAgendaItems = agendaItems;
 
         mSpeakers = new Hashtable<String, Speaker>();
@@ -51,7 +50,8 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
 	public View getView(final int position, View convertView, ViewGroup parent) {
             View v = convertView;
             if (v == null) {
-                LayoutInflater vi = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LayoutInflater vi = (LayoutInflater) mBaseActivity
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(resId, null);
             }
             
@@ -101,10 +101,11 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
                     }
                 }
 
+                final BaseActivity ba = mBaseActivity;
                 v.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						SpeechActivity.viewSpeech(mActivity, position);
+						ba.viewSpeech(position);
 					}
 				});
             }

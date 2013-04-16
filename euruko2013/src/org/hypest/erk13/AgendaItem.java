@@ -21,7 +21,8 @@ public class AgendaItem {
     public String descr;
     public Drawable icon;
     
-    public AgendaItem(JSONObject json) {
+    @SuppressWarnings("deprecation")
+	public AgendaItem(JSONObject json) {
         try {
             startTime = json.getLong("start");
             endTime = json.getLong("end");
