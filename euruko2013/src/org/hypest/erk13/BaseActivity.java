@@ -54,7 +54,7 @@ public class BaseActivity extends SlidingFragmentActivity {
     AgendaFragment mAgendaFragment;
     SpeakersFragment mSpeakersFragment;
     TwitterFragment mTwitterFragment;
-//    MapFragment mMapFragment;
+    MapFragment mMapFragment;
     AboutFragment mAboutFragment;
 
     public String currentSpeakerId;
@@ -195,10 +195,10 @@ public class BaseActivity extends SlidingFragmentActivity {
         	showContent(mTwitterFragment);
             break;
         case R.id.menuMap:
-//        	if (mMapFragment == null) {
-//        		mMapFragment = new MapFragment();
-//        	}
-//        	showContent(mMapFragment);
+        	if (mMapFragment == null) {
+        		mMapFragment = new MapFragment();
+        	}
+        	showContent(mMapFragment);
             break;
         case R.id.menuAbout:
         	if (mAboutFragment == null) {
@@ -210,12 +210,6 @@ public class BaseActivity extends SlidingFragmentActivity {
 
         mMainMenu.showContent();
     }
-
-
-//    @Override
-//    protected boolean isRouteDisplayed() {
-//        return false;
-//    }
 
     private List<Speaker> getSpeakers() {
     	sSpeakers = new ArrayList<Speaker>();
