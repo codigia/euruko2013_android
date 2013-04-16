@@ -79,6 +79,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 		setContentView(R.layout.activity_main);
 		getSupportFragmentManager()
 		.beginTransaction()
+		.setCustomAnimations(R.anim.fadein, R.anim.fadeout)
 		.replace(R.id.main_content, mCurrentFragment)
 		.commit();
 		
@@ -125,6 +126,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 		mCurrentFragment = fragment;
 		getSupportFragmentManager()
 		.beginTransaction()
+		.setCustomAnimations(R.anim.fadein, R.anim.fadeout)
 		.replace(R.id.main_content, fragment)
 		.addToBackStack(null)
 		.commit();
