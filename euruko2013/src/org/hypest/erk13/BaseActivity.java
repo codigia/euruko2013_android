@@ -79,7 +79,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 		setContentView(R.layout.activity_main);
 		getSupportFragmentManager()
 		.beginTransaction()
-		.setCustomAnimations(R.anim.fadein, R.anim.fadeout)
+		.setCustomAnimations(R.anim.fadein, 0)
 		.replace(R.id.main_content, mCurrentFragment)
 		.commit();
 		
@@ -107,7 +107,7 @@ public class BaseActivity extends SlidingFragmentActivity {
         mMainMenu.setMode(SlidingMenu.LEFT);
         mMainMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
         mMainMenu.setBehindOffsetRes(R.dimen.main_menu_slidingmenu_offset);
-        mMainMenu.setBehindScrollScale(0.0f);
+        mMainMenu.setBehindScrollScale(0.5f);
         mMainMenu.setFadeDegree(0.35f);
 
         getSpeakers();
@@ -210,6 +210,14 @@ public class BaseActivity extends SlidingFragmentActivity {
             break;
         }
 
+        mMainMenu.showContent();
+    }
+
+    public void onGaiaMenuClick(View view) {
+    	if (mAboutFragment == null) {
+    		mAboutFragment = new AboutFragment();
+    	}
+    	showContent(mAboutFragment);
         mMainMenu.showContent();
     }
 

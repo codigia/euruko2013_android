@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/main_menu_back" >
 
-    <ImageView
+    <RelativeLayout
         android:id="@+id/menuLogo"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:background="@color/white"
-        android:src="@drawable/logo_title"
-        android:scaleType="fitStart"
-        android:onClick="onMainMenuClick" />
+        android:layout_height="@dimen/abs__action_bar_default_height"
+        android:paddingLeft="5dp" >
+
+        <ImageView
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:background="@color/white"
+            android:src="@drawable/logo_title"
+            android:scaleType="fitStart"
+            android:onClick="onMainMenuClick" />
+
+    </RelativeLayout>
     
     <ScrollView
         android:layout_width="match_parent"
@@ -22,36 +32,40 @@
             android:id="@+id/menuitems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#d22b30"
             android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="120dp"
+            android:gravity="left"
             android:visibility="visible" >
 
             <RelativeLayout
                 android:id="@+id/menuNews"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_menu_height"
+                android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
         
                 <ImageView
                     android:id="@+id/imageViewNews"
-                    android:layout_width="@dimen/main_menu_height"
-                    android:layout_height="@dimen/main_menu_height"
+                    android:layout_width="@dimen/main_menu_icon_height"
+                    android:layout_height="@dimen/main_menu_icon_height"
                     android:src="@drawable/news" />
         
                 <TextView
                     android:id="@+id/textViewNews"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewNews"
                     android:layout_alignTop="@+id/imageViewNews"
                     android:layout_toRightOf="@+id/imageViewNews"
                     android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical|left"
+                    android:gravity="center_vertical"
                     android:text="News"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"
-                    android:textColor="#eeeeee" />
+                    android:textColor="@color/main_menu_text" />
     
             </RelativeLayout>
         
@@ -59,28 +73,29 @@
                 android:id="@+id/menuCalendar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_menu_height"
+                android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
         
                 <ImageView
                     android:id="@+id/imageViewCalendar"
-                    android:layout_width="@dimen/main_menu_height"
-                    android:layout_height="@dimen/main_menu_height"
+                    android:layout_width="@dimen/main_menu_icon_height"
+                    android:layout_height="@dimen/main_menu_icon_height"
                     android:src="@drawable/calendar" />
         
                 <TextView
                     android:id="@+id/textViewCalendar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewCalendar"
                     android:layout_alignTop="@+id/imageViewCalendar"
                     android:layout_toRightOf="@+id/imageViewCalendar"
                     android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical|left"
+                    android:gravity="center_vertical"
                     android:text="Calendar"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"
-                    android:textColor="#eeeeee" />
+                    android:textColor="@color/main_menu_text" />
     
             </RelativeLayout>
         
@@ -88,28 +103,29 @@
                 android:id="@+id/menuSpeakers"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_menu_height"
+                android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
         
                 <ImageView
                     android:id="@+id/imageViewSpeakers"
-                    android:layout_width="@dimen/main_menu_height"
-                    android:layout_height="@dimen/main_menu_height"
+                    android:layout_width="@dimen/main_menu_icon_height"
+                    android:layout_height="@dimen/main_menu_icon_height"
                     android:src="@drawable/speakers" />
         
                 <TextView
                     android:id="@+id/textViewSpeakers"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewSpeakers"
                     android:layout_alignTop="@+id/imageViewSpeakers"
                     android:layout_toRightOf="@+id/imageViewSpeakers"
                     android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical|left"
+                    android:gravity="center_vertical"
                     android:text="Speakers"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"
-                    android:textColor="#eeeeee" />
+                    android:textColor="@color/main_menu_text" />
     
             </RelativeLayout>
         
@@ -117,28 +133,29 @@
                 android:id="@+id/menuTwitter"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_menu_height"
+                android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
         
                 <ImageView
                     android:id="@+id/imageViewTwitter"
-                    android:layout_width="@dimen/main_menu_height"
-                    android:layout_height="@dimen/main_menu_height"
+                    android:layout_width="@dimen/main_menu_icon_height"
+                    android:layout_height="@dimen/main_menu_icon_height"
                     android:src="@drawable/twitter" />
         
                 <TextView
                     android:id="@+id/textViewTwitter"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewTwitter"
                     android:layout_alignTop="@+id/imageViewTwitter"
                     android:layout_toRightOf="@+id/imageViewTwitter"
                     android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical|left"
+                    android:gravity="center_vertical"
                     android:text="Twitter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"
-                    android:textColor="#eeeeee" />
+                    android:textColor="@color/main_menu_text" />
     
             </RelativeLayout>
         
@@ -146,28 +163,29 @@
                 android:id="@+id/menuMap"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_menu_height"
+                android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
         
                 <ImageView
                     android:id="@+id/imageViewMap"
-                    android:layout_width="@dimen/main_menu_height"
-                    android:layout_height="@dimen/main_menu_height"
+                    android:layout_width="@dimen/main_menu_icon_height"
+                    android:layout_height="@dimen/main_menu_icon_height"
                     android:src="@drawable/maps" />
         
                 <TextView
                     android:id="@+id/textViewMap"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewMap"
                     android:layout_alignTop="@+id/imageViewMap"
                     android:layout_toRightOf="@+id/imageViewMap"
                     android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical|left"
+                    android:gravity="center_vertical"
                     android:text="Map"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"
-                    android:textColor="#eeeeee" />
+                    android:textColor="@color/main_menu_text" />
         
             </RelativeLayout>
     
@@ -175,28 +193,29 @@
                 android:id="@+id/menuAbout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_menu_height"
+                android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
         
                 <ImageView
                     android:id="@+id/imageViewAbout"
-                    android:layout_width="@dimen/main_menu_height"
-                    android:layout_height="@dimen/main_menu_height"
+                    android:layout_width="@dimen/main_menu_icon_height"
+                    android:layout_height="@dimen/main_menu_icon_height"
                     android:src="@drawable/about" />
         
                 <TextView
                     android:id="@+id/textViewAbout"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewAbout"
                     android:layout_alignTop="@+id/imageViewAbout"
                     android:layout_toRightOf="@+id/imageViewAbout"
                     android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical|left"
+                    android:gravity="center_vertical"
                     android:text="About"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"
-                    android:textColor="#eeeeee" />
+                    android:textColor="@color/main_menu_text" />
         
             </RelativeLayout>
         </LinearLayout>
@@ -208,5 +227,43 @@
         android:layout_height="5dp"
         android:layout_below="@+id/menuLogo"
         android:background="@drawable/shadow_bottom" />
+
+    <ImageView
+        android:id="@+id/imageViewFold"
+        android:layout_width="120dp"
+        android:layout_height="170dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/pagefold" />
+
+    <RelativeLayout
+        android:id="@+id/menuGaia"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_menu_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="3dp"
+        android:paddingBottom="2dp"
+        android:onClick="onGaiaMenuClick" >
+
+        <ImageView
+            android:id="@+id/imageViewGaia"
+            android:layout_width="@dimen/main_menu_height"
+            android:layout_height="@dimen/main_menu_height"
+            android:src="@drawable/icon_gaia" />
+
+        <ImageView
+            android:id="@+id/imageViewGaiaText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_menu_height_gaia_text"
+            android:layout_toRightOf="@+id/imageViewGaia"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/logo_gaia2"
+            android:scaleType="fitStart"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

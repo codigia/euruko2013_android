@@ -1,0 +1,35 @@
+<?xml version="1.0"?><svg width="708.08813" height="986.08612" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>page of paper corner clip</title>
+ <defs>
+  <linearGradient id="linearGradient3182">
+   <stop stop-color="#ececec" id="stop3184" offset="0"/>
+   <stop stop-color="#fcfcfc" id="stop3186" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3157">
+   <stop stop-color="#e8e8e8" id="stop3159" offset="0"/>
+   <stop stop-color="#eeeeee" offset="0.25" id="stop3169"/>
+   <stop stop-color="#e4e4e4" offset="0.5" id="stop3165"/>
+   <stop stop-color="#c7c7c7" id="stop3167" offset="0.8375"/>
+   <stop stop-color="#e0e0e0" id="stop3161" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3145">
+   <stop stop-color="#9d9d9d" id="stop3147" offset="0"/>
+   <stop stop-color="#cecece" offset="0.165625" id="stop3180"/>
+   <stop stop-color="#e0e0e0" offset="0.33125" id="stop3178"/>
+   <stop stop-color="#f0f0f0" id="stop3149" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="0.368085" x2="0.526549" y1="0.712766" x1="0.097345" id="linearGradient3163" xlink:href="#linearGradient3157"/>
+  <linearGradient y2="0.088302" x2="0.933069" y1="0.322207" x1="0.434876" id="linearGradient3176" xlink:href="#linearGradient3145"/>
+  <linearGradient y2="0.338718" x2="0.694219" y1="0.634763" x1="0.026012" id="linearGradient3188" xlink:href="#linearGradient3182"/>
+ </defs>
+ <metadata id="metadata7">image/svg+xml</metadata>
+ <g>
+  <title>Layer 1</title>
+  <g externalResourcesRequired="false" id="layer1">
+   <rect fill="#d7d7d7" fill-rule="evenodd" stroke-miterlimit="4" stroke-dashoffset="0" transform="matrix(0.999883 0.0152675 -0.0152675 0.999883 0 0)" y="-0.352263" x="23.070154" height="975.74017" width="685.09515" id="rect3208"/>
+   <rect fill="url(#linearGradient3176)" fill-rule="evenodd" stroke-miterlimit="4" stroke-dashoffset="0" y="2.516136" x="230.346449" height="756.65149" width="462.60623" id="rect3143"/>
+   <path fill="url(#linearGradient3188)" fill-rule="evenodd" marker-start="none" marker-mid="none" marker-end="none" stroke-miterlimit="4" stroke-dashoffset="0" id="rect3173" d="m0,2.467266l0,975.290913l692.960938,0l0,-339.855957c0,-57.985901 -27.240173,-107.96991 -69.296143,-170.872986c-30.696777,-44.121155 -113.744232,-96.387115 -423.308701,-164.896912c49.316605,-130.472778 87.428116,-225.945663 65.587936,-275.214432c-4.257996,-9.60553 -13.735718,-24.450626 -29.527557,-24.450626l-236.416473,0z"/>
+   <path fill="url(#linearGradient3163)" fill-rule="evenodd" marker-start="none" marker-mid="none" marker-end="none" stroke-miterlimit="4" stroke-dashoffset="0" id="path3155" d="m265.931,26.8638l357.72403,440.131195c-30.696045,-44.121002 -113.711029,-96.304993 -423.275024,-164.815002c49.317001,-130.472992 87.285004,-225.99939 65.550995,-275.316193z"/>
+  </g>
+ </g>
+</svg>
