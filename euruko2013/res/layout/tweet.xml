@@ -45,6 +45,7 @@
             android:layout_alignLeft="@+id/title"
             android:layout_toRightOf="@+id/profilePic"
             android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="TextView"
             android:textColor="#888888"
 	        android:textSize="@dimen/text_size_verbage"
