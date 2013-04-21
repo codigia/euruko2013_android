@@ -1,5 +1,31 @@
 { "news" : [
 	{
+		"time" : 1366390800,
+		"title" : "Pamediakopes.gr is a Selene sponsor"
+	},
+	{
+		"time" : 1366304400,
+		"title" : "Engine Yard is a Helios sponsor"
+	},
+	{
+		"time" : 1366218000,
+		"title" : "Persado is our first Helios sponsor!"
+	},
+	{
+		"time" : 1366131600,
+		"title" : "Metaquark is an Aphrodite sponsor"
+	},
+	{
+		"time" : 1365872400,
+		"title" : "Countdown for 2nd ticket batch started!",
+		"link" : "http://euruko2013.org/blog/2013-04-12-above-and-beyond/"
+	},
+	{
+		"time" : 1365786000,
+		"title" : "20 supporter tickets will be available",
+		"link" : "http://euruko2013.org/blog/2013-04-12-more-tickets-more-timezones-more-fun/"
+	},
+	{
 		"time" : 1365613200,
 		"title" : "SoundCloud is a Selene sponsor"
 	},
@@ -30,21 +56,6 @@
 	{
 		"time" : 1364446800,
 		"title" : "Call for Presentations",
-		"body" : "<p>We are very excited to announce that Call for Presentations for EuRuKo 2013 <a href='http://cfp.euruko2013.org/proposals'>is now open</a> and you can send your proposals until <strong>April 23rd</strong>! We have put a lot of effort in order to create a selection process that will encourage submissions by everyone irrespective of publicity, gender, race, domain, etc, guarantee a high quality conference and at the same time be fun for all participants. The process has been refined with feedback from the community and all the details can be found <a href='http://cfp.euruko2013.org/about'>here</a>.</p>
-
-<p>So mark the dates and get engaged:</p>
-
-<ul>
-<li>Submit your proposal! We are pretty sure that almost everyone has something interesting to share!</li>
-
-<li>Help refine the proposals: comment, suggest, criticise and show your love :)</li>
-
-<li>Spread the news to the proper channels: your local ruby user groups, your blog, your circles!</li>
-</ul>
-
-<p>&#8230;and one last thing: you know how hard it is to find a ticket for EuRuKo usually, right? They tend to sell out in seconds. Well, this year, we are reserving a priority line for active participants in the CfP process along some other goodies that may come later.</p>
-
-<p>So, what are you waiting for? <a href='http://cfp.euruko2013.org'>Join the party</a>!</p>",
 		"link" : "http://euruko2013.org/blog/2013-03-28-call-for-presentations/"
 	},
 	{
