@@ -46,7 +46,7 @@
                 android:paddingRight="4dp"
                 android:text="10:00"
                 android:textColor="@color/maintext"
-                android:textSize="32sp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -62,25 +62,26 @@
 
                 <ImageView
                     android:id="@+id/profilePic"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/twitter" />
     
                 <ImageView
                     android:id="@+id/profilePicMask"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_alignLeft="@+id/profilePic"
                     android:layout_alignTop="@+id/profilePic"
                     android:background="@drawable/circle_mask_grey" />
     
                 <View
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/circle_border" />
