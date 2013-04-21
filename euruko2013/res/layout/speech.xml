@@ -98,7 +98,7 @@
     	        android:paddingRight="10dp"
     	        android:text="TextView"
     	        android:textColor="@color/maintext"
-    	        android:textSize="20sp"
+    	        android:textSize="@dimen/text_size_title"
     	        android:textStyle="bold" />
     
     	    <TextView
@@ -112,7 +112,7 @@
     	        android:paddingRight="10dp"
     	        android:text="TextView"
     	        android:textColor="@color/maintext"
-    	        android:textSize="14sp"
+    	        android:textSize="@dimen/text_size_verbage"
                 android:textStyle="italic" />
     	    
         </RelativeLayout>

@@ -51,7 +51,7 @@
     	        android:paddingRight="10dp"
     	        android:text="TextView"
     	        android:textColor="#888888"
-    	        android:textSize="16sp"
+    	        android:textSize="@dimen/text_size_title"
     	        android:textStyle="bold|italic" />
     
     	    <TextView
@@ -64,7 +64,7 @@
     	        android:paddingRight="10dp"
     	        android:text="TextView"
     	        android:textColor="#888888"
-    	        android:textSize="12sp" />
+    	        android:textSize="@dimen/text_size_verbage" />
     
         </RelativeLayout>
     </ScrollView>

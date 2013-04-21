@@ -57,7 +57,7 @@
     	        android:text="This is the title"
     	        android:maxLines="3"
     	        android:textColor="#888888"
-    	        android:textSize="18sp"
+    	        android:textSize="@dimen/text_size_title"
     	        android:textStyle="bold" />
 
     	    <TextView
@@ -70,7 +70,7 @@
     	        android:maxLines="3"
     	        android:ellipsize="end"
     	        android:textColor="#888888"
-    	        android:textSize="14sp" />
+    	        android:textSize="@dimen/text_size_verbage" />
     
         </LinearLayout>
 

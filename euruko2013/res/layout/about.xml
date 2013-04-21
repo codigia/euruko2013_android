@@ -26,7 +26,7 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:autoLink="web"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_size_verbage"
             android:text="@string/about" />
 
         <ImageView
