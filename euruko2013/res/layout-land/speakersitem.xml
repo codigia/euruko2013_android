@@ -24,7 +24,7 @@
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/avatar_matz" />
+            android:src="@drawable/back3" />
     
         <ImageView
             android:id="@+id/profilePicMask"

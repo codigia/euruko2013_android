@@ -120,7 +120,7 @@
                     android:layout_height="48dp"
                     android:layout_centerHorizontal="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/avatar_sa" />
+                    android:src="@drawable/back3" />
     
                 <ImageView
                     android:id="@+id/profilePicMask"
