@@ -1,0 +1,20 @@
+{ 
+"speakers" : [
+    {
+        "id" : "Matz",
+        "name" : "none",
+        "title" : "",
+        "bio" : "",
+        "avatar" : ""
+    }
+],
+"agenda" : [
+	{
+		"start" : 1349619316,
+		"end" : 1349621416,
+		"who" : "Matz",
+		"title" : "nothing",
+		"descr" : ""
+	}
+]
+}

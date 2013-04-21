@@ -1,5 +1,8 @@
 package org.hypest.erk13;
 
+import org.hypest.erk13.BaseActivity.GetDrawableHandler;
+
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -51,18 +54,27 @@ public class SpeechFragment extends Fragment {
         	speechDescription.setText(Html.fromHtml(mSpeech.descr));
         }
 
-        ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
+        final ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
         if (profilePic != null) {
         	Speaker speaker = null;
         	for (Speaker s : BaseActivity.sSpeakers) {
-        		if (s.id.equals(mSpeech.who)) {
+        		if (s.id.equals(mSpeech.speakerId)) {
         			speaker = s;
         			break;
         		}
         	}
 
         	if (speaker != null) {
-        		profilePic.setImageDrawable(speaker.avatar);
+        		speaker.getAvatar(new GetDrawableHandler() {
+					@Override
+					public void handle(Drawable drawable) {
+		        		profilePic.setImageDrawable(drawable);
+					}
+					
+					@Override
+					public void failed() {
+					}
+				});
 
         		final String sid = speaker.id;
         		profilePic.setOnClickListener(new OnClickListener() {

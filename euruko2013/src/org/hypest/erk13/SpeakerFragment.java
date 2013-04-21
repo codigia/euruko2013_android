@@ -1,5 +1,8 @@
 package org.hypest.erk13;
 
+import org.hypest.erk13.BaseActivity.GetDrawableHandler;
+
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -48,9 +51,18 @@ public class SpeakerFragment extends Fragment {
         	speakerBio.setText(r.bio);
         }
 
-        ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
+        final ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
         if (profilePic != null) {
-            profilePic.setImageDrawable(r.avatar);
+        	r.getAvatar(new GetDrawableHandler() {
+				@Override
+				public void handle(Drawable drawable) {
+		            profilePic.setImageDrawable(drawable);
+				}
+				
+				@Override
+				public void failed() {
+				}
+			});
         }
 
         super.onResume();

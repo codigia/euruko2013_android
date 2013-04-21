@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/whole"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_alignTop="@+id/card"
+        android:layout_alignBottom="@+id/card" >
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="1500dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginBottom="-2dp"
+            android:background="@drawable/timeline_dots" />
+    
+        <View
+            android:layout_width="10dp"
+            android:layout_height="1500dp"
+            android:layout_marginLeft="28dp"
+            android:background="@color/mainback" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dateBubbleContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp" >
+
+        <TextView
+            android:id="@+id/startTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/mainback"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingRight="3dp"
+            android:text="10:00"
+            android:textColor="@color/maintext"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/dateBubbleContainer"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:clipChildren="true"
+        android:clipToPadding="true" >
+
+        <RelativeLayout
+            android:id="@+id/innerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/dateBubbleContainer"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:background="@color/card" >
+        
+            <TextView
+                android:id="@+id/endTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:text="10:45"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/speechTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Title"
+                android:textColor="@color/maintext"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/speakerContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/speechTitle"
+                android:layout_marginTop="30dp" >
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_alignTop="@+id/profilePic"
+                    android:layout_alignBottom="@+id/profilePic" >
+                    
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/line_fading" />
+    
+                </RelativeLayout>
+    
+                <ImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/avatar_sa" />
+    
+                <ImageView
+                    android:id="@+id/profilePicMask"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignLeft="@+id/profilePic"
+                    android:layout_alignTop="@+id/profilePic"
+                    android:background="@drawable/circle_mask" />
+    
+                <TextView
+                    android:id="@+id/who"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profilePic"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="Who"
+                    android:textColor="@color/maintext"
+                    android:textSize="12sp"
+                    android:textStyle="italic" />
+            </RelativeLayout>    
+        </RelativeLayout>
+
+        <include layout="@layout/card_borders"/>
+    </RelativeLayout>
+
+</RelativeLayout>

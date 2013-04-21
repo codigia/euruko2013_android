@@ -1,36 +1,51 @@
 package org.hypest.erk13;
 
+import org.apache.http.client.methods.HttpGet;
+import org.hypest.erk13.BaseActivity.GetDrawableHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.Base64;
 
 public class Speaker {
     public String id;
     public String name;
     public String title;
     public String bio;
-    public Drawable avatar;
+    public String avatarURLString;
+    private Drawable mAvatar;
     
-    @SuppressWarnings("deprecation")
 	public Speaker(JSONObject json) {
         try {
 	        this.id = json.getString("id");
 	        this.name = json.getString("name");
 	        this.title = json.getString("title");
 	        this.bio = json.getString("bio");
-
-	        String avatarB64 = json.getString("avatar");
-	        byte[] b = Base64.decode(avatarB64, Base64.DEFAULT);
-	        Bitmap decodedByte = BitmapFactory.decodeByteArray(b, 0, b.length);
-	        avatar = new BitmapDrawable(decodedByte);
-	        avatar.setBounds(0, 0, 50, 50);
+	        this.avatarURLString = json.getString("avatar");
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+	public void getAvatar(final GetDrawableHandler drawableHandler) {
+    	if (mAvatar != null) {
+    		drawableHandler.handle(mAvatar);
+    	} else {
+    		if (avatarURLString != null) {
+				new BaseActivity.HttpGetDrawableTask(
+						new GetDrawableHandler() {
+							@Override
+							public void handle(Drawable drawable) {
+								mAvatar = drawable;
+								drawableHandler.handle(mAvatar);
+							}
+
+							@Override
+							public void failed() {
+								drawableHandler.failed();
+							}
+						}).execute(new HttpGet(avatarURLString));
+    		}
+    	}
+	}
 }

@@ -2,7 +2,10 @@ package org.hypest.erk13;
 
 import java.util.List;
 
+import org.hypest.erk13.BaseActivity.GetDrawableHandler;
+
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -60,9 +63,19 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
                   title.setText(r.title);
             }
 
-            ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
+			final ImageView profilePic = (ImageView) v
+					.findViewById(R.id.profilePic);
             if (profilePic != null) {
-                profilePic.setImageDrawable(r.avatar);
+				r.getAvatar(new GetDrawableHandler() {
+					@Override
+					public void handle(Drawable drawable) {
+						profilePic.setImageDrawable(drawable);
+					}
+
+					@Override
+					public void failed() {
+					}
+				});
             }
 
             final BaseActivity ba = mBaseActivity;

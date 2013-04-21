@@ -7,11 +7,7 @@ public class SpeakersFragment extends BaseListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
-		SpeakerAdapter speakersadapter = new SpeakerAdapter(
-				(BaseActivity) getActivity(), R.layout.speakersitem,
-				BaseActivity.sSpeakers);
-        setListAdapter(speakersadapter);
+		networkRefresh();
 	}
 
 	@Override
@@ -21,5 +17,13 @@ public class SpeakersFragment extends BaseListFragment {
 		ba.setBarTitle("Speakers");
 
         super.onResume();
+	}
+
+	@Override
+	public void networkRefresh() {
+		SpeakerAdapter speakersadapter = new SpeakerAdapter(
+				(BaseActivity) getActivity(), R.layout.speakersitem,
+				BaseActivity.sSpeakers);
+        setListAdapter(speakersadapter);
 	}
 }

@@ -10,7 +10,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LayoutAnimationController;
-import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ListView;
 
@@ -49,4 +48,6 @@ public abstract class BaseListFragment extends ListFragment {
 		lv.setLayoutAnimation(new LayoutAnimationController(set));
 		return lv;
 	}
+
+	public abstract void networkRefresh();
 }

@@ -12,7 +12,6 @@ import java.io.Writer;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
 import android.widget.ListView;
 
 public class Utils {
@@ -38,8 +37,9 @@ public class Utils {
 			return null;
 		}
 
-	    public static String readAsset(Context context, int assetId) {
-	        InputStream is = context.getResources().openRawResource(assetId);
+		public static String readAsset(String filename) {
+	        InputStream is = BaseActivity.class.getClassLoader()
+	                .getResourceAsStream("assets/" + filename);
 	        Writer writer = new StringWriter();
 	        char[] buffer = new char[1024];
 	        try {

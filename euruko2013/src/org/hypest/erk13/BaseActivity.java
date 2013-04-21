@@ -1,18 +1,32 @@
 package org.hypest.erk13;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.actionbarsherlock.view.MenuItem;
@@ -38,12 +52,14 @@ public class BaseActivity extends SlidingFragmentActivity {
 
 	static ArrayList<Speaker> sSpeakers = new ArrayList<Speaker>();
 	static ArrayList<AgendaItem> sSpeeches = new ArrayList<AgendaItem>();
+	static ArrayList<NewsRecord> sNews = new ArrayList<NewsRecord>();
 
     static final Object LOCK = new Object();
     Runnable mResult;
     Context mContext;
     View mMainView;
     View customNav;
+    static ProgressBar mActivityIndicator;
     SlidingMenu mMainMenu;
 	Fragment mCurrentFragment;
 	Fragment mCurrentDetailsFragment;
@@ -78,7 +94,8 @@ public class BaseActivity extends SlidingFragmentActivity {
 		}
 
 		if (mCurrentFragment == null) {
-			mCurrentFragment = new NewsFragment();
+			mNewsFragment = new NewsFragment();
+			mCurrentFragment = mNewsFragment;
 		}
 
 		// set the Above View
@@ -122,11 +139,181 @@ public class BaseActivity extends SlidingFragmentActivity {
         mMainMenu.setFadeDegree(0.35f);
 
         getSpeakers();
+        getAgendaItems();
+        getNewsItems();
 
         mMainView = findViewById(R.id.mainView);
+		mActivityIndicator = (ProgressBar) mCustomActionBarView
+				.findViewById(R.id.progressBar);
+		mActivityIndicator.setVisibility(View.INVISIBLE);
+
+        new HttpGetJSONTask(new GetJSONHandler() {
+			@Override
+			public void handle(JSONObject json) {
+				getNewsItems(json);
+				if (mNewsFragment != null) {
+					mNewsFragment.networkRefresh();
+				}
+
+				mActivityIndicator.post(new Runnable() {
+					@Override
+					public void run() {
+						mActivityIndicator.setVisibility(View.INVISIBLE);
+					}
+				});
+			}
+			
+			@Override public void failed() {}
+		}).execute(new HttpGet("http://euruko2013.codigia.com/news.json"));
+
+        new HttpGetJSONTask(new GetJSONHandler() {
+			@Override
+			public void handle(JSONObject json) {
+				getSpeakers(json);
+				if (mSpeakersFragment != null) {
+					mSpeakersFragment.networkRefresh();
+				}
+
+				getAgendaItems(json);
+				if (mAgendaFragment != null) {
+					mAgendaFragment.networkRefresh();
+				}
+
+				mActivityIndicator.post(new Runnable() {
+					@Override
+					public void run() {
+						mActivityIndicator.setVisibility(View.INVISIBLE);
+					}
+				});
+			}
+			
+			@Override public void failed() {}
+		}).execute(new HttpGet("http://euruko2013.codigia.com/agenda.json"));
     }
 
-	@Override
+    public interface GetJSONHandler {
+    	public void handle(JSONObject json);
+    	public void failed();
+    }
+
+	public static class HttpGetJSONTask extends
+			AsyncTask<HttpUriRequest, Void, JSONObject> {
+		private static final String TAG = "EURUKO2013";
+
+		private GetJSONHandler mGetJSONHandler;
+
+		public HttpGetJSONTask(GetJSONHandler handler) {
+			mGetJSONHandler = handler;
+		}
+
+		@Override
+		protected JSONObject doInBackground(HttpUriRequest... params) {
+			mActivityIndicator.post(new Runnable() {
+				@Override
+				public void run() {
+					mActivityIndicator.setVisibility(View.VISIBLE);
+				}
+			});
+
+			HttpUriRequest request = params[0];
+			HttpClient client = new DefaultHttpClient();
+
+			try {
+				HttpResponse response = client.execute(request);
+
+				// TODO handle bad response codes (such as 404, etc)
+
+				BufferedReader reader = new BufferedReader(
+						new InputStreamReader(
+								response.getEntity().getContent(), "UTF-8"));
+				StringBuilder builder = new StringBuilder();
+				for (String line = null; (line = reader.readLine()) != null;) {
+					builder.append(line).append("\n");
+				}
+				JSONTokener tokener = new JSONTokener(builder.toString());
+				JSONObject json = new JSONObject(tokener);
+				return json;
+
+			} catch (Exception e) {
+				Log.e(TAG, e.toString());
+				e.printStackTrace();
+				return null;
+			}
+		}
+
+		@Override
+		protected void onPostExecute(JSONObject jsonObject) {
+			// Done on UI Thread
+			if (jsonObject != null) {
+				mGetJSONHandler.handle(jsonObject);
+			} else {
+				mGetJSONHandler.failed();
+			}
+
+			mActivityIndicator.post(new Runnable() {
+				@Override
+				public void run() {
+					mActivityIndicator.setVisibility(View.INVISIBLE);
+				}
+			});
+		}
+	}
+
+    public interface GetDrawableHandler {
+    	public void handle(Drawable drawable);
+    	public void failed();
+    }
+
+	public static class HttpGetDrawableTask extends
+			AsyncTask<HttpUriRequest, Void, Drawable> {
+		private static final String TAG = "EURUKO2013";
+
+		private GetDrawableHandler mGetDrawableHandler;
+
+		public HttpGetDrawableTask(GetDrawableHandler handler) {
+			mGetDrawableHandler = handler;
+		}
+
+		@Override
+		protected Drawable doInBackground(HttpUriRequest... params) {
+			HttpUriRequest request = params[0];
+			HttpClient client = new DefaultHttpClient();
+
+			try {
+				HttpResponse response = client.execute(request);
+
+				// TODO handle bad response codes (such as 404, etc)
+
+				InputStream is = (InputStream) response.getEntity().getContent();
+		        Drawable drawable = Drawable.createFromStream(is, "src name");
+				return drawable;
+
+			} catch (Exception e) {
+				Log.e(TAG, e.toString());
+				e.printStackTrace();
+				return null;
+			}
+		}
+
+		@Override
+		protected void onPostExecute(Drawable drawable) {
+			// Done on UI Thread
+			if (drawable != null) {
+				mGetDrawableHandler.handle(drawable);
+			} else {
+				mGetDrawableHandler.failed();
+			}
+
+//			mActivityIndicator.post(new Runnable() {
+//				@Override
+//				public void run() {
+//					mActivityIndicator.setVisibility(View.INVISIBLE);
+//				}
+//			});
+		}
+	}
+
+    @Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		getSupportFragmentManager().putFragment(outState, "mCurrentFragment",
@@ -249,11 +436,14 @@ public class BaseActivity extends SlidingFragmentActivity {
         mMainMenu.showContent();
     }
 
-    private List<Speaker> getSpeakers() {
+    private static List<Speaker> getSpeakers(JSONObject speakersJSONObject) {
     	sSpeakers = new ArrayList<Speaker>();
+
+    	if (speakersJSONObject == null) {
+    		return sSpeakers;
+    	}
+
         try {
-			JSONObject speakersJSONObject = new JSONObject(
-					Utils.JSON.readAsset(mContext, R.raw.speakers));
             JSONArray speakersJSON = speakersJSONObject.getJSONArray("speakers");
             for (int k = 0; k < speakersJSON.length(); k++) {
                 Speaker item = new Speaker(speakersJSON.getJSONObject(k));
@@ -264,6 +454,81 @@ public class BaseActivity extends SlidingFragmentActivity {
         }
 
         return sSpeakers;
+    }
+
+    private static List<Speaker> getSpeakers() {
+    	JSONObject jsonObject = null;
+		try {
+			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return getSpeakers(jsonObject);
+    }
+
+    private static List<AgendaItem> getAgendaItems(JSONObject agendaJSONObject) {
+    	sSpeeches = new ArrayList<AgendaItem>();
+
+    	if (agendaJSONObject == null) {
+    		return sSpeeches;
+    	}
+
+        try {
+            JSONArray agendaJSON = agendaJSONObject.getJSONArray("agenda");
+            for (int k = 0; k < agendaJSON.length(); k++) {
+                AgendaItem item = new AgendaItem(agendaJSON.getJSONObject(k));
+                sSpeeches.add(item);
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
+        return BaseActivity.sSpeeches;
+    }
+
+    private static List<AgendaItem> getAgendaItems() {
+    	JSONObject jsonObject = null;
+
+    	try {
+			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
+        return getAgendaItems(jsonObject);
+    }
+
+    private static List<NewsRecord> getNewsItems(JSONObject newsJSONObject) {
+    	sNews = new ArrayList<NewsRecord>();
+
+    	if (newsJSONObject == null) {
+    		return BaseActivity.sNews;
+    	}
+
+        try {
+            JSONArray newsJSON = newsJSONObject.getJSONArray("news");
+            for (int k = 0; k < newsJSON.length(); k++) {
+                NewsRecord item = new NewsRecord(newsJSON.getJSONObject(k));
+                sNews.add(item);
+            }
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
+        return sNews;
+    }
+
+    private static List<NewsRecord> getNewsItems() {
+    	JSONObject jsonObject = null;
+
+        try {
+			jsonObject = new JSONObject(Utils.JSON.readAsset("news.json"));
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
+        return getNewsItems(jsonObject);
     }
 
     @Override

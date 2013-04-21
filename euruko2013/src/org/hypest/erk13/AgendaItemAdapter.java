@@ -3,7 +3,10 @@ package org.hypest.erk13;
 import java.util.Hashtable;
 import java.util.List;
 
+import org.hypest.erk13.BaseActivity.GetDrawableHandler;
+
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -49,45 +52,34 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
     
     @Override
 	public View getView(final int position, View convertView, final ViewGroup parent) {
-            View v = convertView;
-            if (v == null) {
-			LayoutInflater vi = (LayoutInflater) mBaseActivity
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(resId, null);
+        View v = convertView;
+        if (v == null) {
+		LayoutInflater vi = (LayoutInflater) mBaseActivity
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = vi.inflate(resId, null);
+        }
+        
+        final AgendaItem r = mAgendaItems.get(position);
+        if (r != null) {
+            TextView st = (TextView) v.findViewById(R.id.startTime);
+            if (st != null) {
+                  st.setText(r.getStartTimeFormatted());
             }
-            
-            final AgendaItem r = mAgendaItems.get(position);
-            if (r != null) {
-                TextView st = (TextView) v.findViewById(R.id.startTime);
-                if (st != null) {
-                      st.setText(r.getStartTimeFormatted());
-                }
-                TextView et = (TextView) v.findViewById(R.id.endTime);
-                if (et != null) {
-                      et.setText(r.getEndTimeFormatted());
-                }
-                TextView tt = (TextView) v.findViewById(R.id.speechTitle);
-                if (tt != null) {
-                      tt.setText(r.title);
-                }
-                Speaker speaker = null;
-                if (mSpeakers.containsKey(r.who)) {
-                    speaker = mSpeakers.get(r.who);
+            TextView et = (TextView) v.findViewById(R.id.endTime);
+            if (et != null) {
+                  et.setText(r.getEndTimeFormatted());
+            }
+            TextView tt = (TextView) v.findViewById(R.id.speechTitle);
+            if (tt != null) {
+                  tt.setText(r.title);
+            }
+            Speaker speaker = null;
 
-//                    final String speakerId = speaker.id;
-//
-//					View speakerContainer = v
-//							.findViewById(R.id.speakerContainer);
-//					if (speakerContainer != null) {
-//						speakerContainer
-//								.setOnClickListener(new OnClickListener() {
-//									@Override
-//									public void onClick(View v) {
-//										SpeakerActivity.viewSpeaker(mActivity,
-//												speakerId);
-//									}
-//								});
-//					}
+            if (r.speakerId == null) {
+            	v.findViewById(R.id.speakerContainer).setVisibility(View.GONE);
+            } else {
+                if (mSpeakers.containsKey(r.speakerId)) {
+                    speaker = mSpeakers.get(r.speakerId);
                 }
 
                 if (speaker != null) {
@@ -95,10 +87,19 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
                     if (su != null) {
                         su.setText(speaker.name);
                     }
-				ImageView profilePic = (ImageView) v
-						.findViewById(R.id.profilePic);
+					final ImageView profilePic = (ImageView) v
+							.findViewById(R.id.profilePic);
                     if (profilePic != null) {
-                        profilePic.setImageDrawable(speaker.avatar);
+                    	speaker.getAvatar(new GetDrawableHandler() {
+							@Override
+							public void handle(Drawable drawable) {
+		                        profilePic.setImageDrawable(drawable);
+							}
+							
+							@Override
+							public void failed() {
+							}
+						});
                     }
                 }
 
@@ -111,6 +112,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
 					}
 				});
             }
-            return v;
+        }
+        return v;
     }
 }

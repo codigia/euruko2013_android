@@ -3,10 +3,6 @@ package org.hypest.erk13;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Twitter;
@@ -33,23 +29,6 @@ public class TwitterFragment extends BaseListFragment {
 
         super.onResume();
 	}
-
-    protected List<NewsRecord> getNewsItems() {
-        ArrayList<NewsRecord> news = new ArrayList<NewsRecord>();
-        try {
-			JSONObject newsJSONObject = new JSONObject(Utils.JSON.readAsset(
-					getActivity(), R.raw.news));
-            JSONArray newsJSON = newsJSONObject.getJSONArray("news");
-            for (int k = 0; k < newsJSON.length(); k++) {
-                NewsRecord item = new NewsRecord(newsJSON.getJSONObject(k));
-                news.add(item);
-            }
-        } catch (JSONException e1) {
-            e1.printStackTrace();
-        }
-
-        return news;
-    }
 
     private class TwitterTask extends AsyncTask<String, Integer, Long> {
         final ArrayList<MyTweet> myTweets = new ArrayList<MyTweet>();
@@ -104,4 +83,7 @@ public class TwitterFragment extends BaseListFragment {
         }
     }
 
+	@Override
+	public void networkRefresh() {
+	}
 }
