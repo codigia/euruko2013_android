@@ -46,6 +46,9 @@ public class BaseActivity extends SlidingFragmentActivity {
     View customNav;
     SlidingMenu mMainMenu;
 	Fragment mCurrentFragment;
+	Fragment mCurrentDetailsFragment;
+
+	boolean mDualPane = false;
 
     View mCustomActionBarView;
     TextView mCustomActionBarTitleView;
@@ -70,6 +73,8 @@ public class BaseActivity extends SlidingFragmentActivity {
 		if (savedInstanceState != null) {
 			mCurrentFragment = getSupportFragmentManager().getFragment(
 					savedInstanceState, "mCurrentFragment");
+			mCurrentDetailsFragment = getSupportFragmentManager().getFragment(
+					savedInstanceState, "mCurrentDetailsFragment");
 		}
 
 		if (mCurrentFragment == null) {
@@ -83,7 +88,12 @@ public class BaseActivity extends SlidingFragmentActivity {
 		.setCustomAnimations(R.anim.fadein, 0)
 		.replace(R.id.main_content, mCurrentFragment)
 		.commit();
-		
+
+		View detailsView = findViewById(R.id.main_details);
+		if (detailsView != null) {
+			mDualPane = true;
+		}
+
 		// set the Behind View
 		setBehindContentView(R.layout.main_menu);
 //		getSupportFragmentManager()
@@ -121,6 +131,8 @@ public class BaseActivity extends SlidingFragmentActivity {
 		super.onSaveInstanceState(outState);
 		getSupportFragmentManager().putFragment(outState, "mCurrentFragment",
 				mCurrentFragment);
+		getSupportFragmentManager().putFragment(outState, "mCurrentDetailsFragment",
+				mCurrentDetailsFragment);
 	}
 	
 	public void showContent(Fragment fragment) {
@@ -132,6 +144,21 @@ public class BaseActivity extends SlidingFragmentActivity {
 		.addToBackStack(null)
 		.commit();
 		getSlidingMenu().showContent();
+	}
+
+	public void showDetails(Fragment fragment) {
+		if (!mDualPane) {
+			showContent(fragment);
+			return;
+		}
+
+		mCurrentDetailsFragment = fragment;
+		getSupportFragmentManager()
+		.beginTransaction()
+		.setCustomAnimations(R.anim.fadein, R.anim.fadeout)
+		.replace(R.id.main_details, fragment)
+		.addToBackStack(null)
+		.commit();
 	}
 
     protected void setBarTitle(CharSequence title) {
@@ -264,16 +291,16 @@ public class BaseActivity extends SlidingFragmentActivity {
 
     public void viewSpeaker(String id) {
     	currentSpeakerId = id;
-    	showContent(new SpeakerFragment());
+    	showDetails(new SpeakerFragment());
     }
 
     public void viewSpeech(int position) {
     	currentSpeechPosition = position;
-    	showContent(new SpeechFragment());
+    	showDetails(new SpeechFragment());
     }
 
     public void viewURL(String urlString) {
     	currentURLString = urlString;
-    	showContent(new WebviewFragment());
+    	showDetails(new WebviewFragment());
     }
 }
