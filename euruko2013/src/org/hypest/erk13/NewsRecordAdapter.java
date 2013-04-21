@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Locale;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +16,13 @@ import android.widget.TextView;
 
 public class NewsRecordAdapter extends ArrayAdapter<NewsRecord> {
 
-    private Context mContext;
+    private BaseActivity mBaseActivity;
     private List<NewsRecord> mRecords;
     private final Locale mLocale;
 
-    public NewsRecordAdapter(Context context, int textViewResourceId, List<NewsRecord> records) {
-            super(context, textViewResourceId, records);
-            mContext = context;
+    public NewsRecordAdapter(BaseActivity baseActivity, int textViewResourceId, List<NewsRecord> records) {
+            super(baseActivity, textViewResourceId, records);
+            mBaseActivity = baseActivity;
             mRecords = records;
             mLocale = Locale.getDefault();
     }
@@ -48,7 +46,8 @@ public class NewsRecordAdapter extends ArrayAdapter<NewsRecord> {
     public View getView(int position, View convertView, ViewGroup parent) {
             View v = convertView;
             if (v == null) {
-                LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LayoutInflater vi = (LayoutInflater) mBaseActivity
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.newsitem, null);
             }
             
@@ -87,8 +86,7 @@ public class NewsRecordAdapter extends ArrayAdapter<NewsRecord> {
                 	v.setOnClickListener(new OnClickListener() {
 						@Override
 						public void onClick(View v) {
-						Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(r.link));
-							mContext.startActivity(browserIntent);
+							mBaseActivity.viewURL(r.link);
 						}
 					});
                 }

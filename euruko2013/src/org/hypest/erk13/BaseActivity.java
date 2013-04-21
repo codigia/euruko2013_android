@@ -59,6 +59,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 
     public String currentSpeakerId;
     public int currentSpeechPosition;
+    public String currentURLString;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -269,5 +270,10 @@ public class BaseActivity extends SlidingFragmentActivity {
     public void viewSpeech(int position) {
     	currentSpeechPosition = position;
     	showContent(new SpeechFragment());
+    }
+
+    public void viewURL(String urlString) {
+    	currentURLString = urlString;
+    	showContent(new WebviewFragment());
     }
 }

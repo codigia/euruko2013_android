@@ -16,7 +16,7 @@ public class NewsFragment extends BaseListFragment {
 		super.onActivityCreated(savedInstanceState);
 
         List<NewsRecord> news = getNewsItems();
-        NewsRecordAdapter newsadapter = new NewsRecordAdapter(getActivity(),
+        NewsRecordAdapter newsadapter = new NewsRecordAdapter((BaseActivity) getActivity(),
                 R.layout.newsitem,
                 news);
         setListAdapter(newsadapter);
