@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
@@ -47,7 +48,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
     };
     
     @Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, final ViewGroup parent) {
             View v = convertView;
             if (v == null) {
 			LayoutInflater vi = (LayoutInflater) mBaseActivity
@@ -106,6 +107,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
 					@Override
 					public void onClick(View v) {
 						ba.viewSpeech(position);
+						Utils.UI.ensureIntoView((ListView) parent, position);
 					}
 				});
             }

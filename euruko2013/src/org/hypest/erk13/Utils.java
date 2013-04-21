@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.widget.ListView;
 
 public class Utils {
 
@@ -61,6 +62,18 @@ public class Utils {
 
 	        return writer.toString();
 	    }
+	}
 
+	public static class UI {
+		public static void ensureIntoView(final ListView listView,
+				final int position) {
+			listView.smoothScrollToPosition(position, position);
+			listView.post(new Runnable() {
+				@Override
+				public void run() {
+					listView.smoothScrollToPosition(position, position + 1);
+				}
+			});
+		}
 	}
 }

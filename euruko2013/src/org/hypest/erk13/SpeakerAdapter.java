@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class SpeakerAdapter extends ArrayAdapter<Speaker> {
@@ -38,39 +39,41 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
     };
     
     @Override
-	public View getView(final int position, View convertView, ViewGroup parent) {
-            View v = convertView;
-            if (v == null) {
-			LayoutInflater vi = (LayoutInflater) mBaseActivity
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				v = vi.inflate(R.layout.speakersitem, null);
+	public View getView(final int position, View convertView,
+			final ViewGroup parent) {
+        View v = convertView;
+        if (v == null) {
+		LayoutInflater vi = (LayoutInflater) mBaseActivity
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			v = vi.inflate(R.layout.speakersitem, null);
+        }
+        
+        final Speaker r = mRecords.get(position);
+        if (r != null) {
+            TextView name = (TextView) v.findViewById(R.id.name);
+            if(name != null){
+                  name.setText(r.name);
             }
-            
-            final Speaker r = mRecords.get(position);
-            if (r != null) {
-                TextView name = (TextView) v.findViewById(R.id.name);
-                if(name != null){
-                      name.setText(r.name);
-                }
 
-                TextView title = (TextView) v.findViewById(R.id.title);
-                if (title != null) {
-                      title.setText(r.title);
-                }
+            TextView title = (TextView) v.findViewById(R.id.title);
+            if (title != null) {
+                  title.setText(r.title);
+            }
 
-                ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
-                if (profilePic != null) {
-                    profilePic.setImageDrawable(r.avatar);
-                }
+            ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
+            if (profilePic != null) {
+                profilePic.setImageDrawable(r.avatar);
+            }
 
-                final BaseActivity ba = mBaseActivity;
-                v.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						ba.viewSpeaker(r.id);
-					}
-				});
-           }
-            return v;
+            final BaseActivity ba = mBaseActivity;
+            v.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					ba.viewSpeaker(r.id);
+					Utils.UI.ensureIntoView((ListView) parent, position);
+				}
+			});
+       }
+        return v;
     }
 }

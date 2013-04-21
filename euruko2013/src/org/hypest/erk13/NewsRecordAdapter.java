@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class NewsRecordAdapter extends ArrayAdapter<NewsRecord> {
@@ -43,54 +44,56 @@ public class NewsRecordAdapter extends ArrayAdapter<NewsRecord> {
     };
     
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-            View v = convertView;
-            if (v == null) {
-			LayoutInflater vi = (LayoutInflater) mBaseActivity
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.newsitem, null);
+	public View getView(final int position, View convertView,
+			final ViewGroup parent) {
+        View v = convertView;
+        if (v == null) {
+		LayoutInflater vi = (LayoutInflater) mBaseActivity
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = vi.inflate(R.layout.newsitem, null);
+        }
+        
+        final NewsRecord r = mRecords.get(position);
+        if (r != null) {
+        	Calendar cal = Calendar.getInstance(mLocale);
+        	cal.setTimeInMillis(r.time);
+
+        	TextView dt = (TextView) v.findViewById(R.id.dayNumber);
+        	dt.setText(String.format(mLocale, "%td", cal));
+
+            TextView mt = (TextView) v.findViewById(R.id.monthText);
+        	mt.setText(String.format(mLocale, "%tb", cal));
+
+            TextView tt = (TextView) v.findViewById(R.id.title);
+            TextView su = (TextView) v.findViewById(R.id.summary);
+            if (tt != null) {
+                  tt.setText(r.title);
             }
-            
-            final NewsRecord r = mRecords.get(position);
-            if (r != null) {
-            	Calendar cal = Calendar.getInstance(mLocale);
-            	cal.setTimeInMillis(r.time);
-
-            	TextView dt = (TextView) v.findViewById(R.id.dayNumber);
-            	dt.setText(String.format(mLocale, "%td", cal));
-
-                TextView mt = (TextView) v.findViewById(R.id.monthText);
-            	mt.setText(String.format(mLocale, "%tb", cal));
-
-                TextView tt = (TextView) v.findViewById(R.id.title);
-                TextView su = (TextView) v.findViewById(R.id.summary);
-                if (tt != null) {
-                      tt.setText(r.title);
-                }
-                if(su != null){
-                	if (r.body != null) {
-                		su.setText(Html.fromHtml(r.body)); // make the links look like ones, but not actually clickable
+            if(su != null){
+            	if (r.body != null) {
+            		su.setText(Html.fromHtml(r.body)); // make the links look like ones, but not actually clickable
 //                		su.setMovementMethod(LinkMovementMethod.getInstance());
-                	} else {
-                		su.setText("");
-                		su.setVisibility(View.GONE);
-                	}
-                }
+            	} else {
+            		su.setText("");
+            		su.setVisibility(View.GONE);
+            	}
+            }
 
-                ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
-                if (profilePic != null) {
-                    profilePic.setImageResource(R.drawable.news);
-                }
+            ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
+            if (profilePic != null) {
+                profilePic.setImageResource(R.drawable.news);
+            }
 
-                if (r.link != null) {
-                	v.setOnClickListener(new OnClickListener() {
-						@Override
-						public void onClick(View v) {
-							mBaseActivity.viewURL(r.link);
-						}
-					});
-                }
-           }
-            return v;
+            if (r.link != null) {
+            	v.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						mBaseActivity.viewURL(r.link);
+						Utils.UI.ensureIntoView((ListView) parent, position);
+					}
+				});
+            }
+        }
+        return v;
     }
 }
