@@ -20,12 +20,13 @@ import android.widget.TextView;
 public class TweetAdapter extends ArrayAdapter<MyTweet> {
 
     static final int resId = R.layout.tweet;
-    private Context mContext;
+    private TwitterFragment mTwitterFragment;
     private List<MyTweet> mTweets;
 
-    public TweetAdapter(Context context, ArrayList<MyTweet> tweets) {
-            super(context, resId, tweets);
-            mContext = context;
+	public TweetAdapter(TwitterFragment twitterFragment,
+			ArrayList<MyTweet> tweets) {
+            super(twitterFragment.getActivity(), resId, tweets);
+            mTwitterFragment = twitterFragment;
             mTweets = tweets;
     }
 
@@ -46,55 +47,76 @@ public class TweetAdapter extends ArrayAdapter<MyTweet> {
     
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-            View v = convertView;
-            if (v == null) {
-                LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(resId, null);
+        final MyTweet r = mTweets.get(position);
+
+        final Context ctx = mTwitterFragment.getActivity();
+
+        if (r == null) {
+	        LayoutInflater vi = (LayoutInflater) ctx
+	            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	        return vi.inflate(R.layout.tweet_rate_exceeded, null);
+	    }
+
+        View v = convertView;
+
+        int rid = resId;
+        if (r.tweet == null) {
+        	rid = R.layout.tweet_loading;
+        }
+
+		if (convertView != null && convertView.getTag() != null
+				&& ((Integer) convertView.getTag()) != rid) {
+    		v = null; // to make it inflate a new one
+    	}
+
+		if (v == null) {
+			LayoutInflater vi = (LayoutInflater) ctx
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = vi.inflate(rid, null);
+        }
+
+        v.setTag(Integer.valueOf(rid));
+
+        if (r.tweet != null) {
+            TextView tt = (TextView) v.findViewById(R.id.title);
+            TextView su = (TextView) v.findViewById(R.id.summary);
+            if (tt != null) {
+                  tt.setText(r.tweet.getUser().getName());
             }
             
-            final MyTweet r = mTweets.get(position);
-            if (r != null) {
-                TextView tt = (TextView) v.findViewById(R.id.title);
-                TextView su = (TextView) v.findViewById(R.id.summary);
-                if (tt != null) {
-                      tt.setText(r.tweet.getUser().getName());
-                }
-                
-                StringBuilder sb = new StringBuilder(r.tweet.getText());
-                
-                URLEntity[] urls = r.tweet.getURLEntities();
-                for(URLEntity url : urls) {
-                    String u = url.getURL().toString();
-                    sb.replace(url.getStart(), url.getEnd(), "<a href=\"" + u + "\">" + u + "</a>");
-                }
-                
-                if(su != null) {
-                    su.setText(Html.fromHtml(sb.toString()));
-                    su.setMovementMethod(LinkMovementMethod.getInstance());
-                }
-                
-                ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
-                if (profilePic != null) {
-                    if (r.pic == null) {
-                        profilePic.setImageResource(R.drawable.twitter);
-                    } else {
-                        profilePic.setImageDrawable(r.pic);
-                    }
-                    
-                    profilePic.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent i = new Intent(Intent.ACTION_VIEW);
-                            i.setData(Uri.parse(r.tweet.getUser().getURL()));
-                            mContext.startActivity(i);
-                        }
-                    });
-                }
-            } else {
-                LayoutInflater vi = (LayoutInflater) mContext
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.tweet_rate_exceeded, null);
+            StringBuilder sb = new StringBuilder(r.tweet.getText());
+            
+            URLEntity[] urls = r.tweet.getURLEntities();
+            for(URLEntity url : urls) {
+                String u = url.getURL().toString();
+                sb.replace(url.getStart(), url.getEnd(), "<a href=\"" + u + "\">" + u + "</a>");
             }
-            return v;
+            
+            if(su != null) {
+                su.setText(Html.fromHtml(sb.toString()));
+                su.setMovementMethod(LinkMovementMethod.getInstance());
+            }
+            
+            ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
+            if (profilePic != null) {
+                if (r.pic == null) {
+                    profilePic.setImageResource(R.drawable.twitter);
+                } else {
+                    profilePic.setImageDrawable(r.pic);
+                }
+                
+                profilePic.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(r.tweet.getUser().getURL()));
+                        ctx.startActivity(i);
+                    }
+                });
+            }
+        } else {
+        	mTwitterFragment.new TwitterTask().execute("#euruko");
+        }
+        return v;
     }
 }

@@ -14,11 +14,35 @@ import android.os.Bundle;
 
 public class TwitterFragment extends BaseListFragment {
 
-	@Override
+    ArrayList<MyTweet> myTweets = new ArrayList<MyTweet>();
+
+    private ConfigurationBuilder mConfigurationBuilder;
+    private TwitterFactory mFactory;
+    private Twitter mTwitter;
+    private Query mQuery = null;
+    private TweetAdapter mTweetsadapter;
+    
+    @Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-        new TwitterTask().execute("#euruko");
+		mConfigurationBuilder = new ConfigurationBuilder();
+		mConfigurationBuilder.setDebugEnabled(true)
+	      .setOAuthConsumerKey("wusQ8BNzpdDGBYmFmuqRSQ")
+	      .setOAuthConsumerSecret("c89Kywambx93B11DBp3ZlQJ6ozxQEc19eJkfpTxydk")
+	      .setOAuthAccessToken("89283128-Gmvu6X4PHodshgDwpDZb4NU7sSz6RqLko02DdXWxt")
+	      .setOAuthAccessTokenSecret("5XIR5wnwYljxGhTKngscLRdwsaftstjqWaJhhGYO0A");
+	    mFactory = new TwitterFactory(mConfigurationBuilder.build());
+	    mTwitter = mFactory.getInstance();
+
+        mQuery = new Query("euruko");
+        mQuery.setCount(10);
+
+        myTweets.add(MyTweet.ReloadTweet);
+
+		mTweetsadapter = new TweetAdapter(this, myTweets);
+
+        getListView().setAdapter(mTweetsadapter);
 	}
 
 	@Override
@@ -30,32 +54,30 @@ public class TwitterFragment extends BaseListFragment {
         super.onResume();
 	}
 
-    private class TwitterTask extends AsyncTask<String, Integer, Long> {
-        final ArrayList<MyTweet> myTweets = new ArrayList<MyTweet>();
-
+    public class TwitterTask extends AsyncTask<String, Integer, Long> {
         protected Long doInBackground(String... urls) {
-            ConfigurationBuilder cb = new ConfigurationBuilder();
-            cb.setDebugEnabled(true)
-              .setOAuthConsumerKey("wusQ8BNzpdDGBYmFmuqRSQ")
-              .setOAuthConsumerSecret("c89Kywambx93B11DBp3ZlQJ6ozxQEc19eJkfpTxydk")
-              .setOAuthAccessToken("89283128-Gmvu6X4PHodshgDwpDZb4NU7sSz6RqLko02DdXWxt")
-              .setOAuthAccessTokenSecret("5XIR5wnwYljxGhTKngscLRdwsaftstjqWaJhhGYO0A");
-            TwitterFactory factory = new TwitterFactory(cb.build());
-            Twitter twitter = factory.getInstance();
-            
             try {
-                Query query = new Query("euruko");
+            	if (mQuery == null) {
+            		return null;
+            	}
+
+            	myTweets.remove(MyTweet.ReloadTweet);
+
                 QueryResult result;
-                do {
-                    result = twitter.search(query);
-                    List<twitter4j.Status> tweets = result.getTweets();
-                    for (twitter4j.Status tweet : tweets) {
-                        MyTweet myt = new MyTweet(tweet);
-                        myt.fetchProfilePic();
-                        
-                        myTweets.add(myt);
-                    }
-                } while ((query = result.nextQuery()) != null);
+                result = mTwitter.search(mQuery);
+                List<twitter4j.Status> tweets = result.getTweets();
+                for (twitter4j.Status tweet : tweets) {
+                    MyTweet myt = new MyTweet(tweet);
+                    myt.fetchProfilePic();
+                    
+                    myTweets.add(myt);
+                }
+
+                if (tweets.size() > 0) {
+                	myTweets.add(MyTweet.ReloadTweet);
+                }
+
+            	mQuery = result.nextQuery();
 
             } catch (TwitterException te) {
                 te.printStackTrace();
@@ -71,15 +93,11 @@ public class TwitterFragment extends BaseListFragment {
         }
 
         protected void onPostExecute(Long result) {
-        	getListView().post(new Runnable() {
-                @Override
-                public void run() {
-					TweetAdapter tweetsadapter = new TweetAdapter(
-							getActivity(), myTweets);
-                    
-                    getListView().setAdapter(tweetsadapter);
-                }
-            });
+        	if (result == null) {
+        		return;
+        	}
+
+        	mTweetsadapter.notifyDataSetChanged();
         }
     }
 

@@ -12,7 +12,9 @@ public class MyTweet {
 
     public Status tweet;
     public Drawable pic;
-    
+
+    public final static MyTweet ReloadTweet = new MyTweet(null);
+
     public MyTweet(Status tweet) {
         this.tweet = tweet;
     }
