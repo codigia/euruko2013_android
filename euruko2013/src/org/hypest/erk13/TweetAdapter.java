@@ -3,9 +3,12 @@ package org.hypest.erk13;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hypest.erk13.BaseActivity.GetDrawableHandler;
+
 import twitter4j.URLEntity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -97,13 +100,19 @@ public class TweetAdapter extends ArrayAdapter<MyTweet> {
                 su.setMovementMethod(LinkMovementMethod.getInstance());
             }
             
-            ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
+			final ImageView profilePic = (ImageView) v
+					.findViewById(R.id.profilePic);
             if (profilePic != null) {
-                if (r.pic == null) {
-                    profilePic.setImageResource(R.drawable.twitter);
-                } else {
-                    profilePic.setImageDrawable(r.pic);
-                }
+				r.fetchProfilePicture(new GetDrawableHandler() {
+					@Override
+					public void handle(Drawable drawable) {
+						profilePic.setImageDrawable(drawable);
+					}
+
+					@Override
+					public void failed() {
+					}
+				});
                 
                 profilePic.setOnClickListener(new OnClickListener() {
                     @Override
@@ -115,7 +124,7 @@ public class TweetAdapter extends ArrayAdapter<MyTweet> {
                 });
             }
         } else {
-        	mTwitterFragment.new TwitterTask().execute("#euruko");
+        	mTwitterFragment.new TwitterTask().execute();
         }
         return v;
     }

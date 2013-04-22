@@ -54,8 +54,8 @@ public class TwitterFragment extends BaseListFragment {
         super.onResume();
 	}
 
-    public class TwitterTask extends AsyncTask<String, Integer, Long> {
-        protected Long doInBackground(String... urls) {
+    public class TwitterTask extends AsyncTask<Void, Integer, Long> {
+        protected Long doInBackground(Void... params) {
             try {
             	if (mQuery == null) {
             		return null;
@@ -67,10 +67,7 @@ public class TwitterFragment extends BaseListFragment {
                 result = mTwitter.search(mQuery);
                 List<twitter4j.Status> tweets = result.getTweets();
                 for (twitter4j.Status tweet : tweets) {
-                    MyTweet myt = new MyTweet(tweet);
-                    myt.fetchProfilePic();
-                    
-                    myTweets.add(myt);
+                    myTweets.add(new MyTweet(tweet));
                 }
 
                 if (tweets.size() > 0) {

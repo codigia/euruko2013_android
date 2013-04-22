@@ -1,9 +1,7 @@
 package org.hypest.erk13;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+import org.apache.http.client.methods.HttpGet;
+import org.hypest.erk13.BaseActivity.GetDrawableHandler;
 
 import twitter4j.Status;
 import android.graphics.drawable.Drawable;
@@ -11,7 +9,7 @@ import android.graphics.drawable.Drawable;
 public class MyTweet {
 
     public Status tweet;
-    public Drawable pic;
+    private Drawable mPicture;
 
     public final static MyTweet ReloadTweet = new MyTweet(null);
 
@@ -19,28 +17,26 @@ public class MyTweet {
         this.tweet = tweet;
     }
     
-    public void fetchProfilePic() {
-        pic = null;
-        
-        String urlstr = tweet.getUser().getProfileImageURL();
-        URL url;
-        try {
-            url = new URL(urlstr);
-        } catch (MalformedURLException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-            return;
-        }
-        
-        InputStream is = null;
-        try {
-            is = (InputStream) url.getContent();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return;
-        }
-        
-        pic = Drawable.createFromStream(is, "anonymous");
-    }
+	public void fetchProfilePicture(final GetDrawableHandler drawableHandler) {
+    	if (mPicture != null) {
+    		drawableHandler.handle(mPicture);
+    	} else {
+            String pictureURLString = tweet.getUser().getProfileImageURL();
+    		if (pictureURLString != null) {
+				new BaseActivity.HttpGetDrawableTask(
+						new GetDrawableHandler() {
+							@Override
+							public void handle(Drawable drawable) {
+								mPicture = drawable;
+								drawableHandler.handle(mPicture);
+							}
+
+							@Override
+							public void failed() {
+								drawableHandler.failed();
+							}
+						}).execute(new HttpGet(pictureURLString));
+    		}
+    	}
+	}
 }
