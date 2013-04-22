@@ -69,11 +69,5 @@
         </RelativeLayout>
     </ScrollView>
 
-    <View
-        android:id="@+id/shadowTop"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@drawable/shadow_bottom" />
-
 </RelativeLayout>
 
