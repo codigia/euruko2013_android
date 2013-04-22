@@ -316,10 +316,16 @@ public class BaseActivity extends SlidingFragmentActivity {
     @Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		getSupportFragmentManager().putFragment(outState, "mCurrentFragment",
-				mCurrentFragment);
-		getSupportFragmentManager().putFragment(outState, "mCurrentDetailsFragment",
-				mCurrentDetailsFragment);
+
+		if (mCurrentFragment != null) {
+			getSupportFragmentManager().putFragment(outState,
+					"mCurrentFragment", mCurrentFragment);
+		}
+
+		if (mCurrentDetailsFragment != null) {
+			getSupportFragmentManager().putFragment(outState,
+					"mCurrentDetailsFragment", mCurrentDetailsFragment);
+		}
 	}
 	
 	public void showContent(Fragment fragment) {
