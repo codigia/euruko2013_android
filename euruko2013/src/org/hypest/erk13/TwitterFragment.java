@@ -21,10 +21,10 @@ public class TwitterFragment extends BaseListFragment {
     private Twitter mTwitter;
     private Query mQuery = null;
     private TweetAdapter mTweetsadapter;
-    
+
     @Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
+	public void onCreate(Bundle savedInstanceState) {
+    	super.onCreate(savedInstanceState);
 
 		mConfigurationBuilder = new ConfigurationBuilder();
 		mConfigurationBuilder.setDebugEnabled(true)
@@ -35,15 +35,25 @@ public class TwitterFragment extends BaseListFragment {
 	    mFactory = new TwitterFactory(mConfigurationBuilder.build());
 	    mTwitter = mFactory.getInstance();
 
-        mQuery = new Query("euruko");
-        mQuery.setCount(10);
+	    if (mQuery == null) {
+	    	mQuery = new Query("euruko");
+	        mQuery.setCount(10);
+	    }
 
-        myTweets.add(MyTweet.ReloadTweet);
+        while(myTweets.contains(MyTweet.ReloadTweet)) {
+        	myTweets.remove(MyTweet.ReloadTweet);
+        }
+    	myTweets.add(MyTweet.ReloadTweet);
 
 		mTweetsadapter = new TweetAdapter(this, myTweets);
+    }
 
-        getListView().setAdapter(mTweetsadapter);
-	}
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		getListView().setAdapter(mTweetsadapter);
+    }
 
 	@Override
 	public void onResume() {
