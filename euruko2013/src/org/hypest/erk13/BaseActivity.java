@@ -1,9 +1,11 @@
 package org.hypest.erk13;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +21,16 @@ import org.json.JSONTokener;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -55,8 +62,9 @@ public class BaseActivity extends SlidingFragmentActivity {
 	static ArrayList<NewsRecord> sNews = new ArrayList<NewsRecord>();
 
     static final Object LOCK = new Object();
+    static Context mContext;
+
     Runnable mResult;
-    Context mContext;
     View mMainView;
     View customNav;
     static ProgressBar mActivityIndicator;
@@ -216,21 +224,39 @@ public class BaseActivity extends SlidingFragmentActivity {
 			});
 
 			HttpUriRequest request = params[0];
-			HttpClient client = new DefaultHttpClient();
+			String fname = Base64.encodeToString(request.getURI()
+					.toString().getBytes(), Base64.DEFAULT);
 
 			try {
-				HttpResponse response = client.execute(request);
+				BufferedReader reader = null;
 
-				// TODO handle bad response codes (such as 404, etc)
+				try {
+					FileInputStream is = mContext.openFileInput(fname);
+					reader = new BufferedReader(new InputStreamReader(is));
+				} catch (FileNotFoundException e) {
+					// ok, file does not exist locally so, will continue and fetch it
 
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(
-								response.getEntity().getContent(), "UTF-8"));
+					HttpClient client = new DefaultHttpClient();
+					HttpResponse response = client.execute(request);
+
+					// TODO handle bad response codes (such as 404, etc)
+
+					reader = new BufferedReader(new InputStreamReader(response
+							.getEntity().getContent(), "UTF-8"));
+				}
+
 				StringBuilder builder = new StringBuilder();
 				for (String line = null; (line = reader.readLine()) != null;) {
 					builder.append(line).append("\n");
 				}
-				JSONTokener tokener = new JSONTokener(builder.toString());
+				String str = builder.toString();
+
+				FileOutputStream os = mContext.openFileOutput(fname,
+						MODE_PRIVATE);
+				os.write(str.getBytes());
+				os.close();
+
+				JSONTokener tokener = new JSONTokener(str);
 				JSONObject json = new JSONObject(tokener);
 				return json;
 
@@ -277,6 +303,18 @@ public class BaseActivity extends SlidingFragmentActivity {
 		@Override
 		protected Drawable doInBackground(HttpUriRequest... params) {
 			HttpUriRequest request = params[0];
+			String fname = Base64.encodeToString(request.getURI()
+					.toString().getBytes(), Base64.DEFAULT);
+
+			try {
+				FileInputStream is = mContext.openFileInput(fname);
+		        Drawable drawable = Drawable.createFromStream(is, "srcName");
+		        Log.i("erk13", "Found it locally!");
+		        return drawable;
+			} catch (FileNotFoundException e) {
+				// ok, file does not exist locally so, will continue and fetch it
+			}
+
 			HttpClient client = new DefaultHttpClient();
 
 			try {
@@ -285,8 +323,15 @@ public class BaseActivity extends SlidingFragmentActivity {
 				// TODO handle bad response codes (such as 404, etc)
 
 				InputStream is = (InputStream) response.getEntity().getContent();
-		        Drawable drawable = Drawable.createFromStream(is, "src name");
-				return drawable;
+		        Bitmap bitmap = BitmapFactory.decodeStream(is);
+		        @SuppressWarnings("deprecation")
+				Drawable drawable = new BitmapDrawable(bitmap);
+
+		        FileOutputStream os = mContext.openFileOutput(fname, MODE_PRIVATE);
+		        bitmap.compress(CompressFormat.PNG, 95, os);
+		        os.close();
+
+		        return drawable;
 
 			} catch (Exception e) {
 				Log.e(TAG, e.toString());
