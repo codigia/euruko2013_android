@@ -1,6 +1,7 @@
 <resources>
     <dimen name="text_size_title">20sp</dimen>
     <dimen name="text_size_verbage">15sp</dimen>
+    <dimen name="text_size_glyphs">28sp</dimen>
 
     <dimen name="main_menu_height">48dp</dimen>
     <dimen name="main_menu_icon_height">38dp</dimen>
