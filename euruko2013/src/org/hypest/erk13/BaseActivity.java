@@ -230,19 +230,22 @@ public class BaseActivity extends SlidingFragmentActivity {
 			try {
 				BufferedReader reader = null;
 
-				try {
-					FileInputStream is = mContext.openFileInput(fname);
-					reader = new BufferedReader(new InputStreamReader(is));
-				} catch (FileNotFoundException e) {
-					// ok, file does not exist locally so, will continue and fetch it
+				HttpClient client = new DefaultHttpClient();
+				HttpResponse response = client.execute(request);
 
-					HttpClient client = new DefaultHttpClient();
-					HttpResponse response = client.execute(request);
-
-					// TODO handle bad response codes (such as 404, etc)
-
+				if (response.getStatusLine().getStatusCode() == 200) {
 					reader = new BufferedReader(new InputStreamReader(response
 							.getEntity().getContent(), "UTF-8"));
+				} else {
+					// TODO handle bad response codes (such as 404, etc)
+					
+					try {
+						FileInputStream is = mContext.openFileInput(fname);
+						reader = new BufferedReader(new InputStreamReader(is));
+					} catch (FileNotFoundException e) {
+						// ok, file does not exist locally either so, return
+						return null;
+					}
 				}
 
 				StringBuilder builder = new StringBuilder();
