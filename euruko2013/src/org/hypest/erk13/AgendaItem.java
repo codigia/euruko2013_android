@@ -1,13 +1,16 @@
 package org.hypest.erk13;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.text.format.DateFormat;
-
 public class AgendaItem {
+
+	private static SimpleDateFormat mFormat = new SimpleDateFormat(
+			"hh:mm", Locale.getDefault());
 
     public long startTime;
     public long endTime;
@@ -17,8 +20,8 @@ public class AgendaItem {
     
 	public AgendaItem(JSONObject json) {
         try {
-            startTime = json.getLong("start");
-            endTime = json.getLong("end");
+            startTime = json.getLong("start") * 1000;
+            endTime = json.getLong("end") * 1000;
 
             // speaker is optional
             speakerId = json.optString("speaker_id", null);
@@ -31,10 +34,10 @@ public class AgendaItem {
     }
     
     public String getStartTimeFormatted() {
-        return "" + DateFormat.format("hh:mm", new Date(startTime));
+    	return mFormat.format(new Date(startTime));
     }
     
     public String getEndTimeFormatted() {
-        return "" + DateFormat.format("hh:mm", new Date(endTime));
+    	return mFormat.format(new Date(endTime));
     }
 }
