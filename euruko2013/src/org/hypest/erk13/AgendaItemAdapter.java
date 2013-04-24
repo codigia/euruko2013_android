@@ -78,6 +78,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
             if (r.speakerId == null) {
             	v.findViewById(R.id.speakerContainer).setVisibility(View.GONE);
             } else {
+            	v.findViewById(R.id.speakerContainer).setVisibility(View.VISIBLE);
                 if (mSpeakers.containsKey(r.speakerId)) {
                     speaker = mSpeakers.get(r.speakerId);
                 }
