@@ -114,10 +114,10 @@ public class BaseActivity extends SlidingFragmentActivity {
 		.replace(R.id.main_content, mCurrentFragment)
 		.commit();
 
-		View detailsView = findViewById(R.id.main_details);
-		if (detailsView != null) {
-			mDualPane = true;
-		}
+//		View detailsView = findViewById(R.id.main_details);
+//		if (detailsView != null) {
+//			mDualPane = true;
+//		}
 
 		// set the Behind View
 		setBehindContentView(R.layout.main_menu);
@@ -393,13 +393,13 @@ public class BaseActivity extends SlidingFragmentActivity {
 			return;
 		}
 
-		mCurrentDetailsFragment = fragment;
-		getSupportFragmentManager()
-		.beginTransaction()
-		.setCustomAnimations(R.anim.fadein, R.anim.fadeout)
-		.replace(R.id.main_details, fragment)
-		.addToBackStack(null)
-		.commit();
+//		mCurrentDetailsFragment = fragment;
+//		getSupportFragmentManager()
+//		.beginTransaction()
+//		.setCustomAnimations(R.anim.fadein, R.anim.fadeout)
+//		.replace(R.id.main_details, fragment)
+//		.addToBackStack(null)
+//		.commit();
 	}
 
     protected void setBarTitle(CharSequence title) {

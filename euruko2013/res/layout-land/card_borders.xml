@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <View
+        android:id="@+id/borderTop"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/borderLeft"
+        android:layout_toLeftOf="@+id/borderRight"
+        android:background="@color/border" />
+
+    <View
+        android:id="@+id/borderLeft"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_alignTop="@+id/borderTop"
+        android:layout_alignBottom="@+id/shadowBottom"
+        android:layout_marginBottom="5dp"
+        android:background="@color/border" />
+
+    <View
+        android:id="@+id/borderRight"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/borderTop"
+        android:layout_alignBottom="@+id/shadowBottom"
+        android:layout_marginBottom="5dp"
+        android:background="@color/border" />
+
+    <View
+        android:id="@+id/shadowBottom"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_toRightOf="@+id/borderLeft"
+        android:layout_toLeftOf="@+id/borderRight"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginRight="-1dp"
+        android:background="@drawable/shadow_bottom" />
+</merge>

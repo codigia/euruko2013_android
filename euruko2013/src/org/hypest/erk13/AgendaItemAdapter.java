@@ -109,7 +109,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
 					@Override
 					public void onClick(View v) {
 						ba.viewSpeech(position);
-						Utils.UI.ensureIntoView((ListView) parent, position);
+//						Utils.UI.ensureIntoView((ListView) parent, position);
 					}
 				});
             }

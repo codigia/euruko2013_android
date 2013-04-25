@@ -4,8 +4,8 @@
     <item>
         <shape android:shape="rectangle" >
             <stroke
-                android:dashGap="2dp"
-                android:dashWidth="2dp"
+                android:dashGap="4dp"
+                android:dashWidth="4dp"
                 android:width="1dp"
                 android:color="@color/dots" />
             <solid android:color="#00000000"/>

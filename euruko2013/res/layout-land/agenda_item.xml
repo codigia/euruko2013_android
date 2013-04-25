@@ -5,31 +5,47 @@
     android:layout_height="wrap_content" >
 
     <RelativeLayout 
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_alignTop="@+id/card"
-        android:layout_alignBottom="@+id/card" >
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/card"
+        android:layout_alignRight="@+id/card"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="10dp" >
 
         <View
-            android:layout_width="10dp"
-            android:layout_height="1500dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="-2dp"
-            android:layout_marginBottom="-2dp"
+            android:layout_width="1500dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="-2dp"
+            android:layout_marginRight="-2dp"
             android:background="@drawable/timeline_dots" />
-    
+
         <View
-            android:layout_width="10dp"
-            android:layout_height="1500dp"
-            android:layout_marginLeft="28dp"
+            android:layout_width="1500dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="5dp"
             android:background="@color/mainback" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/dateBubbleContainer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp" >
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true" >
+
+        <RelativeLayout
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/startTime"
+            android:layout_alignRight="@+id/startTime"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentBottom="true" >
+            
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@drawable/line" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/startTime"
@@ -37,9 +53,11 @@
             android:layout_height="wrap_content"
             android:background="@color/mainback"
             android:gravity="center"
+            android:layout_alignParentBottom="true"
             android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:paddingRight="3dp"
+            android:paddingBottom="13dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="10:00"
             android:textColor="@color/maintext"
             android:textSize="18sp"
@@ -49,20 +67,21 @@
 
     <RelativeLayout
         android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/dateBubbleContainer"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/dateBubbleContainer"
+        android:layout_marginBottom="-15dp"
         android:paddingTop="5dp"
         android:paddingBottom="10dp"
-        android:paddingRight="10dp"
+        android:paddingRight="20dp"
         android:clipChildren="true"
         android:clipToPadding="true" >
 
         <RelativeLayout
             android:id="@+id/innerContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/dateBubbleContainer"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/shadowBottom"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:clipChildren="true"

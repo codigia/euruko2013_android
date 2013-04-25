@@ -52,7 +52,7 @@ public class TwitterFragment extends BaseListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		getListView().setAdapter(mTweetsadapter);
+		setListAdapter(mTweetsadapter);
     }
 
 	@Override
