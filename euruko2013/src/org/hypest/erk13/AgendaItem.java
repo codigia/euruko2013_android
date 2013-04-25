@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class AgendaItem {
 
 	private static SimpleDateFormat mFormat = new SimpleDateFormat(
-			"hh:mm", Locale.getDefault());
+			"HH:mm", Locale.getDefault());
 
     public long startTime;
     public long endTime;
