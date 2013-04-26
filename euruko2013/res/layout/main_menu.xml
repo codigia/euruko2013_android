@@ -104,7 +104,7 @@
                     android:layout_toRightOf="@+id/imageViewAgenda"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="Calendar"
+                    android:text="Agenda"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"
                     android:textColor="@color/main_menu_text" />
