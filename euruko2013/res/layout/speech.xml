@@ -91,49 +91,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 	   	        android:layout_below="@+id/profileContainer"
-		        android:layout_marginLeft="5dp"
-		        android:layout_marginRight="5dp"
+		        android:layout_marginLeft="25dp"
+		        android:layout_marginRight="25dp"
 		        android:layout_marginTop="10dp" >
 
-			    <RelativeLayout
-			        android:id="@+id/innerContainer"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:paddingLeft="5dp"
-			        android:paddingTop="5dp"
-			        android:paddingBottom="5dp"
-			        android:clipChildren="true"
-			        android:clipToPadding="true"
-			        android:background="@color/card" >
+	            <TextView
+	    	        android:id="@+id/speechTitle"
+	    	        android:layout_width="match_parent"
+	    	        android:layout_height="wrap_content"
+	    	        android:gravity="center"
+	    	        android:text="TextView"
+	    	        android:textColor="@color/maintext"
+	    	        android:textSize="@dimen/text_size_title"
+	    	        android:textStyle="bold" />
 
-		            <TextView
-		    	        android:id="@+id/speechTitle"
-		    	        android:layout_width="match_parent"
-		    	        android:layout_height="wrap_content"
-		    	        android:gravity="center"
-		    	        android:layout_marginLeft="5dp"
-		    	        android:layout_marginRight="5dp"
-		    	        android:text="TextView"
-		    	        android:textColor="@color/maintext"
-		    	        android:textSize="@dimen/text_size_title"
-		    	        android:textStyle="bold" />
-
-		    	    <TextView
-		    	        android:id="@+id/speechDescription"
-		    	        android:layout_width="match_parent"
-		    	        android:layout_height="wrap_content"
-		    	        android:layout_below="@+id/speechTitle"
-		    	        android:gravity="left"
-		                android:layout_marginTop="10dp"
-		    	        android:layout_marginLeft="5dp"
-		    	        android:layout_marginRight="5dp"
-		    	        android:text="TextView"
-		    	        android:textColor="@color/maintext"
-		    	        android:textSize="@dimen/text_size_verbage"
-		                android:textStyle="italic" />
-				</RelativeLayout>
-
-			    <include layout="@layout/card_borders"/>
+	    	    <TextView
+	    	        android:id="@+id/speechDescription"
+	    	        android:layout_width="match_parent"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_below="@+id/speechTitle"
+	    	        android:gravity="left"
+	                android:layout_marginTop="10dp"
+	    	        android:text="TextView"
+	    	        android:textColor="@color/maintext"
+	    	        android:textSize="@dimen/text_size_verbage"
+	                android:textStyle="italic" />
 			</RelativeLayout>
 
 	    </RelativeLayout>
