@@ -9,6 +9,9 @@
     <string name="about_codigia_title">app development</string>
     <string name="about_gaia_title">Proud Gaia sponsor!</string>
 
-    <string name="codigia_url">http://codigia.com</string>
-    <string name="gaia_sponsor_url">http://www.skroutz.gr</string>
+    <string name="url_codigia">http://codigia.com</string>
+    <string name="url_gaia_sponsor">http://www.skroutz.gr</string>
+
+    <string name="url_news">http://euruko2013.codigia.com/news.json</string>
+    <string name="url_agenda">http://euruko2013.codigia.com/agenda.json</string>
 </resources>

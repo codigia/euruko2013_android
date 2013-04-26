@@ -155,48 +155,55 @@ public class BaseActivity extends SlidingFragmentActivity {
 				.findViewById(R.id.progressBar);
 		mActivityIndicator.setVisibility(View.INVISIBLE);
 
+		getNews();
+		getAgenda();
+    }
+
+    protected void getNews() {
         new HttpGetJSONTask(new GetJSONHandler() {
-			@Override
-			public void handle(JSONObject json) {
-				getNewsItems(json);
-				if (mNewsFragment != null) {
-					mNewsFragment.networkRefresh();
-				}
+    		@Override
+    		public void handle(JSONObject json) {
+    			getNewsItems(json);
+    			if (mNewsFragment != null) {
+    				mNewsFragment.networkRefresh();
+    			}
 
-				mActivityIndicator.post(new Runnable() {
-					@Override
-					public void run() {
-						mActivityIndicator.setVisibility(View.INVISIBLE);
-					}
-				});
-			}
-			
-			@Override public void failed() {}
-		}).execute(new HttpGet("http://euruko2013.codigia.com/news.json"));
+    			mActivityIndicator.post(new Runnable() {
+    				@Override
+    				public void run() {
+    					mActivityIndicator.setVisibility(View.INVISIBLE);
+    				}
+    			});
+    		}
+    		
+    		@Override public void failed() {}
+    	}).execute(new HttpGet(getString(R.string.url_news)));
+    }
 
+    protected void getAgenda() {
         new HttpGetJSONTask(new GetJSONHandler() {
-			@Override
-			public void handle(JSONObject json) {
-				getSpeakers(json);
-				if (mSpeakersFragment != null) {
-					mSpeakersFragment.networkRefresh();
-				}
+    		@Override
+    		public void handle(JSONObject json) {
+    			getSpeakers(json);
+    			if (mSpeakersFragment != null) {
+    				mSpeakersFragment.networkRefresh();
+    			}
 
-				getAgendaItems(json);
-				if (mAgendaFragment != null) {
-					mAgendaFragment.networkRefresh();
-				}
+    			getAgendaItems(json);
+    			if (mAgendaFragment != null) {
+    				mAgendaFragment.networkRefresh();
+    			}
 
-				mActivityIndicator.post(new Runnable() {
-					@Override
-					public void run() {
-						mActivityIndicator.setVisibility(View.INVISIBLE);
-					}
-				});
-			}
-			
-			@Override public void failed() {}
-		}).execute(new HttpGet("http://euruko2013.codigia.com/agenda.json"));
+    			mActivityIndicator.post(new Runnable() {
+    				@Override
+    				public void run() {
+    					mActivityIndicator.setVisibility(View.INVISIBLE);
+    				}
+    			});
+    		}
+    		
+    		@Override public void failed() {}
+    	}).execute(new HttpGet(getString(R.string.url_agenda)));
     }
 
     public interface GetJSONHandler {
@@ -598,13 +605,13 @@ public class BaseActivity extends SlidingFragmentActivity {
 
     public void gotoGaiaSponsor(View v) {
         Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(getString(R.string.gaia_sponsor_url)));
+        i.setData(Uri.parse(getString(R.string.url_gaia_sponsor)));
         startActivity(i);
     }
 
     public void gotoCodigia(View v) {
         Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(getString(R.string.codigia_url)));
+        i.setData(Uri.parse(getString(R.string.url_codigia)));
         startActivity(i);
     }
 
