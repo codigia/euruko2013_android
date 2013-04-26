@@ -1,0 +1,10 @@
+<com.devsmart.android.ui.HorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/horlist"
+    style="@style/MyListView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/content_back"
+    android:cacheColorHint="@color/transparent"
+    android:divider="@color/transparent"
+    android:dividerHeight="0px" >
+</com.devsmart.android.ui.HorizontalListView>

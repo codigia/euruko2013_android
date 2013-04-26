@@ -1,5 +1,6 @@
 package org.hypest.erk13;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.SparseArray;
@@ -53,7 +54,12 @@ public abstract class BaseListFragment extends SherlockFragment {
 //        animation.setDuration(animationDuration);
 //        set.addAnimation(animation);
 
-    	mViewGroup = (ViewGroup) inflater.inflate(R.layout.list, null, false);
+        int resid = R.layout.list;
+		if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			resid = R.layout.horlist;
+		}
+
+    	mViewGroup = (ViewGroup) inflater.inflate(resid, null, false);
     	mViewGroup.setLayoutAnimation(new LayoutAnimationController(set));
 
 		return mViewGroup;
