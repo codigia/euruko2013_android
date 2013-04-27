@@ -30,6 +30,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -69,8 +70,7 @@ public class BaseActivity extends SlidingFragmentActivity {
     View customNav;
     static ProgressBar mActivityIndicator;
     SlidingMenu mMainMenu;
-	Fragment mCurrentFragment;
-	Fragment mCurrentDetailsFragment;
+    final static String sCurrentFragmentTag = "currentFragment";
 
 	boolean mDualPane = false;
 
@@ -93,17 +93,17 @@ public class BaseActivity extends SlidingFragmentActivity {
         super.onCreate(savedInstanceState);
 
         mContext = this;
-        
+
+        Fragment currentFragment = null;
+
 		if (savedInstanceState != null) {
-			mCurrentFragment = getSupportFragmentManager().getFragment(
-					savedInstanceState, "mCurrentFragment");
-			mCurrentDetailsFragment = getSupportFragmentManager().getFragment(
-					savedInstanceState, "mCurrentDetailsFragment");
+			currentFragment = getSupportFragmentManager().getFragment(
+					savedInstanceState, sCurrentFragmentTag);
 		}
 
-		if (mCurrentFragment == null) {
+		if (currentFragment == null) {
 			mNewsFragment = new NewsFragment();
-			mCurrentFragment = mNewsFragment;
+			currentFragment = mNewsFragment;
 		}
 
 		// set the Above View
@@ -111,13 +111,8 @@ public class BaseActivity extends SlidingFragmentActivity {
 		getSupportFragmentManager()
 		.beginTransaction()
 		.setCustomAnimations(R.anim.fadein, 0)
-		.replace(R.id.main_content, mCurrentFragment)
+		.replace(R.id.main_content, currentFragment, sCurrentFragmentTag)
 		.commit();
-
-//		View detailsView = findViewById(R.id.main_details);
-//		if (detailsView != null) {
-//			mDualPane = true;
-//		}
 
 		// set the Behind View
 		setBehindContentView(R.layout.main_menu);
@@ -145,10 +140,6 @@ public class BaseActivity extends SlidingFragmentActivity {
         mMainMenu.setBehindOffsetRes(R.dimen.main_menu_slidingmenu_offset);
         mMainMenu.setBehindScrollScale(0.5f);
         mMainMenu.setFadeDegree(0.35f);
-
-        getSpeakers();
-        getAgendaItems();
-        getNewsItems();
 
         mMainView = findViewById(R.id.mainView);
 		mActivityIndicator = (ProgressBar) mCustomActionBarView
@@ -372,23 +363,18 @@ public class BaseActivity extends SlidingFragmentActivity {
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 
-		if (mCurrentFragment != null) {
-			getSupportFragmentManager().putFragment(outState,
-					"mCurrentFragment", mCurrentFragment);
-		}
-
-		if (mCurrentDetailsFragment != null) {
-			getSupportFragmentManager().putFragment(outState,
-					"mCurrentDetailsFragment", mCurrentDetailsFragment);
+		FragmentManager fm = getSupportFragmentManager();
+		Fragment f = fm.findFragmentByTag(sCurrentFragmentTag);
+		if (f != null) {
+			fm.putFragment(outState, sCurrentFragmentTag, f);
 		}
 	}
 	
 	public void showContent(Fragment fragment) {
-		mCurrentFragment = fragment;
 		getSupportFragmentManager()
 		.beginTransaction()
 		.setCustomAnimations(R.anim.fadein, R.anim.fadeout)
-		.replace(R.id.main_content, fragment)
+		.replace(R.id.main_content, fragment, sCurrentFragmentTag)
 		.addToBackStack(null)
 		.commit();
 		getSlidingMenu().showContent();
