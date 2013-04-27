@@ -16,6 +16,8 @@
             android:id="@+id/menuLogo"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
+            android:layout_marginLeft="25dp"
+            android:layout_gravity="center"
             android:src="@drawable/logo_title"
             android:scaleType="fitCenter" />
 
@@ -33,6 +35,7 @@
             android:id="@+id/gaiaSponsorLogo"
             android:layout_width="wrap_content"
             android:layout_height="62dp"
+            android:layout_gravity="center"
             android:src="@drawable/logo_gaia"
             android:scaleType="fitCenter"
             android:onClick="gotoGaiaSponsor" />
@@ -48,7 +51,7 @@
         <ImageView
             android:id="@+id/codigiaLogo"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_height="24dp"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:src="@drawable/logo_codigia"
