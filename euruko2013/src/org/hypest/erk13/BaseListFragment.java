@@ -104,7 +104,9 @@ public abstract class BaseListFragment extends SherlockFragment {
 	protected void setListAdapter(BaseAdapter adapter,
 			OnItemClickListener clickListener) {
 		if (mViewGroup instanceof ListView) {
-			((ListView) mViewGroup).setAdapter(adapter);
+			ListView lv = (ListView) mViewGroup;
+			lv.setOnItemClickListener(clickListener);
+			lv.setAdapter(adapter);
 		} else if (mViewGroup instanceof HorizontalListView) {
 			HorizontalListView hlv = (HorizontalListView) mViewGroup;
 			hlv.setOnItemClickListener(clickListener);
