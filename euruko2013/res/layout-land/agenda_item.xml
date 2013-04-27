@@ -29,7 +29,7 @@
     <RelativeLayout
         android:id="@+id/dateBubbleContainer"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true" >
 
         <RelativeLayout
@@ -37,7 +37,7 @@
             android:layout_height="match_parent"
             android:layout_alignLeft="@+id/startTime"
             android:layout_alignRight="@+id/startTime"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true" >
             
             <View
@@ -107,17 +107,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Title"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="How Rails helps people understand new idea? - A case study on exporting local culture with Rails application"
                 android:textColor="@color/maintext"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
                 android:id="@+id/speakerContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/speechTitle"
-                android:layout_marginTop="30dp" >
+                android:layout_alignParentBottom="true" >
                 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -137,6 +138,7 @@
                     android:id="@+id/profilePic"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
+                    android:layout_above="@+id/who"
                     android:layout_centerHorizontal="true"
                     android:scaleType="fitCenter"
                     android:src="@drawable/back3" />
@@ -153,14 +155,15 @@
                     android:id="@+id/who"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/profilePic"
-                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="Who"
                     android:textColor="@color/maintext"
                     android:textSize="12sp"
                     android:textStyle="italic" />
+
             </RelativeLayout>    
         </RelativeLayout>
 
