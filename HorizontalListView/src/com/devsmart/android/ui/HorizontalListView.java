@@ -219,16 +219,17 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 		mCurrentX = mNextX;
 		
 		if(!mScroller.isFinished()){
-			post(new Runnable(){
-				@Override
-				public void run() {
-					requestLayout();
-				}
-			});
-			
+			post(mRequestLayoutRunnable);
 		}
 	}
-	
+
+	Runnable mRequestLayoutRunnable = new Runnable() {
+		@Override
+		public void run() {
+			requestLayout();
+		}
+	};
+
 	private void fillList(final int dx) {
 		int edge = 0;
 		View child = getChildAt(getChildCount()-1);
@@ -297,10 +298,11 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	}
 	
 	private void positionItems(final int dx) {
-		if(getChildCount() > 0){
+		int childCount = getChildCount();
+		if(childCount > 0){
 			mDisplayOffset += dx;
 			int left = mDisplayOffset;
-			for(int i=0;i<getChildCount();i++){
+			for(int i=0;i<childCount;i++){
 				View child = getChildAt(i);
 				int childWidth = child.getMeasuredWidth();
 				child.layout(left, 0, left + childWidth, child.getMeasuredHeight());
@@ -367,10 +369,14 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 				View child = getChildAt(i);
 				if (isEventWithinView(e, child)) {
 					if(mOnItemClicked != null){
-						mOnItemClicked.onItemClick(HorizontalListView.this, child, mLeftViewIndex + 1 + i, mAdapter.getItemId( mLeftViewIndex + 1 + i ));
+						mOnItemClicked.onItemClick(HorizontalListView.this,
+								child, mLeftViewIndex + 1 + i,
+								mAdapter.getItemId(mLeftViewIndex + 1 + i));
 					}
 					if(mOnItemSelected != null){
-						mOnItemSelected.onItemSelected(HorizontalListView.this, child, mLeftViewIndex + 1 + i, mAdapter.getItemId( mLeftViewIndex + 1 + i ));
+						mOnItemSelected.onItemSelected(HorizontalListView.this,
+								child, mLeftViewIndex + 1 + i,
+								mAdapter.getItemId(mLeftViewIndex + 1 + i));
 					}
 					break;
 				}
@@ -395,18 +401,9 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 		}
 
 		private boolean isEventWithinView(MotionEvent e, View child) {
-            Rect viewRect = new Rect();
-            int[] childPosition = new int[2];
-            child.getLocationOnScreen(childPosition);
-            int left = childPosition[0];
-            int right = left + child.getWidth();
-            int top = childPosition[1];
-            int bottom = top + child.getHeight();
-            viewRect.set(left, top, right, bottom);
-            return viewRect.contains((int) e.getRawX(), (int) e.getRawY());
+            Rect hitRect = new Rect();
+            child.getHitRect(hitRect);
+            return hitRect.contains((int) e.getX(), (int) e.getY());
         }
 	};
-
-	
-
 }
