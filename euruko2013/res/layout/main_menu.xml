@@ -285,17 +285,6 @@
             android:layout_height="@dimen/main_menu_height"
             android:src="@drawable/icon_gaia" />
 
-        <ImageView
-            android:id="@+id/imageViewGaiaText"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/main_menu_height_gaia_text"
-            android:layout_toRightOf="@+id/imageViewGaia"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
-            android:src="@drawable/logo_gaia2"
-            android:scaleType="fitStart"
-            android:visibility="invisible" />
-
     </RelativeLayout>
 
 </RelativeLayout>

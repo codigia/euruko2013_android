@@ -82,11 +82,6 @@ public class NewsRecordAdapter extends ArrayAdapter<NewsRecord> implements
             	}
             }
 
-            ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
-            if (profilePic != null) {
-                profilePic.setImageResource(R.drawable.news);
-            }
-
         	v.setTag(r.link);
         }
         return v;

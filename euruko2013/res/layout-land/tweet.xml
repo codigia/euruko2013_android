@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:erk13="http://schemas.android.com/apk/res/org.hypest.erk13"
     android:id="@+id/whole"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,14 +22,18 @@
 	        android:clipChildren="true"
 	        android:clipToPadding="true"
 	        android:background="@color/card" >
-	
-	        <ImageView
+
+	        <org.hypest.erk13.TextViewCustomFont
 	            android:id="@+id/profilePic"
 	            android:layout_width="46dp"
 	            android:layout_height="46dp"
-	            android:scaleType="fitCenter"
-	            android:src="@drawable/twitter" />
-	        
+	            android:gravity="center"
+	            android:text="t"
+	            android:textSize="@dimen/text_size_glyphs"
+	            android:textColor="@color/main_menu_text"
+	            erk13:customFont="sosa-regular-webfont.ttf" >
+	        </org.hypest.erk13.TextViewCustomFont>
+
 	        <TextView
 	            android:id="@+id/title"
 	            android:layout_width="match_parent"
