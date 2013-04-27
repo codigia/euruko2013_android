@@ -24,6 +24,6 @@ public class AgendaFragment extends BaseListFragment {
 		AgendaItemAdapter agendaAdapter = new AgendaItemAdapter(
 				(BaseActivity) getActivity(), BaseActivity.sSpeakers,
 				BaseActivity.sSpeeches);
-        setListAdapter(agendaAdapter);
+        setListAdapter(agendaAdapter, agendaAdapter);
 	}
 }

@@ -316,8 +316,8 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 	
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {
-		boolean handled = super.dispatchTouchEvent(ev);
-		handled |= mGesture.onTouchEvent(ev);
+//		boolean handled = super.dispatchTouchEvent(ev);
+		boolean handled = mGesture.onTouchEvent(ev);
 		return handled;
 	}
 	
@@ -378,7 +378,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 			}
 			return true;
 		}
-		
+
 		@Override
 		public void onLongPress(MotionEvent e) {
 			int childCount = getChildCount();

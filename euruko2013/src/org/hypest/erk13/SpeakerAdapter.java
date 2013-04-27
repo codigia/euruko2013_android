@@ -8,14 +8,16 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class SpeakerAdapter extends ArrayAdapter<Speaker> {
+public class SpeakerAdapter extends ArrayAdapter<Speaker> implements
+		OnItemClickListener {
 
     private BaseActivity mBaseActivity;
     private List<Speaker> mRecords;
@@ -78,15 +80,19 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> {
 				});
             }
 
-            final BaseActivity ba = mBaseActivity;
-            v.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					ba.viewSpeaker(r.id);
-					Utils.UI.ensureIntoView((ListView) parent, position);
-				}
-			});
+            v.setTag(r.id);
        }
         return v;
     }
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		if (view.getTag() == null) {
+			return;
+		}
+
+		mBaseActivity.viewSpeaker((String) view.getTag());
+		Utils.UI.ensureIntoView(parent, position);
+	}
 }

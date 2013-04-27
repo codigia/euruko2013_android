@@ -10,12 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class NewsRecordAdapter extends ArrayAdapter<NewsRecord> {
+public class NewsRecordAdapter extends ArrayAdapter<NewsRecord> implements
+		OnItemClickListener {
 
     private BaseActivity mBaseActivity;
     private List<NewsRecord> mRecords;
@@ -84,16 +87,19 @@ public class NewsRecordAdapter extends ArrayAdapter<NewsRecord> {
                 profilePic.setImageResource(R.drawable.news);
             }
 
-            if (r.link != null) {
-            	v.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						mBaseActivity.viewURL(r.link);
-						Utils.UI.ensureIntoView((ListView) parent, position);
-					}
-				});
-            }
+        	v.setTag(r.link);
         }
         return v;
     }
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		if (view.getTag() == null) {
+			return;
+		}
+
+		mBaseActivity.viewURL((String) view.getTag());
+		Utils.UI.ensureIntoView(parent, position);
+	}
 }

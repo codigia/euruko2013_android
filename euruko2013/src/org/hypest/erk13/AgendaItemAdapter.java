@@ -9,14 +9,15 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
+public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> implements
+		OnItemClickListener {
 
     static final int resId = R.layout.agenda_item;
     private BaseActivity mBaseActivity;
@@ -103,17 +104,15 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> {
 						});
                     }
                 }
-
-                final BaseActivity ba = mBaseActivity;
-                v.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						ba.viewSpeech(position);
-//						Utils.UI.ensureIntoView((ListView) parent, position);
-					}
-				});
             }
         }
         return v;
     }
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+        mBaseActivity.viewSpeech(position);
+//		Utils.UI.ensureIntoView(parent, position);
+	}
 }

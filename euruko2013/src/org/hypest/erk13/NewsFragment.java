@@ -24,7 +24,7 @@ public class NewsFragment extends BaseListFragment {
 		NewsRecordAdapter newsadapter = new NewsRecordAdapter(
 				(BaseActivity) getActivity(), R.layout.newsitem,
 				BaseActivity.sNews);
-        setListAdapter(newsadapter);
+        setListAdapter(newsadapter, newsadapter);
         newsadapter.notifyDataSetChanged();
 	}
 }

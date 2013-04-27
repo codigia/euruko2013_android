@@ -24,6 +24,6 @@ public class SpeakersFragment extends BaseListFragment {
 		SpeakerAdapter speakersadapter = new SpeakerAdapter(
 				(BaseActivity) getActivity(), R.layout.speakersitem,
 				BaseActivity.sSpeakers);
-        setListAdapter(speakersadapter);
+        setListAdapter(speakersadapter, speakersadapter);
 	}
 }

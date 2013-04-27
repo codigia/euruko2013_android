@@ -16,11 +16,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class TweetAdapter extends ArrayAdapter<MyTweet> {
+public class TweetAdapter extends ArrayAdapter<MyTweet> implements
+		OnItemClickListener {
 
     static final int resId = R.layout.tweet;
     private TwitterFragment mTwitterFragment;
@@ -128,4 +131,9 @@ public class TweetAdapter extends ArrayAdapter<MyTweet> {
         }
         return v;
     }
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+	}
 }

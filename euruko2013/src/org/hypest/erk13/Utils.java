@@ -12,6 +12,9 @@ import java.io.Writer;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.devsmart.android.ui.HorizontalListView;
+
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class Utils {
@@ -65,7 +68,7 @@ public class Utils {
 	}
 
 	public static class UI {
-		public static void ensureIntoView(final ListView listView,
+		protected static void ensureIntoViewLi(final ListView listView,
 				final int position) {
 			listView.smoothScrollToPosition(position, position);
 			listView.post(new Runnable() {
@@ -74,6 +77,26 @@ public class Utils {
 					listView.smoothScrollToPosition(position, position + 1);
 				}
 			});
+		}
+
+		protected static void ensureIntoViewHor(final HorizontalListView listView,
+				final int position) {
+			listView.scrollTo(position);
+			listView.post(new Runnable() {
+				@Override
+				public void run() {
+					listView.scrollTo(position + 1);
+				}
+			});
+		}
+
+		public static void ensureIntoView(final AdapterView<?> listView,
+				final int position) {
+			if (listView instanceof ListView) {
+				ensureIntoViewLi((ListView) listView, position);
+			} else if (listView instanceof HorizontalListView) {
+				ensureIntoViewHor((HorizontalListView) listView, position);
+			}
 		}
 	}
 }

@@ -13,6 +13,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LayoutAnimationController;
 import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
@@ -26,6 +27,11 @@ public abstract class BaseListFragment extends SherlockFragment {
 	private ViewGroup mViewGroup;
 	private SparseArray<Parcelable> mViewState = null;
 	private int mSparseKey;
+	private boolean mIsHorizontal;
+
+	protected boolean isHorizontal() {
+		return mIsHorizontal;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,10 +60,10 @@ public abstract class BaseListFragment extends SherlockFragment {
 //        animation.setDuration(animationDuration);
 //        set.addAnimation(animation);
 
-        int resid = R.layout.list;
-		if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-			resid = R.layout.horlist;
-		}
+		mIsHorizontal = getActivity().getResources().getConfiguration().orientation 
+				== Configuration.ORIENTATION_LANDSCAPE;
+
+        int resid = mIsHorizontal ? R.layout.horlist : R.layout.list;
 
     	mViewGroup = (ViewGroup) inflater.inflate(resid, null, false);
     	mViewGroup.setLayoutAnimation(new LayoutAnimationController(set));
@@ -95,11 +101,14 @@ public abstract class BaseListFragment extends SherlockFragment {
 
 	public abstract void networkRefresh();
 
-	protected void setListAdapter(BaseAdapter adapter) {
+	protected void setListAdapter(BaseAdapter adapter,
+			OnItemClickListener clickListener) {
 		if (mViewGroup instanceof ListView) {
 			((ListView) mViewGroup).setAdapter(adapter);
 		} else if (mViewGroup instanceof HorizontalListView) {
-			((HorizontalListView) mViewGroup).setAdapter(adapter);
+			HorizontalListView hlv = (HorizontalListView) mViewGroup;
+			hlv.setOnItemClickListener(clickListener);
+			hlv.setAdapter(adapter);
 		}
 	}
 }
