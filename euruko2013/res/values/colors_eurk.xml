@@ -27,8 +27,8 @@
     <color name="content_back">#00ff0000</color>
 
 <!--     <color name="main_menu_back">#d22b30</color> -->
-    <color name="main_menu_back">#ffffffff</color>
-    <color name="main_menu_text">#ff888888</color>
+    <color name="main_menu_back">@color/mainback</color>
+    <color name="main_menu_text">@color/maintext</color>
 
     <color name="full_separator">#ff888888</color>
 
