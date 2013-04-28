@@ -27,6 +27,9 @@
         <item name="actionBarStyle">@style/eurk_solid_ActionBar</item>
 <!--         <item name="homeAsUpIndicator">@drawable/transparent_pixel</item>
  -->
+        <item name="windowContentOverlay">@null</item>
+
+        <item name="android:windowContentOverlay">@null</item>        
         <item name="android:actionBarItemBackground">@drawable/selectable_background_eurk</item>
         <item name="android:popupMenuStyle">@style/eurk_PopupMenu</item>
         <item name="android:dropDownListViewStyle">@style/eurk_DropDownListView</item>
