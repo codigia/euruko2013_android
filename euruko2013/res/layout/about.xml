@@ -33,12 +33,12 @@
 
         <ImageView
             android:id="@+id/gaiaSponsorLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="62dp"
+            android:layout_width="220dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:src="@drawable/logo_gaia"
+            android:onClick="gotoGaiaSponsor"
             android:scaleType="fitCenter"
-            android:onClick="gotoGaiaSponsor" />
+            android:src="@drawable/logo_gaia" />
 
         <TextView
             android:layout_width="match_parent"
