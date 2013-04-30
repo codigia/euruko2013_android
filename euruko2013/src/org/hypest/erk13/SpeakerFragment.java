@@ -21,7 +21,9 @@ public class SpeakerFragment extends Fragment {
 
 	@Override
 	public void onResume() {
-		final BaseActivity ba = (BaseActivity) getActivity();
+        super.onResume();
+
+        final BaseActivity ba = (BaseActivity) getActivity();
 
 		ba.setBarTitle("Speech");
 
@@ -64,7 +66,5 @@ public class SpeakerFragment extends Fragment {
 				}
 			});
         }
-
-        super.onResume();
 	}
 }
