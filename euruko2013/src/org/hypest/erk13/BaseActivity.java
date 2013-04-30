@@ -100,6 +100,11 @@ public class BaseActivity extends SlidingFragmentActivity {
 		if (savedInstanceState != null) {
 			currentFragment = getSupportFragmentManager().getFragment(
 					savedInstanceState, sCurrentFragmentTag);
+
+			currentSpeakerId = savedInstanceState.getString("currentSpeakerId");
+			currentSpeechPosition = savedInstanceState
+					.getInt("currentSpeechPosition");
+			currentURLString = savedInstanceState.getString("currentURLString");
 		}
 
 		if (currentFragment == null) {
@@ -382,6 +387,10 @@ public class BaseActivity extends SlidingFragmentActivity {
 		if (f != null) {
 			fm.putFragment(outState, sCurrentFragmentTag, f);
 		}
+
+		outState.putString("currentSpeakerId", currentSpeakerId);
+		outState.putInt("currentSpeechPosition", currentSpeechPosition);
+		outState.putString("currentURLString", currentURLString);
 	}
 	
 	public void showContent(Fragment fragment) {
