@@ -35,22 +35,18 @@ public class TwitterFragment extends BaseListFragment {
 	    mFactory = new TwitterFactory(mConfigurationBuilder.build());
 	    mTwitter = mFactory.getInstance();
 
-	    if (mQuery == null) {
-	    	mQuery = new Query("euruko");
-	        mQuery.setCount(10);
-	    }
-
         while(myTweets.contains(MyTweet.ReloadTweet)) {
         	myTweets.remove(MyTweet.ReloadTweet);
         }
     	myTweets.add(MyTweet.ReloadTweet);
 
-		mTweetsadapter = new TweetAdapter(this, myTweets);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		setHasOptionsMenu(true);
+		networkRefresh();
 
 		setListAdapter(mTweetsadapter, mTweetsadapter);
     }
@@ -65,10 +61,15 @@ public class TwitterFragment extends BaseListFragment {
 	}
 
     public class TwitterTask extends AsyncTask<Void, Integer, Long> {
+    	boolean mIsNew;
+
         protected Long doInBackground(Void... params) {
             try {
             	if (mQuery == null) {
-            		return null;
+            		mIsNew = true;
+
+        	    	mQuery = new Query("euruko");
+        	        mQuery.setCount(10);
             	}
 
             	myTweets.remove(MyTweet.ReloadTweet);
@@ -104,11 +105,25 @@ public class TwitterFragment extends BaseListFragment {
         		return;
         	}
 
-        	mTweetsadapter.notifyDataSetChanged();
+        	if (mIsNew) {
+        		networkRefresh();
+        	} else {
+        		mTweetsadapter.notifyDataSetChanged();
+        	}
         }
     }
 
 	@Override
 	public void networkRefresh() {
+        mTweetsadapter = new TweetAdapter(this, myTweets);
+        setListAdapter(mTweetsadapter, mTweetsadapter);
+        mTweetsadapter.notifyDataSetChanged();
+	}
+
+	@Override
+	protected void onMenuRefresh() {
+    	mQuery = null;
+
+    	new TwitterTask().execute();
 	}
 }
