@@ -14,11 +14,4 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="32dp"
-        android:layout_height="@dimen/abs__action_bar_default_height"
-        android:layout_marginRight="5dp"
-        android:layout_weight="1" />
-
 </LinearLayout>

@@ -35,7 +35,6 @@ import android.support.v4.app.FragmentManager;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.actionbarsherlock.view.MenuItem;
@@ -69,7 +68,6 @@ public class BaseActivity extends SlidingFragmentActivity {
     Runnable mResult;
     View mMainView;
     View customNav;
-    static ProgressBar mActivityIndicator;
     SlidingMenu mMainMenu;
     final static String sCurrentFragmentTag = "currentFragment";
 
@@ -135,6 +133,7 @@ public class BaseActivity extends SlidingFragmentActivity {
         getSupportActionBar().setCustomView(R.layout.custom_actionbar);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
 
+
         mCustomActionBarView = getSupportActionBar().getCustomView();
 		mCustomActionBarTitleView = (TextView) mCustomActionBarView
 				.findViewById(R.id.title);
@@ -148,9 +147,6 @@ public class BaseActivity extends SlidingFragmentActivity {
         mMainMenu.setFadeDegree(0.35f);
 
         mMainView = findViewById(R.id.mainView);
-		mActivityIndicator = (ProgressBar) mCustomActionBarView
-				.findViewById(R.id.progressBar);
-		mActivityIndicator.setVisibility(View.INVISIBLE);
 
 		enableHttpResponseCache();
 
@@ -177,13 +173,6 @@ public class BaseActivity extends SlidingFragmentActivity {
     			if (mNewsFragment != null) {
     				mNewsFragment.networkRefresh();
     			}
-
-    			mActivityIndicator.post(new Runnable() {
-    				@Override
-    				public void run() {
-    					mActivityIndicator.setVisibility(View.INVISIBLE);
-    				}
-    			});
     		}
     		
     		@Override public void failed() {}
@@ -203,13 +192,6 @@ public class BaseActivity extends SlidingFragmentActivity {
     			if (mAgendaFragment != null) {
     				mAgendaFragment.networkRefresh();
     			}
-
-    			mActivityIndicator.post(new Runnable() {
-    				@Override
-    				public void run() {
-    					mActivityIndicator.setVisibility(View.INVISIBLE);
-    				}
-    			});
     		}
     		
     		@Override public void failed() {}
@@ -233,13 +215,6 @@ public class BaseActivity extends SlidingFragmentActivity {
 
 		@Override
 		protected JSONObject doInBackground(HttpUriRequest... params) {
-			mActivityIndicator.post(new Runnable() {
-				@Override
-				public void run() {
-					mActivityIndicator.setVisibility(View.VISIBLE);
-				}
-			});
-
 			HttpUriRequest request = params[0];
 			String fname = Base64.encodeToString(request.getURI()
 					.toString().getBytes(), Base64.DEFAULT);
@@ -295,13 +270,6 @@ public class BaseActivity extends SlidingFragmentActivity {
 			} else {
 				mGetJSONHandler.failed();
 			}
-
-			mActivityIndicator.post(new Runnable() {
-				@Override
-				public void run() {
-					mActivityIndicator.setVisibility(View.INVISIBLE);
-				}
-			});
 		}
 	}
 

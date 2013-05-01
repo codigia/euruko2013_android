@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LayoutAnimationController;
 import android.view.animation.TranslateAnimation;
@@ -18,6 +19,9 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.devsmart.android.ui.HorizontalListView;
 
 public abstract class BaseListFragment extends SherlockFragment {
@@ -28,6 +32,10 @@ public abstract class BaseListFragment extends SherlockFragment {
 	private SparseArray<Parcelable> mViewState = null;
 	private int mSparseKey;
 	private boolean mIsHorizontal;
+	MenuItem mRefreshMenuItem = null;
+	View mRotatingImageView;
+	Animation rotationAnimation;
+	boolean isRotating;
 
 	protected boolean isHorizontal() {
 		return mIsHorizontal;
@@ -68,10 +76,61 @@ public abstract class BaseListFragment extends SherlockFragment {
     	mViewGroup = (ViewGroup) inflater.inflate(resid, null, false);
     	mViewGroup.setLayoutAnimation(new LayoutAnimationController(set));
 
-		return mViewGroup;
+		rotationAnimation = AnimationUtils.loadAnimation(getActivity(),
+				R.anim.rotate);
+		rotationAnimation.setRepeatCount(Animation.INFINITE);
+
+        mRotatingImageView = inflater.inflate(R.layout.refreshing, null);
+
+        return mViewGroup;
+	}
+
+	public void onRefreshCompleted() {
+		if (mRefreshMenuItem != null) {
+			View v = mRefreshMenuItem.getActionView();
+			if (v != null) {
+				v.clearAnimation();
+				mRefreshMenuItem.setActionView(null);
+			}
+		}
+
+		isRotating = false;
 	}
 
 	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.news_menu, menu);
+		mRefreshMenuItem = menu.getItem(0);
+	}
+
+	protected void onMenuRefresh() {
+	}
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.refresh:
+            	onMenuRefresh();
+		    	rotateIcon();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void rotateIcon() {
+    	if (isRotating) {
+    		return;
+    	}
+
+    	isRotating = true;
+
+        mRotatingImageView.startAnimation(rotationAnimation);
+
+        mRefreshMenuItem.setActionView(mRotatingImageView);
+    }
+
+    @Override
 	public void onPause() {
 		super.onPause();
 
@@ -112,5 +171,7 @@ public abstract class BaseListFragment extends SherlockFragment {
 			hlv.setOnItemClickListener(clickListener);
 			hlv.setAdapter(adapter);
 		}
+
+		onRefreshCompleted();
 	}
 }

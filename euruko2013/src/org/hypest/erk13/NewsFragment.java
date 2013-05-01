@@ -7,6 +7,7 @@ public class NewsFragment extends BaseListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		setHasOptionsMenu(true);
 		networkRefresh();
 	}
 
@@ -26,5 +27,10 @@ public class NewsFragment extends BaseListFragment {
 				BaseActivity.sNews);
         setListAdapter(newsadapter, newsadapter);
         newsadapter.notifyDataSetChanged();
+	}
+
+	@Override
+	protected void onMenuRefresh() {
+    	((BaseActivity) getActivity()).getNews();
 	}
 }
