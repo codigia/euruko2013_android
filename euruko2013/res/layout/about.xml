@@ -26,10 +26,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:gravity="center"
+            android:layout_marginBottom="5dp"
             android:autoLink="web"
-            android:textSize="@dimen/text_size_verbage"
-            android:text="@string/about" />
+            android:gravity="center"
+            android:text="@string/about"
+            android:textSize="@dimen/text_size_verbage" />
 
         <ImageView
             android:id="@+id/gaiaSponsorLogo"
@@ -52,11 +53,11 @@
             android:id="@+id/codigiaLogo"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
-            android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:src="@drawable/logo_codigia"
+            android:layout_marginTop="60dp"
+            android:onClick="gotoCodigia"
             android:scaleType="fitCenter"
-            android:onClick="gotoCodigia" />
+            android:src="@drawable/logo_codigia" />
         
         <TextView
             android:layout_width="match_parent"
