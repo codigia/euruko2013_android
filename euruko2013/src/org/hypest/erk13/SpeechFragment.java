@@ -3,22 +3,17 @@ package org.hypest.erk13;
 import org.hypest.erk13.BaseActivity.GetDrawableHandler;
 
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Html;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SpeechFragment extends Fragment {
+public class SpeechFragment extends BaseFragment {
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.speech, null);
+	protected int getLayout() {
+		return R.layout.speech;
 	}
 
 	@Override

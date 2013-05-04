@@ -1,16 +1,21 @@
 package org.hypest.erk13;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class WebviewFragment extends Fragment {
+public class WebviewFragment extends BaseFragment {
 
 	WebView mWebView;
+
+	@Override
+	protected int getLayout() {
+		return 0;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -20,6 +25,7 @@ public class WebviewFragment extends Fragment {
 		return mWebView;
 	}
 
+	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	public void onResume() {
 		final BaseActivity ba = (BaseActivity) getActivity();

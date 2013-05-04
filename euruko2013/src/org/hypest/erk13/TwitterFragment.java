@@ -14,7 +14,11 @@ import android.os.Bundle;
 
 public class TwitterFragment extends BaseListFragment {
 
-    ArrayList<MyTweet> myTweets = new ArrayList<MyTweet>();
+    public TwitterFragment() {
+		super(true);
+	}
+
+	ArrayList<MyTweet> myTweets = new ArrayList<MyTweet>();
 
     private ConfigurationBuilder mConfigurationBuilder;
     private TwitterFactory mFactory;
@@ -45,7 +49,6 @@ public class TwitterFragment extends BaseListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		setHasOptionsMenu(true);
 		networkRefresh();
 
 		setListAdapter(mTweetsadapter, mTweetsadapter);

@@ -4,10 +4,13 @@ import android.os.Bundle;
 
 public class NewsFragment extends BaseListFragment {
 
+	public NewsFragment() {
+		super(true);
+	}
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		setHasOptionsMenu(true);
 		networkRefresh();
 	}
 

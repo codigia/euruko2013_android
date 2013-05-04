@@ -32,10 +32,15 @@ public abstract class BaseListFragment extends SherlockFragment {
 	private SparseArray<Parcelable> mViewState = null;
 	private int mSparseKey;
 	private boolean mIsHorizontal;
+	private boolean mShowRefresh;
 	MenuItem mRefreshMenuItem = null;
 	View mRotatingImageView;
 	Animation rotationAnimation;
 	boolean isRotating;
+
+	public BaseListFragment(boolean showRefresh) {
+		mShowRefresh = showRefresh;
+	}
 
 	protected boolean isHorizontal() {
 		return mIsHorizontal;
@@ -82,7 +87,14 @@ public abstract class BaseListFragment extends SherlockFragment {
 
         mRotatingImageView = inflater.inflate(R.layout.refreshing, null);
 
-        return mViewGroup;
+		return mViewGroup;
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		setHasOptionsMenu(true);
+
+		super.onActivityCreated(savedInstanceState);
 	}
 
 	public void onRefreshCompleted() {
@@ -100,8 +112,14 @@ public abstract class BaseListFragment extends SherlockFragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
-		inflater.inflate(R.menu.news_menu, menu);
-		mRefreshMenuItem = menu.getItem(0);
+		if (mShowRefresh) {
+			inflater.inflate(R.menu.news_menu, menu);
+			mRefreshMenuItem = menu.getItem(0);
+		} else {
+			mRefreshMenuItem = menu.add(Menu.NONE, 0, Menu.NONE, "");
+			mRefreshMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+			mRefreshMenuItem.setActionView(R.layout.empty);
+		}
 	}
 
 	protected void onMenuRefresh() {

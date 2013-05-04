@@ -4,6 +4,10 @@ import android.os.Bundle;
 
 public class AgendaFragment extends BaseListFragment {
 
+	public AgendaFragment() {
+		super(false);
+	}
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);

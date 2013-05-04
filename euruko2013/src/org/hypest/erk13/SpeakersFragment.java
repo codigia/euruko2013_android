@@ -4,6 +4,10 @@ import android.os.Bundle;
 
 public class SpeakersFragment extends BaseListFragment {
 
+	public SpeakersFragment() {
+		super(false);
+	}
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
