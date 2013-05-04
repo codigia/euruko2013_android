@@ -6,12 +6,13 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="@dimen/abs__action_bar_default_height"
-        android:layout_marginLeft="-20dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="Large Text"
+        android:textColor="@color/maintext"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </LinearLayout>
