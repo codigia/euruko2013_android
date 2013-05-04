@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -62,7 +63,7 @@ public class MapFragment extends SupportMapFragment {
 
 	        	mMap.getUiSettings().setZoomControlsEnabled(true);
 
-	        	new Handler().post(mDelayedLoad);
+	        	new Handler().postDelayed(mDelayedLoad, 300);
 	        }
 	    }
 	}
@@ -80,12 +81,15 @@ public class MapFragment extends SupportMapFragment {
 				}
 			});
 
+			LatLng ll = new LatLng(37.986067f, 23.774682f);
 			mMarkers.add(mMap.addMarker(new MarkerOptions()
 					.icon(BitmapDescriptorFactory
 							.fromResource(R.drawable.ruby_marker))
-					.position(new LatLng(37.986067f, 23.774682f))
+					.position(ll)
 					.title("Badminton Theater")
 					.snippet("The EuRuKo2013 venue!")));
+
+			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 12));
 		}
 	};
 }
