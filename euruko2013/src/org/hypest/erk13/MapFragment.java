@@ -43,7 +43,7 @@ public class MapFragment extends SupportMapFragment {
 	public void onResume() {
 		final BaseActivity ba = (BaseActivity) getActivity();
 
-		ba.setBarTitle("Map");
+		ba.setBarTitle("Map          ");
 
 		setUpMapIfNeeded();
 
