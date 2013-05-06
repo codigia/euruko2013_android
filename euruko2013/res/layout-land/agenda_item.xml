@@ -141,7 +141,7 @@
                     android:layout_above="@+id/who"
                     android:layout_centerHorizontal="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/back3" />
+                    android:src="@drawable/placeholder" />
     
                 <ImageView
                     android:id="@+id/profilePicMask"
