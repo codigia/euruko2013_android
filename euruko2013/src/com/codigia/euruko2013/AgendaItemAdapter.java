@@ -94,6 +94,7 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> implements
 					final ImageView profilePic = (ImageView) v
 							.findViewById(R.id.profilePic);
                     if (profilePic != null) {
+                        profilePic.setImageResource(R.drawable.placeholder);
                     	speaker.getAvatar(new GetDrawableHandler() {
 							@Override
 							public void handle(Drawable drawable) {

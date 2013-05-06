@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -70,6 +69,7 @@ public class SpeakerAdapter extends ArrayAdapter<Speaker> implements
 			final ImageView profilePic = (ImageView) v
 					.findViewById(R.id.profilePic);
             if (profilePic != null) {
+                profilePic.setImageResource(R.drawable.placeholder);
 				r.getAvatar(new GetDrawableHandler() {
 					@Override
 					public void handle(Drawable drawable) {
