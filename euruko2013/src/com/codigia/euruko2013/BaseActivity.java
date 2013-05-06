@@ -128,6 +128,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 		
         setSlidingActionBarEnabled(true);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setIcon(R.drawable.ic_menu);
