@@ -53,7 +53,9 @@ public class SpeechFragment extends BaseFragment {
 
         final ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
         if (profilePic != null) {
-        	Speaker speaker = null;
+    		View profileContainer = v.findViewById(R.id.profileContainer);
+
+    		Speaker speaker = null;
         	for (Speaker s : BaseActivity.sSpeakers) {
         		if (s.id.equals(mSpeech.speakerId)) {
         			speaker = s;
@@ -62,6 +64,8 @@ public class SpeechFragment extends BaseFragment {
         	}
 
         	if (speaker != null) {
+        		profileContainer.setVisibility(View.VISIBLE);
+
         		speaker.getAvatar(new GetDrawableHandler() {
 					@Override
 					public void handle(Drawable drawable) {
@@ -80,6 +84,8 @@ public class SpeechFragment extends BaseFragment {
 						ba.viewSpeaker(sid);
 					}
 				});
+        	} else {
+        		profileContainer.setVisibility(View.INVISIBLE);
         	}
         }
 
