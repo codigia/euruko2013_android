@@ -1,7 +1,9 @@
-package org.hypest.erk13;
+package com.codigia.euruko2013;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.codigia.euruko2013.R;
 
 import android.content.Intent;
 import android.net.Uri;

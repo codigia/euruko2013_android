@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:erk13="http://schemas.android.com/apk/res/org.hypest.erk13"
+    xmlns:erk13="http://schemas.android.com/apk/res/com.codigia.euruko2013"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_menu_back" >
@@ -49,7 +49,7 @@
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
 
-				<org.hypest.erk13.TextViewCustomFont
+				<com.codigia.euruko2013.TextViewCustomFont
                     android:id="@+id/imageViewNews"
                     android:layout_width="@dimen/main_menu_icon_height"
                     android:layout_height="@dimen/main_menu_icon_height"
@@ -58,7 +58,7 @@
                     android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
 			        erk13:customFont="sosa-regular-webfont.ttf" >
-			    </org.hypest.erk13.TextViewCustomFont>
+			    </com.codigia.euruko2013.TextViewCustomFont>
 
                 <TextView
                     android:id="@+id/textViewNews"
@@ -84,7 +84,7 @@
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
         
-                <org.hypest.erk13.TextViewCustomFont
+                <com.codigia.euruko2013.TextViewCustomFont
                     android:id="@+id/imageViewAgenda"
                     android:layout_width="@dimen/main_menu_icon_height"
                     android:layout_height="@dimen/main_menu_icon_height"
@@ -93,7 +93,7 @@
                     android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
                     erk13:customFont="sosa-regular-webfont.ttf" >
-                </org.hypest.erk13.TextViewCustomFont>
+                </com.codigia.euruko2013.TextViewCustomFont>
 
                 <TextView
                     android:id="@+id/textViewCalendar"
@@ -119,7 +119,7 @@
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
 
-                <org.hypest.erk13.TextViewCustomFont
+                <com.codigia.euruko2013.TextViewCustomFont
                     android:id="@+id/imageViewSpeakers"
                     android:layout_width="@dimen/main_menu_icon_height"
                     android:layout_height="@dimen/main_menu_icon_height"
@@ -128,7 +128,7 @@
                     android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
                     erk13:customFont="sosa-regular-webfont.ttf" >
-                </org.hypest.erk13.TextViewCustomFont>
+                </com.codigia.euruko2013.TextViewCustomFont>
 
                 <TextView
                     android:id="@+id/textViewSpeakers"
@@ -154,7 +154,7 @@
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
         
-                <org.hypest.erk13.TextViewCustomFont
+                <com.codigia.euruko2013.TextViewCustomFont
                     android:id="@+id/imageViewTwitter"
                     android:layout_width="@dimen/main_menu_icon_height"
                     android:layout_height="@dimen/main_menu_icon_height"
@@ -163,7 +163,7 @@
                     android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
                     erk13:customFont="sosa-regular-webfont.ttf" >
-                </org.hypest.erk13.TextViewCustomFont>
+                </com.codigia.euruko2013.TextViewCustomFont>
 
                 <TextView
                     android:id="@+id/textViewTwitter"
@@ -189,7 +189,7 @@
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
 
-                <org.hypest.erk13.TextViewCustomFont
+                <com.codigia.euruko2013.TextViewCustomFont
                     android:id="@+id/imageViewMap"
                     android:layout_width="@dimen/main_menu_icon_height"
                     android:layout_height="@dimen/main_menu_icon_height"
@@ -198,7 +198,7 @@
                     android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
                     erk13:customFont="sosa-regular-webfont.ttf" >
-                </org.hypest.erk13.TextViewCustomFont>
+                </com.codigia.euruko2013.TextViewCustomFont>
 
                 <TextView
                     android:id="@+id/textViewMap"
@@ -224,7 +224,7 @@
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
 
-                <org.hypest.erk13.TextViewCustomFont
+                <com.codigia.euruko2013.TextViewCustomFont
                     android:id="@+id/imageViewAbout"
                     android:layout_width="@dimen/main_menu_icon_height"
                     android:layout_height="@dimen/main_menu_icon_height"
@@ -233,7 +233,7 @@
                     android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
                     erk13:customFont="sosa-regular-webfont.ttf" >
-                </org.hypest.erk13.TextViewCustomFont>
+                </com.codigia.euruko2013.TextViewCustomFont>
 
                 <TextView
                     android:id="@+id/textViewAbout"

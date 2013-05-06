@@ -1,9 +1,11 @@
-package org.hypest.erk13;
+package com.codigia.euruko2013;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hypest.erk13.BaseActivity.GetDrawableHandler;
+import com.codigia.euruko2013.R;
+
+import com.codigia.euruko2013.BaseActivity.GetDrawableHandler;
 
 import twitter4j.URLEntity;
 import android.content.Context;

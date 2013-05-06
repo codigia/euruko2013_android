@@ -1,9 +1,10 @@
-package org.hypest.erk13;
+package com.codigia.euruko2013;
 
 import org.apache.http.client.methods.HttpGet;
-import org.hypest.erk13.BaseActivity.GetDrawableHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.codigia.euruko2013.BaseActivity.GetDrawableHandler;
 
 import android.graphics.drawable.Drawable;
 

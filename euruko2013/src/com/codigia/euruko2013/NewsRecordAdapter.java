@@ -1,8 +1,10 @@
-package org.hypest.erk13;
+package com.codigia.euruko2013;
 
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+
+import com.codigia.euruko2013.R;
 
 import android.content.Context;
 import android.text.Html;

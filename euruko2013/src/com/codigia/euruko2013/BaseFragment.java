@@ -1,4 +1,6 @@
-package org.hypest.erk13;
+package com.codigia.euruko2013;
+
+import com.codigia.euruko2013.R;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

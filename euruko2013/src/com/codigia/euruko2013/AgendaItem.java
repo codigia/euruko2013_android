@@ -1,4 +1,4 @@
-package org.hypest.erk13;
+package com.codigia.euruko2013;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

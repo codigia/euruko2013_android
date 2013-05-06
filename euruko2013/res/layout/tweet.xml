@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:erk13="http://schemas.android.com/apk/res/org.hypest.erk13"
+    xmlns:erk13="http://schemas.android.com/apk/res/com.codigia.euruko2013"
     android:id="@+id/whole"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         android:clipToPadding="true"
         android:background="@color/card" >
 
-        <org.hypest.erk13.TextViewCustomFont
+        <com.codigia.euruko2013.TextViewCustomFont
             android:layout_width="46dp"
             android:layout_height="46dp"
             android:layout_alignTop="@+id/profilePic"
@@ -29,7 +29,7 @@
             android:textSize="@dimen/text_size_glyphs"
             android:textColor="@color/main_menu_text"
             erk13:customFont="sosa-regular-webfont.ttf" >
-        </org.hypest.erk13.TextViewCustomFont>
+        </com.codigia.euruko2013.TextViewCustomFont>
 
         <ImageView
             android:id="@+id/profilePic"

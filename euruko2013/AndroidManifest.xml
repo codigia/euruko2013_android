@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.hypest.erk13"
+    package="com.codigia.euruko2013"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -27,7 +27,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.eurk" >
         <activity
-            android:name=".BaseActivity"
+            android:name="com.codigia.euruko2013.BaseActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

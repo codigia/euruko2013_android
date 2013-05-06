@@ -1,4 +1,4 @@
-package org.hypest.erk13;
+package com.codigia.euruko2013;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,6 +15,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
+import com.codigia.euruko2013.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

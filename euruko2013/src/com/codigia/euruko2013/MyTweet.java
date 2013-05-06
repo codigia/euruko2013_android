@@ -1,7 +1,8 @@
-package org.hypest.erk13;
+package com.codigia.euruko2013;
 
 import org.apache.http.client.methods.HttpGet;
-import org.hypest.erk13.BaseActivity.GetDrawableHandler;
+
+import com.codigia.euruko2013.BaseActivity.GetDrawableHandler;
 
 import twitter4j.Status;
 import android.graphics.drawable.Drawable;
