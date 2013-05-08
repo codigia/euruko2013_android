@@ -24,9 +24,12 @@
 	        android:background="@color/card" >
 
 	        <com.codigia.euruko2013.TextViewCustomFont
-	            android:id="@+id/profilePic"
 	            android:layout_width="46dp"
 	            android:layout_height="46dp"
+	            android:layout_alignTop="@+id/profilePic"
+	            android:layout_alignBaseline="@+id/profilePic"
+	            android:layout_alignLeft="@+id/profilePic"
+	            android:layout_alignRight="@+id/profilePic"
 	            android:gravity="center"
 	            android:text="t"
 	            android:textSize="@dimen/text_size_glyphs"
@@ -34,6 +37,12 @@
 	            erk13:customFont="sosa-regular-webfont.ttf" >
 	        </com.codigia.euruko2013.TextViewCustomFont>
 
+	        <ImageView
+	            android:id="@+id/profilePic"
+	            android:layout_width="46dp"
+	            android:layout_height="46dp"
+	            android:scaleType="fitCenter" />
+	        
 	        <TextView
 	            android:id="@+id/title"
 	            android:layout_width="match_parent"
