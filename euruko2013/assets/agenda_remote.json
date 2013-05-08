@@ -22,100 +22,81 @@
         "avatar" : "http://euruko2013.codigia.com/avatar_klabnik.jpg"
     },
     {
+        "id" : "Noria",
+        "name" : "Xavier Noria",
+        "title" : "Ruby on Rails consultant",
+        "bio" : "Xavier is a Ruby on Rails core team member having worked with Ruby since 2005. He is also featured as #5 in the Rails contributors lists, a list he also created. A real Ruby hero presented with a Ruby Hero Award in RailsConf 2010 and also part of the team that organised <a href=\"asd\">EuRuKo 2009</a> in Barcelona. We are really excited to have him with us at EuRuKo 2013 and are eager to watch him present a rational tale.",
+        "avatar" : "http://euruko2013.org/images/speakers/noria-d056c833.jpg"
+    },
+    {
         "id" : "Kalderimis",
         "name" : "Josh Kalderimis",
-        "title" : "",
+        "title" : "Core Travis CI team member",
         "bio" : "Josh loves popcorn, German food, all manor of gin and tonics, talking about himself in the third person, and shipping technical debt daily! As a core member of the Travis CI team, he is helping you save yourself from your code, or at least giving you a heads up that it's failing :)",
-        "avatar" : "http://www.gravatar.com/avatar/00000000000000000000000000000000"
+        "avatar" : "http://euruko2013.org/images/speakers/kalderimis-bb784351.jpg"
     },
     {
         "id" : "Kelly",
         "name" : "Chris Kelly",
-        "title" : "",
-        "bio" : "Chris Kelly hasn't said what they hope to get out of EuRuKo 2013 yet",
-        "avatar" : "http://www.gravatar.com/avatar/00000000000000000000000000000000"
+        "title" : "Developer and Evangelist at New Relic",
+        "bio" : "<p>Like the ancient civilizations uncovered by anthropologists, the tools we use say something about who we are. Chris joyfully uses Ruby every day. He believes that flourishing is the key to happiness, servers are an anachronism, and the person that will create SkyNet has already been born.</p><p>At <a href=\"http://newrelic.com\">New Relic</a> he is a Happiness Engineer, where they let him work on things that makes someone’s day better. His stuff lives in San Francisco where he visits it from time to time. Chris <a href=\"https://twitter.com/amateurhuman\">tweets</a> occasionally, speaks often, and drinks coffee in between.</p>",
+        "avatar" : "http://euruko2013.org/images/speakers/kelly-e8e383d9.jpg"
     },
     {
-        "id" : "Torii",
-        "name" : "Yuki Torii",
-        "title" : "",
-        "bio" : "Yuki Torii hasn't said what they hope to get out of EuRuKo 2013 yet",
-        "avatar" : "http://www.gravatar.com/avatar/c67596c92e9d161d314f69de3f05f00c"
-    },
-    {
-        "id" : "Schito",
-        "name" : "Elia Schito",
-        "title" : "",
-        "bio" : "I'm a long time Ruby/Rails developer, now work at Mikamai, catholic, I love my beautiful wife and wonderful children.
-
-Never avoided a fight for injecting Ruby in a \"hostile\" environment ✌
-
-At Euruku I expect to meet awesome people, my Ruby heroes (including Adam). I also think great material is coming in the presentations!",
-        "avatar" : "http://www.gravatar.com/avatar/c82630c82a3c675d2928804f432fcf17"
+        "id" : "Lovell",
+        "name" : "Ben Lovell",
+        "title" : "Ruby Engineer for Global Dev in Windsor/London, United Kingdom",
+        "bio" : "Ben is an engineer at Global Personals. A regular contributor to open source, agile proponent and harbours an almost unhealthy obsession for all things concurrent and distributed. Ruby and Scala are his first loves.",
+        "avatar" : "http://euruko2013.org/images/speakers/lovell-3518c248.jpg"
     },
     {
         "id" : "Witek",
         "name" : "Grzegorz Witek",
         "title" : "Runner, programmer, language freak",
-        "bio" : "Hi everyone, I'm Greg. I am a professional web developer, amateur polyglot and even more amateur runner. I live in Poznań, Poland and I work for Sponsorpay, Berlin-based startup. I like playing board games. I don't like broccoli (I don't understand why they put it in every salad I buy).
-
-Every year I try to set some goals to reach. In 2013 I decided to try speaking at conferences and contributing to open source. Let's see if I can make it :)",
-        "avatar" : "http://www.gravatar.com/avatar/afa6e65b91b46f3317c3d3e94e9255f2"
+        "bio" : "<p>Hi everyone, I'm Greg. I am a professional web developer, amateur polyglot and even more amateur runner. I live in Poznań, Poland and I work for Sponsorpay, Berlin-based startup. I like playing board games. I don't like broccoli (I don't understand why they put it in every salad I buy).</p><p>Every year I try to set some goals to reach. In 2013 I decided to try speaking at conferences and contributing to open source. Let's see if I can make it :)</p>",
+        "avatar" : "http://euruko2013.org/images/speakers/witek-a7c95fd6.jpg"
     },
     {
         "id" : "Smith",
         "name" : "Benjamin Smith",
-        "title" : "",
-        "bio" : "Benjamin Smith hasn't said what they hope to get out of EuRuKo 2013 yet",
-        "avatar" : "http://www.gravatar.com/avatar/6d48d3849102b57bbc1462c0da0b3866"
+        "title" : "Developer at Pivotal Labs",
+        "bio" : "<p>Benjamin has a strong passion for TDD, pairing, Agile and using technologies that get out of the programmer's way.</p><p>When not writing code, he follows his other passions into the outdoors to rock climb, back country snowboard, kayak and surf.</p>",
+        "avatar" : "http://euruko2013.org/images/speakers/smith-7c96b3d7.jpg"
     },
     {
         "id" : "Bussink",
         "name" : "Dirkjan Bussink",
-        "title" : "",
-        "bio" : "Dirkjan Bussink hasn't said what they hope to get out of EuRuKo 2013 yet",
-        "avatar" : "http://www.gravatar.com/avatar/b012094b37ab6946c44eaa41d7828478"
+        "title" : "Founder of CriticalCodes",
+        "bio" : "Dirkjan is an active open source contributor, having contributed to Ruby, Rails and DataMapper. These days EngineYard is sponsoring his company to work on Rubinius.",
+        "avatar" : "http://euruko2013.org/images/speakers/bussink-e8e697ea.jpg"
     },
     {
         "id" : "Tennhard",
         "name" : "Konstantin Tennhard",
-        "title" : "",
-        "bio" : "I am a computer scientist who specializes in developing large scale internet applications. My main scientific interest is natural language processing. In general, I'm passionate about software design, test driven development, all sorts of modern web-technology and of course Ruby.
-
-I'm curious to exchange and share ideas on how we as developers can leverage science to build smarter applications that provide greater user experience. In this sense, I'd especially love share my passion for natural language processing with others and discuss what we can gain from making the computer understand natural language.",
-        "avatar" : "http://www.gravatar.com/avatar/689147f00c6d973fa6e1cdee6de87226"
+        "title" : "Computer Scientist",
+        "bio" : "<p>Konstantin specializes in developing large scale internet applications. His main scientific interest is natural language processing. In general, he is passionate about software design, test driven development, all sorts of modern web-technology and of course Ruby.</p><p>Konstantin is also curious to exchange and share ideas on how we as developers can leverage science to build smarter applications that provide greater user experience. In this sense, he especially loves to share his passion for natural language processing with others and discuss what we can gain from making the computer understand natural language.</p>",
+        "avatar" : "http://euruko2013.org/images/speakers/tennhard-bd51e376.jpg"
     },
     {
         "id" : "Shaughnessy",
         "name" : "Pat Shaughnessy",
-        "title" : "",
-        "bio" : "I write a blog about Ruby development at patshaughnessy.net, and just self-published an eBook called Ruby Under a Microscope. When I'm not at the keyboard, I enjoy spending time with my wife and two kids. I'm also a fluent Spanish speaker and travel frequently to Spain to visit my wife's family.
-
-Aside from learning some new things and seeing some great presentations, my real goal at EuRuKo is to meet people. I've crossed paths with so many European Rubyists on Twitter and in other places - meeting some of them in person would be fantastic.",
-        "avatar" : "http://www.gravatar.com/avatar/eb5382b137146b381dd13740d165d1f2"
+        "title" : "Ruby development blogger", 
+        "bio" : "<p>I write a blog about Ruby development at patshaughnessy.net, and just self-published an eBook called Ruby Under a Microscope. When I'm not at the keyboard, I enjoy spending time with my wife and two kids. I'm also a fluent Spanish speaker and travel frequently to Spain to visit my wife's family.</p><p>Aside from learning some new things and seeing some great presentations, my real goal at EuRuKo is to meet people. I've crossed paths with so many European Rubyists on Twitter and in other places - meeting some of them in person would be fantastic.</p>",
+        "avatar" : "http://euruko2013.org/images/speakers/shaughnessy-8b014413.jpg"
     },
     {
         "id" : "ramírez",
         "name" : "Javier Ramírez",
-        "title" : "",
-        "bio" : "EuRuKo is by far my favourite Ruby conference. It's refreshing to see rubyists from all over Europe get together and celebrate Matz's creation by talking about Ruby, sharing their knowledge and having a great time. The array of speakers and the diversity of subjects never ceases to amaze me.
-
-What do I hope to get out of EuRuKo 2013? well.. I just want to be a part of it :)",
-        "avatar" : "http://www.gravatar.com/avatar/64daf88568a1db6a39dc9e6657e3e095"
+        "title" : "Web Developer",
+        "bio" : "Daydreamer and all around happy person, Javier is in Ruby on Rails projects since 2006. He is also the author of the book “Aptana RadRails: An IDE for Rails Development” and an active member of the Spanish Ruby scene.",
+        "avatar" : "http://euruko2013.org/images/speakers/ramirez-757074e0.jpg"
     },
     {
-        "id" : "Anynines",
-        "name" : "Anynines.com",
-        "title" : "",
-        "bio" : "I'd love to talk with other Ruby people and exchange experience, find new friends and have fun.",
-        "avatar" : "http://www.gravatar.com/avatar/00000000000000000000000000000000"
-    },
-    {
-        "id" : "Bovensiepen",
-        "name" : "Daniel Bovensiepen",
-        "title" : "",
-        "bio" : "During daytime Daniel is building Metros all around the world and empowers Ruby in areas nobody would expect it. At night he is contributing to mruby to push it to even more areas of his daily job.",
-        "avatar" : "http://www.gravatar.com/avatar/00000000000000000000000000000000"
+        "id" : "Oliveira",
+        "name" : "Alexandre de Oliveira",
+        "title" : "Ruby developer at Stack Builders and freedoms evangelist",
+        "bio" : "<p>I work at Stack Builders, NY, crafting applications for important clients, guiding them in the Agile world and learning over and over again what's needed for delivering exactly what they need. They're happy with me and I'm happy with them.</p><p>My passion for Ruby goes beyond my terminal screen. I try to bring it to the real world, conferences, meetups. I can express myself in such an easy way now, I can finally talk to the computer in my own terms. She's happy with me and I'm happy with her.</p>",
+        "avatar" : "http://euruko2013.org/images/speakers/oliveira-0d5e1d10.jpg"
     }
 ],
 
@@ -144,21 +125,7 @@ What do I hope to get out of EuRuKo 2013? well.. I just want to be a part of it 
         "end" : 1372409100,
         "speaker_id" : "Kalderimis",
         "title" : "No one plans for complexity, and neither should you!",
-        "descr" : "<p>Great ideas start small, hell, just look at all the great services we use today, all of them small ideas which grew, and grew, and grew.</p>
-
-<p>Do you think they planned for this level of scale from the outset? God no! And why would they? Planning too early can be the death of such a great idea!</p>
-
-<p>The mantra is simple, start small, growth will come naturally.</p>
-
-<p>That might sound stupid, but the idea is solid. As your product grows you will learn where the bottlenecks are, where the pain points in code and processing exist, and what needs to scale and what needs to be thrown out the door.</p>
-
-<p>Travis CI was no different, started as a simple Rails app, it has now grown into a platform built upon over 9 different apps, using everything from Postgres, Redis, RabbitMQ, Memcached, S3, BlueBox, MRI, JRuby, Websockets, and a huge array of services helping with email, metrics, and alerts.</p>
-
-<p>We never designed or planned for this, this came about from natural growth, and we have only just started.</p>
-
-<p>This talk is a story of architecture, complexity, and growth, as well as a candid look on what we did wrong and could have done better.</p>
-
-<p>And most importantly, this is a talk about how sometimes <strong>not</strong> building something is more important than building it in the first place.</p>"
+        "descr" : "<p>Great ideas start small, hell, just look at all the great services we use today, all of them small ideas which grew, and grew, and grew.</p><p>Do you think they planned for this level of scale from the outset? God no! And why would they? Planning too early can be the death of such a great idea!</p><p>The mantra is simple, start small, growth will come naturally.</p><p>That might sound stupid, but the idea is solid. As your product grows you will learn where the bottlenecks are, where the pain points in code and processing exist, and what needs to scale and what needs to be thrown out the door.</p><p>Travis CI was no different, started as a simple Rails app, it has now grown into a platform built upon over 9 different apps, using everything from Postgres, Redis, RabbitMQ, Memcached, S3, BlueBox, MRI, JRuby, Websockets, and a huge array of services helping with email, metrics, and alerts.</p><p>We never designed or planned for this, this came about from natural growth, and we have only just started.</p><p>This talk is a story of architecture, complexity, and growth, as well as a candid look on what we did wrong and could have done better.</p><p>And most importantly, this is a talk about how sometimes <strong>not</strong> building something is more important than building it in the first place.</p>"
     },
     {
         "start" : 1372409100,
@@ -171,24 +138,14 @@ What do I hope to get out of EuRuKo 2013? well.. I just want to be a part of it 
         "end" : 1372412700,
         "speaker_id" : "Witek",
         "title" : "... but we had to kill Unicorns",
-        "descr" : "<p>How often do you have to leave your comfort zone? How often does it happen that you need to change the fundamentals of your application?</p>
-
-<p>Well… it has happened to my team recently. We had to abandon our way of thinking about Ruby on Rails applications. Single-threaded servers were not a choice anymore, neither was JRuby nor Event Machine. And we had to handle up to 200k requests per minute.</p>
-
-<p>This talk is a case study about how, step by step, we got to multi threaded RoR application with MRI 1.9, MySQL, DataMapper. I want to present how we came to the solution, what did we have to do to make our application thread safe, how did we manage to use threads in MRI and what we learned while working on the big feature, that made us change the fundamentals of our application.</p>
-
-<p>Although the application in this case was built with Ruby on Rails, the talk won't be specific to this framework. I want to talk about threading and parallelism in Ruby and its open source libraries, as well as the process of making deep changes in the application that handles pretty big traffic.</p>"
+        "descr" : "<p>How often do you have to leave your comfort zone? How often does it happen that you need to change the fundamentals of your application?</p><p>Well… it has happened to my team recently. We had to abandon our way of thinking about Ruby on Rails applications. Single-threaded servers were not a choice anymore, neither was JRuby nor Event Machine. And we had to handle up to 200k requests per minute.</p><p>This talk is a case study about how, step by step, we got to multi threaded RoR application with MRI 1.9, MySQL, DataMapper. I want to present how we came to the solution, what did we have to do to make our application thread safe, how did we manage to use threads in MRI and what we learned while working on the big feature, that made us change the fundamentals of our application.</p><p>Although the application in this case was built with Ruby on Rails, the talk won't be specific to this framework. I want to talk about threading and parallelism in Ruby and its open source libraries, as well as the process of making deep changes in the application that handles pretty big traffic.</p>"
     },
     {
         "start" : 1372412700,
         "end" : 1372415400,
         "speaker_id" : "Kelly",
         "title" : "Down the rb_newobj() Rabbit Hole: Garbage Collection and a Glimpse into Ruby's Future",
-        "descr" : "<p>Garbage collection is one of the pillars of Ruby's performance story, but getting into the inner workings of MRI's garbage collector is a bit hairy. If you want to explore the garbage collector then you're going to have to get your hands deep into C code.</p>
-
-<p>We're going to take a walk through the C internals from Foo.new through garbage collection in Ruby's MRI. We’ll examine the idioms and optimizations in the C source and leave you feeling comfortable to explore the code yourself.</p>
-
-<p>At the end of the rb_newobj() rabbit hole is a whole world of garbage collection. Major changes have been made in MRI's garbage collector from Ruby 1.8 through 2.0: changes intended to make Ruby more performant, changes that can capitalize on MRI's roots in UNIX. From mark-and-sweep to copy-on-write and bitmap marking, we'll see what the future of Ruby performance might look like by peering through the window of the garbage collector. </p>"
+        "descr" : "<p>Garbage collection is one of the pillars of Ruby's performance story, but getting into the inner workings of MRI's garbage collector is a bit hairy. If you want to explore the garbage collector then you're going to have to get your hands deep into C code.</p><p>We're going to take a walk through the C internals from Foo.new through garbage collection in Ruby's MRI. We’ll examine the idioms and optimizations in the C source and leave you feeling comfortable to explore the code yourself.</p><p>At the end of the rb_newobj() rabbit hole is a whole world of garbage collection. Major changes have been made in MRI's garbage collector from Ruby 1.8 through 2.0: changes intended to make Ruby more performant, changes that can capitalize on MRI's roots in UNIX. From mark-and-sweep to copy-on-write and bitmap marking, we'll see what the future of Ruby performance might look like by peering through the window of the garbage collector. </p>"
     },
     {
         "start" : 1372415400,
@@ -208,9 +165,7 @@ What do I hope to get out of EuRuKo 2013? well.. I just want to be a part of it 
         "end" : 1372425300,
         "speaker_id" : "Smith",
         "title" : "Architecting your Rails app for success!",
-        "descr" : "<p>Rails is a great framework for creating web apps... for awhile. What do you do when your codebase grows large? How do you handle large teams of developers? When performance becomes an issue, how do you scale? Most importantly, how do you write code which can easily be refactored later?</p>
-
-<p>This is a story of a real life project built from day 1 with all these questions in mind. Learn about the problems we solved and lessons we learned: how to partition your Rails app into distinct modular engines, how to speed up your test suite by only running code effected by your changes, how to add a layer on top of ActiveRecord to enforce loose coupling, and many other patterns that can be applied to your own Rails apps!</p>"
+        "descr" : "<p>Rails is a great framework for creating web apps... for awhile. What do you do when your codebase grows large? How do you handle large teams of developers? When performance becomes an issue, how do you scale? Most importantly, how do you write code which can easily be refactored later?</p><p>This is a story of a real life project built from day 1 with all these questions in mind. Learn about the problems we solved and lessons we learned: how to partition your Rails app into distinct modular engines, how to speed up your test suite by only running code effected by your changes, how to add a layer on top of ActiveRecord to enforce loose coupling, and many other patterns that can be applied to your own Rails apps!</p>"
     },
     {
         "start" : 1372425300,
@@ -223,38 +178,21 @@ What do I hope to get out of EuRuKo 2013? well.. I just want to be a part of it 
         "end" : 1372428900,
         "speaker_id" : "Bussink",
         "title" : "The future of Ruby is faster",
-        "descr" : "<p>You care about your code. You write nicely factored and clean code, with nice and small methods that each do just what they are supposed to do. Maybe you worry sometimes that these additional methods and small objects can be problematic? This talk hopefully makes you stop worrying about this.</p>
-
-<p>So with all this care that you do, what can a Ruby implementation do to make sure your code actually runs fast? In this talk I will discuss the techniques used that allow your Ruby code to execute faster. How do we make sure calling a method is cheap or even free? How can we let you mostly get away with allocating a lot of objects? How do we make iterating with .each as fast as a while loop?</p>
-
-<p>Different techniques will be discussed, such as inline caches, just in time compilation, method / block inlining and better garbage collection. As a Rubinius contributor I've worked on all these subjects so I know a few things about these topics, but these will explained such that any Ruby developer can understand how these optimizations work.</p>
-
-<p>The quest for a faster Ruby is happening in a lot of places and you can learn how this is done!</p>"
+        "descr" : "<p>You care about your code. You write nicely factored and clean code, with nice and small methods that each do just what they are supposed to do. Maybe you worry sometimes that these additional methods and small objects can be problematic? This talk hopefully makes you stop worrying about this.</p><p>So with all this care that you do, what can a Ruby implementation do to make sure your code actually runs fast? In this talk I will discuss the techniques used that allow your Ruby code to execute faster. How do we make sure calling a method is cheap or even free? How can we let you mostly get away with allocating a lot of objects? How do we make iterating with .each as fast as a while loop?</p><p>Different techniques will be discussed, such as inline caches, just in time compilation, method / block inlining and better garbage collection. As a Rubinius contributor I've worked on all these subjects so I know a few things about these topics, but these will explained such that any Ruby developer can understand how these optimizations work.</p><p>The quest for a faster Ruby is happening in a lot of places and you can learn how this is done!</p>"
     },
     {
         "start" : 1372428900,
         "end" : 1372431600,
         "speaker_id" : "Tennhard",
         "title" : "Natural Language Processing with Ruby",
-        "descr" : "<p>Natural Language Processing (NLP) is the art and science of making sense of user-generated data. It is a <em>combination of state-of-the-art computer science techniques and linguistics</em>. Being able to analyze plain text data allows us to gain a lot of insights. Popular NLP tasks are <em>text summarization</em>, <em>keyword extraction</em> or <em>automatic extraction of the author's opinion</em> from a text. In the age of social media, only NLP provides solutions to analyze what users are really care about. Companies such as Google or Facebook invest millions in NLP solutions to harvest information from all the data they have been gathering over the years.</p>
-
-<p>In this talk, I will present you a <em>real-world NLP problem</em>. We will discuss this problem from both, the linguistic and the computer science perspective. Throughout the talk, <em>we will develop a processing pipeline</em> to efficiently solve this problem in an automated fashion. An NLP pipeline usually consists of multiple components, each solving one aspect of the problem and presenting its own challenges. Among other things, you will learn how to tackle the following essential NLP problems <em>using JRuby and OpenNLP</em>:</p>
-
-<ul>
-<li>Sentence segmentation,</li>
-<li>Tokenization,</li>
-<li>Part-of-speech tagging, and</li>
-<li>Named entity recognition.</li>
-</ul>"
+        "descr" : "<p>Natural Language Processing (NLP) is the art and science of making sense of user-generated data. It is a <em>combination of state-of-the-art computer science techniques and linguistics</em>. Being able to analyze plain text data allows us to gain a lot of insights. Popular NLP tasks are <em>text summarization</em>, <em>keyword extraction</em> or <em>automatic extraction of the author's opinion</em> from a text. In the age of social media, only NLP provides solutions to analyze what users are really care about. Companies such as Google or Facebook invest millions in NLP solutions to harvest information from all the data they have been gathering over the years.</p><p>In this talk, I will present you a <em>real-world NLP problem</em>. We will discuss this problem from both, the linguistic and the computer science perspective. Throughout the talk, <em>we will develop a processing pipeline</em> to efficiently solve this problem in an automated fashion. An NLP pipeline usually consists of multiple components, each solving one aspect of the problem and presenting its own challenges. Among other things, you will learn how to tackle the following essential NLP problems <em>using JRuby and OpenNLP</em>:</p><ul><li>Sentence segmentation,</li><li>Tokenization,</li><li>Part-of-speech tagging, and</li><li>Named entity recognition.</li></ul>"
     },
     {
         "start" : 1372431600,
         "end" : 1372433400,
         "speaker_id" : "Shaughnessy",
         "title" : "Functional Programming and Ruby",
-        "descr" : "<p>While Ruby is object oriented and imperative, it does have some features that allow for functional programming. In this talk we’ll compare Haskell, a functional programming language, with Ruby while exploring these common functional patterns: higher order functions, lazy evaluation, and memoization.</p>
-
-<p>Along the way we’ll explore how Ruby works internally, find out whether it’s a true functional language, and zoom in to take a close look at Ruby 2.0’s implementation of the new “Enumerator::Lazy” feature.</p>"
+        "descr" : "<p>While Ruby is object oriented and imperative, it does have some features that allow for functional programming. In this talk we’ll compare Haskell, a functional programming language, with Ruby while exploring these common functional patterns: higher order functions, lazy evaluation, and memoization.</p><p>Along the way we’ll explore how Ruby works internally, find out whether it’s a true functional language, and zoom in to take a close look at Ruby 2.0’s implementation of the new “Enumerator::Lazy” feature.</p>"
     },
 
 
@@ -272,23 +210,7 @@ What do I hope to get out of EuRuKo 2013? well.. I just want to be a part of it 
         "end" : 1372495500,
         "speaker_id" : "ramírez",
         "title" : "Fun with Ruby and Redis",
-        "descr" : "<p>All the cool cats are using Redis, and with a reason: It's fast, it's robust, it's easy and it's web scale. Put it together with Ruby and it's fun too!</p>
-
-<p>In this session I will talk about what is redis, what you can do with it, how you can use it from Ruby, why you should be using it already and some common patterns when dealing with it. I will talk about:</p>
-
-<ul>
-<li>what REALLY FAST means </li>
-<li>Redis data structures, and mapping them to Ruby objects</li>
-<li>queuing slow ruby operations with Resque and Sidekiq</li>
-<li>using redis for cross-language development</li>
-<li>atomic counters and generating sequences</li>
-<li>dealing with temporary data in your application</li>
-<li>redis as a cache</li>
-<li>shared sessions (rack-based) with redis</li>
-<li>how to store relational data in a non relational data store</li>
-<li>interesting problems when distributing your application. Using Lua scripting for atomic operations </li>
-<li>reducing your memory footprint via compression</li>
-</ul>"
+        "descr" : "<p>All the cool cats are using Redis, and with a reason: It's fast, it's robust, it's easy and it's web scale. Put it together with Ruby and it's fun too!</p><p>In this session I will talk about what is redis, what you can do with it, how you can use it from Ruby, why you should be using it already and some common patterns when dealing with it. I will talk about:</p><ul><li>what REALLY FAST means </li><li>Redis data structures, and mapping them to Ruby objects</li><li>queuing slow ruby operations with Resque and Sidekiq</li><li>using redis for cross-language development</li><li>atomic counters and generating sequences</li><li>dealing with temporary data in your application</li><li>redis as a cache</li><li>shared sessions (rack-based) with redis</li><li>how to store relational data in a non relational data store</li><li>interesting problems when distributing your application. Using Lua scripting for atomic operations </li><li>reducing your memory footprint via compression</li></ul>"
     },
     {
         "start" : 1372495500,
@@ -299,40 +221,15 @@ What do I hope to get out of EuRuKo 2013? well.. I just want to be a part of it 
     {
         "start" : 1372496400,
         "end" : 1372499100,
-        "speaker_id" : "Torii",
-        "title" : "How Rails helps people understand new idea? - A case study on exporting local culture with Rails application",
-        "descr" : "<p>There are many interesting local cultures in the world, but it is 
-difficult to introduce such cultures to other people. 
-Rails application can reduce such difficulty using some tips. </p>
-
-<p>Our experience is introduction of Japanese 'Kukai' to French 
-students. Kukai is a game to enjoy Haiku, short Japanese poetry. In 
-Kukai, attendees score each Haikus and comments by each other. We 
-developed a Kukai Rails application and this system used by a lecture at 
-a French school. The lecture was well-received.
-To develop our Kukai system, Internationalisation (i18n) 
-is easy to support using Rails framework.</p>
-
-<p>In this talk, we show our experience and key points of transferring one 
-local culture to other cultures using Rails web application.</p>"
+        "title" : "To be defined...",
+        "descr" : ""
     },
     {
         "start" : 1372499100,
         "end" : 1372501800,
-        "speaker_id" : "Anynines",
-        "title" : "Look behind the scenes of a PaaS",
-        "descr" : "<p>Have you ever thought about what is going on behind the scenes of a platform as a service?</p>
-
-<p>Learning about the nature of PaaS will help you to better adapt your apps for the operation on such an infrastructure.</p>
-
-<p>In this talk we will go through the major challenges of building a large distributed service oriented architecture to
-easily deploy applications of different languages binding dynamically to multiple services.</p>
-
-<p>Learn about the basic building blocks of such a system and see what these services do and how they interoperate.</p>
-
-<p>Get a glance at how to implement self-configuration, self-healing and scalability while being language and version control agnostic.</p>
-
-<p>All done in the beloved Ruby language. All open source. Ready to be discovered and improved.</p>"
+        "speaker_id" : "Oliveira",
+        "title" : "Forget about classes, welcome objects",
+        "descr" : "<p>This talk is a tale about a time when Object-Oriented Programming was about objects and messages, not about classes and methods, when it was about behavior, not schemas. You will understand how OO was intended to be used and what it means to say that OO is about messages.</p><p>We'll talk about the past and then go back to the future to look at our Class-Oriented Programming culture and how we can fix it by doing real OO in Ruby. By doing that, we'll start to understand why principles like SOLID and Demeter are here to help us stop losing time and money.</p><p>This talk is about making you reevaluate the way you approach OO.</p><p><em>p.s. Expect lots of Alan Kay quotes.</em></p>"
     },
     {
         "start" : 1372501800,
@@ -343,31 +240,15 @@ easily deploy applications of different languages binding dynamically to multipl
     {
         "start" : 1372505400,
         "end" : 1372509000,
-        "speaker_id" : "Klabnik",
+        "speaker_id" : "Noria",
         "title" : "Keynote IV",
         "descr" : "The forth Keynote!"
     },
     {
         "start" : 1372509000,
         "end" : 1372511700,
-        "speaker_id" : "Bovensiepen",
-        "title" : "Shrink To Grow",
-        "descr" : "<p>Ruby has grown in the last 20 years. The feature-set and field of usage has increased. But also the code-size has reached an exceptional size. For many systems Ruby is nowadays to large.</p>
-
-<p>To reach new systems we have to re-think the way we implement Ruby. We have to shrink Ruby to be able to grow into a new field with an army of small devices.</p>
-
-<p>This talk will cover the development of mruby. The current state of the implementation and the reason why you should contribute to it.</p>
-
-<p>Remarkable Key Points of this Talk:</p>
-
-<ul>
-<li>presenting my hack to run mruby on an official Arduino</li>
-<li>analyse real-time behavior of mruby</li>
-<li>mruby on iPhone and Android</li>
-<li>modifing mruby source to your own needs</li>
-</ul>
-
-<p>Matz will support the Q&amp;A session of this talk!</p>"
+        "title" : "To be defined",
+        "descr" : ""
     },
     {
         "start" : 1372511700,
@@ -378,35 +259,9 @@ easily deploy applications of different languages binding dynamically to multipl
     {
         "start" : 1372512600,
         "end" : 1372515300,
-        "speaker_id" : "Schito",
-        "title" : "Opal, get back at doing Ruby on your browser ☺",
-        "descr" : "<p><img src=\"https://f.cloud.github.com/assets/1051/343869/0d2f31d2-9ded-11e2-9848-553e0b8e4232.png\"></p>
-
-<p><a href=\"http://opalrb.org\">Opal</a> is a production ready Ruby-to-Javascript compiler. In this presentation I will talk on how Ruby can be used to build awesome code for the browser. Keep applying all of your OO design skills having less context switch and increasing happiness!</p>
-
-<p>This presentation will cover:</p>
-
-<ul>
-<li>a general overview and why I feel so good doing Ruby on the client</li>
-<li><em>some</em> internals along explanation of implementing choices</li>
-<li>real world (™) use cases (including code ported from the server to the browser)</li>
-<li>fun! :-D</li>
-</ul>
-
-<p><br>
-<br>
-<br>
-<br></p>
-
-<p>I think it's still time for a general presentation of Opal, but if anyone feels otherwise I'm open to feedback. 
-Here are some alternative (additional?) topics that would be fun to present:</p>
-
-<ul>
-<li>re-implementing Rack and Sinatra on Node.js in Ruby</li>
-<li>using Opal objects and methods from Javascript/CoffeeScript</li>
-<li>testing native Javascript with Opal Spec</li>
-<li>Vienna, the Ruby client MVC</li>
-</ul>"
+        "speaker_id" : "Lovell",
+        "title" : "Achieving zomgscale with Celluloid and JRuby!",
+        "descr" : "<p>Light up your cores! Learn how to achieve levels of scale hitherto unknown to mere mortals.</p><p>This talk will cover concurrency and parallelisation for the discerning rubyist. We'll cover why MRI is keeping your CPUs way cooler than they find comfortable and how you can unlock unfound levels of roflscale by spending a little time with celluloid and JRuby. I'll touch on points and techniques including:</p><ul><li>an exploration of celluloid and the actor model (a forty year+ old pattern!)</li><li>writing fast, robust and maintainable multi-threaded code with celluloid</li><li>how to identify the low-hanging fruit in your apps that will benefit from multi-threading</li><li>guarding your code against common thread-safety pitfalls </li><li>where ruby fits in with the future of multi-threading and parallelisation</li></ul><p>All gained from solid experience in the field and on-project - engineering a messaging solution processing many thousands of messages in parallel per second.</p>"
     },
     {
         "start" : 1372515300,
