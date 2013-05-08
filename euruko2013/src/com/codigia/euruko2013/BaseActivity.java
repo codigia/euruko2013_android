@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -151,9 +152,14 @@ public class BaseActivity extends SlidingFragmentActivity {
         mMainView = findViewById(R.id.mainView);
 
 		enableHttpResponseCache();
+    }
 
+    @Override
+    protected void onResume() {
 		getNews();
 		getAgenda();
+
+		super.onResume();
     }
 
     private void enableHttpResponseCache() {
@@ -167,38 +173,96 @@ public class BaseActivity extends SlidingFragmentActivity {
         }
     }
 
+    GetJSONHandler mNewsJSONHandler = new GetJSONHandler() {
+		@Override
+		public void handle(JSONObject json) {
+			getNewsItems(json);
+			if (mNewsFragment != null) {
+				mNewsFragment.networkRefresh();
+			}
+		}
+		
+		@Override public void failed() {}
+	};
+
     protected void getNews() {
-        new HttpGetJSONTask(new GetJSONHandler() {
-    		@Override
-    		public void handle(JSONObject json) {
-    			getNewsItems(json);
-    			if (mNewsFragment != null) {
-    				mNewsFragment.networkRefresh();
-    			}
-    		}
-    		
-    		@Override public void failed() {}
-    	}).execute(new HttpGet(getString(R.string.url_news)));
+    	String urlString = getString(R.string.url_news);
+    	String fname = url2filename(urlString);
+		File flocal = new File(mContext.getFilesDir(), fname);
+		if (flocal.exists()) {
+			try {
+				FileInputStream is = mContext.openFileInput(fname);
+				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+				StringBuilder builder = new StringBuilder();
+				for (String line = null; (line = reader.readLine()) != null;) {
+					builder.append(line).append("\n");
+				}
+				String str = builder.toString();
+				JSONTokener tokener = new JSONTokener(str);
+				JSONObject json = new JSONObject(tokener);
+				mNewsJSONHandler.handle(json);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+
+		// and now spawn a network task to fetch the latest one
+        new HttpGetJSONTask(mNewsJSONHandler).execute(new HttpGet(urlString));
     }
+
+    GetJSONHandler mAgendaJSONHandler = new GetJSONHandler() {
+		@Override
+		public void handle(JSONObject json) {
+			getSpeakers(json);
+			if (mSpeakersFragment != null) {
+				mSpeakersFragment.networkRefresh();
+			}
+
+			getAgendaItems(json);
+			if (mAgendaFragment != null) {
+				mAgendaFragment.networkRefresh();
+			}
+		}
+		
+		@Override public void failed() {}
+	};
 
     protected void getAgenda() {
-        new HttpGetJSONTask(new GetJSONHandler() {
-    		@Override
-    		public void handle(JSONObject json) {
-    			getSpeakers(json);
-    			if (mSpeakersFragment != null) {
-    				mSpeakersFragment.networkRefresh();
-    			}
+    	String urlString = getString(R.string.url_agenda);
+    	String fname = url2filename(urlString);
+		File flocal = new File(mContext.getFilesDir(), fname);
+		if (flocal.exists()) {
+			try {
+				FileInputStream is = mContext.openFileInput(fname);
+				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+				StringBuilder builder = new StringBuilder();
+				for (String line = null; (line = reader.readLine()) != null;) {
+					builder.append(line).append("\n");
+				}
+				String str = builder.toString();
+				JSONTokener tokener = new JSONTokener(str);
+				JSONObject json = new JSONObject(tokener);
+				mAgendaJSONHandler.handle(json);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
 
-    			getAgendaItems(json);
-    			if (mAgendaFragment != null) {
-    				mAgendaFragment.networkRefresh();
-    			}
-    		}
-    		
-    		@Override public void failed() {}
-    	}).execute(new HttpGet(getString(R.string.url_agenda)));
+		// and now spawn a network task to fetch the latest one
+        new HttpGetJSONTask(mAgendaJSONHandler).execute(new HttpGet(urlString));
     }
+
+	public static String url2filename(String urlString) {
+		return Base64.encodeToString(urlString.getBytes(), Base64.DEFAULT);
+	}
 
     public interface GetJSONHandler {
     	public void handle(JSONObject json);
@@ -218,8 +282,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 		@Override
 		protected JSONObject doInBackground(HttpUriRequest... params) {
 			HttpUriRequest request = params[0];
-			String fname = Base64.encodeToString(request.getURI()
-					.toString().getBytes(), Base64.DEFAULT);
+			String fname = url2filename(request.getURI().toString());
 
 			try {
 				BufferedReader reader = null;
@@ -293,8 +356,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 		@Override
 		protected Drawable doInBackground(HttpUriRequest... params) {
 			HttpUriRequest request = params[0];
-			String fname = Base64.encodeToString(request.getURI()
-					.toString().getBytes(), Base64.DEFAULT);
+			String fname = url2filename(request.getURI().toString());
 
 			try {
 				FileInputStream is = mContext.openFileInput(fname);
