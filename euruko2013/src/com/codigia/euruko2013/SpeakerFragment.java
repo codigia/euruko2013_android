@@ -1,13 +1,13 @@
 package com.codigia.euruko2013;
 
-import com.codigia.euruko2013.R;
-
-import com.codigia.euruko2013.BaseActivity.GetDrawableHandler;
-
 import android.graphics.drawable.Drawable;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.codigia.euruko2013.BaseActivity.GetDrawableHandler;
 
 public class SpeakerFragment extends BaseFragment {
 
@@ -47,7 +47,8 @@ public class SpeakerFragment extends BaseFragment {
 
         TextView speakerBio = (TextView) v.findViewById(R.id.speakerBio);
         if (speakerBio != null) {
-        	speakerBio.setText(r.bio);
+        	speakerBio.setText(Html.fromHtml(r.bio));
+    		speakerBio.setMovementMethod(LinkMovementMethod.getInstance());
         }
 
         final ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
