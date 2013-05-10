@@ -41,6 +41,11 @@ public class SpeechFragment extends BaseFragment {
         	startTime.setText(mSpeech.getStartTimeFormatted());
         }
 
+        TextView day = (TextView) v.findViewById(R.id.day);
+        if (day != null) {
+        	day.setText("day " + mSpeech.getDay());
+        }
+
         TextView speechTitle = (TextView) v.findViewById(R.id.speechTitle);
         if (speechTitle != null) {
         	speechTitle.setText(mSpeech.title);
@@ -86,6 +91,7 @@ public class SpeechFragment extends BaseFragment {
 				});
         	} else {
         		profileContainer.setVisibility(View.INVISIBLE);
+        		ba.setBarTitle("Special Section");
         	}
         }
 

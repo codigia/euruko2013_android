@@ -32,12 +32,18 @@ public class AgendaItem {
             e.printStackTrace();
         }
     }
-    
+
     public String getStartTimeFormatted() {
     	return mFormat.format(new Date(startTime));
     }
-    
+
     public String getEndTimeFormatted() {
     	return mFormat.format(new Date(endTime));
     }
+
+    @SuppressWarnings("deprecation")
+	public int getDay() {
+    	return (new Date(startTime)).getDay() - 4;
+    }
+
 }

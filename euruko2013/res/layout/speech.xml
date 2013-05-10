@@ -41,13 +41,29 @@
                 android:background="@color/mainback"
                 android:gravity="center"
                 android:layout_marginLeft="15dp"
-                android:paddingBottom="3dp"
                 android:paddingLeft="3dp"
                 android:paddingRight="4dp"
                 android:text="10:00"
                 android:textColor="@color/maintext"
                 android:textSize="40sp"
                 android:textStyle="bold" />
+
+	        <TextView
+	            android:id="@+id/day"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_below="@+id/startTime"
+	            android:layout_marginTop="-16dp"
+	            android:layout_alignLeft="@+id/startTime"
+	            android:layout_alignRight="@+id/startTime"
+	            android:background="@color/mainback"
+	            android:gravity="center"
+	            android:paddingBottom="3dp"
+	            android:paddingRight="3dp"
+	            android:text="day 2"
+	            android:textColor="@color/maintext"
+	            android:textSize="12sp"
+	            android:textStyle="bold" />
 
             <RelativeLayout
                 android:id="@+id/profileContainer"

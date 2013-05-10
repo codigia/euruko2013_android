@@ -68,6 +68,10 @@ public class AgendaItemAdapter extends ArrayAdapter<AgendaItem> implements
             if (st != null) {
                   st.setText(r.getStartTimeFormatted());
             }
+            TextView td = (TextView) v.findViewById(R.id.day);
+            if (td != null) {
+                  td.setText("day " + r.getDay());
+            }
             TextView et = (TextView) v.findViewById(R.id.endTime);
             if (et != null) {
                   et.setText(r.getEndTimeFormatted());
