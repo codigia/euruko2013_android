@@ -1,5 +1,21 @@
 { "news" : [
 	{
+		"time" : 1366804800,
+		"title" : "Workable shines as a Helios sponsor"
+	},
+	{
+		"time" : 1366718400,
+		"title" : "Xing is a Selene sponsor"
+	},
+	{
+		"time" : 1366632000,
+		"title" : "Heroku is a Selene sponsor"
+	},
+	{
+		"time" : 1366632000,
+		"title" : "DNSimple is a Selene sponsor"
+	},
+	{
 		"time" : 1366390800,
 		"title" : "Pamediakopes.gr is a Selene sponsor"
 	},
