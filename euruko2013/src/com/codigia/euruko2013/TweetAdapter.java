@@ -108,6 +108,7 @@ public class TweetAdapter extends ArrayAdapter<MyTweet> implements
 			final ImageView profilePic = (ImageView) v
 					.findViewById(R.id.profilePic);
             if (profilePic != null) {
+                profilePic.setImageResource(R.drawable.placeholder);
             	profilePic.setVisibility(View.INVISIBLE);
 
 				r.fetchProfilePicture(new GetDrawableHandler() {
