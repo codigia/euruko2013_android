@@ -12,6 +12,6 @@
     <string name="url_codigia">http://codigia.com</string>
     <string name="url_gaia_sponsor">http://www.skroutz.gr</string>
 
-    <string name="url_news">http://euruko2013.codigia.com/news.json</string>
-    <string name="url_agenda">http://euruko2013.codigia.com/agenda.json</string>
+    <string name="url_news">http://euruko2013.codigia.com/data/news.json</string>
+    <string name="url_agenda">http://euruko2013.codigia.com/data/agenda.json</string>
 </resources>
