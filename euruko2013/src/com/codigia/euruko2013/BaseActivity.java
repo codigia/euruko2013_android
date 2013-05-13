@@ -574,17 +574,17 @@ public class BaseActivity extends SlidingFragmentActivity {
         return sSpeakers;
     }
 
-    private static List<Speaker> getSpeakers() {
-    	JSONObject jsonObject = null;
-		try {
-			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
-		} catch (JSONException e) {
-			e.printStackTrace();
-            BugSenseHandler.sendException(e);
-		}
-
-		return getSpeakers(jsonObject);
-    }
+//    private static List<Speaker> getSpeakers() {
+//    	JSONObject jsonObject = null;
+//		try {
+//			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//            BugSenseHandler.sendException(e);
+//		}
+//
+//		return getSpeakers(jsonObject);
+//    }
 
     private static List<AgendaItem> getAgendaItems(JSONObject agendaJSONObject) {
     	sSpeeches = new ArrayList<AgendaItem>();
@@ -607,18 +607,18 @@ public class BaseActivity extends SlidingFragmentActivity {
         return BaseActivity.sSpeeches;
     }
 
-    private static List<AgendaItem> getAgendaItems() {
-    	JSONObject jsonObject = null;
-
-    	try {
-			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-            BugSenseHandler.sendException(e);
-        }
-
-        return getAgendaItems(jsonObject);
-    }
+//    private static List<AgendaItem> getAgendaItems() {
+//    	JSONObject jsonObject = null;
+//
+//    	try {
+//			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//            BugSenseHandler.sendException(e);
+//        }
+//
+//        return getAgendaItems(jsonObject);
+//    }
 
     private static List<NewsRecord> getNewsItems(JSONObject newsJSONObject) {
     	sNews = new ArrayList<NewsRecord>();
@@ -641,18 +641,18 @@ public class BaseActivity extends SlidingFragmentActivity {
         return sNews;
     }
 
-    private static List<NewsRecord> getNewsItems() {
-    	JSONObject jsonObject = null;
-
-        try {
-			jsonObject = new JSONObject(Utils.JSON.readAsset("news.json"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-            BugSenseHandler.sendException(e);
-        }
-
-        return getNewsItems(jsonObject);
-    }
+//    private static List<NewsRecord> getNewsItems() {
+//    	JSONObject jsonObject = null;
+//
+//        try {
+//			jsonObject = new JSONObject(Utils.JSON.readAsset("news.json"));
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//            BugSenseHandler.sendException(e);
+//        }
+//
+//        return getNewsItems(jsonObject);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

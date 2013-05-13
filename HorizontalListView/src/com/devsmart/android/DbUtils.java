@@ -1,17 +1,12 @@
 package com.devsmart.android;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQueryBuilder;
-import android.database.sqlite.SQLiteStatement;
 import android.net.Uri;
 import android.util.Log;
 
