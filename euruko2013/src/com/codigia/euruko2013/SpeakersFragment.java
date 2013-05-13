@@ -27,8 +27,17 @@ public class SpeakersFragment extends BaseListFragment {
 
 	@Override
 	public void networkRefresh() {
+		BaseActivity baseActivity = (BaseActivity) getActivity();
+		if (baseActivity == null) {
+			return;
+		}
+
+		if (BaseActivity.sSpeakers == null) {
+			return;
+		}
+
 		SpeakerAdapter speakersadapter = new SpeakerAdapter(
-				(BaseActivity) getActivity(), R.layout.speakersitem,
+				baseActivity, R.layout.speakersitem,
 				BaseActivity.sSpeakers);
         setListAdapter(speakersadapter, speakersadapter);
 	}

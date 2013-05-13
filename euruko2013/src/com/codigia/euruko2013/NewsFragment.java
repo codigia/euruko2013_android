@@ -27,8 +27,17 @@ public class NewsFragment extends BaseListFragment {
 
 	@Override
 	public void networkRefresh() {
+		BaseActivity baseActivity = (BaseActivity) getActivity();
+		if (baseActivity == null) {
+			return;
+		}
+
+		if (BaseActivity.sNews == null) {
+			return;
+		}
+
 		NewsRecordAdapter newsadapter = new NewsRecordAdapter(
-				(BaseActivity) getActivity(), R.layout.newsitem,
+				baseActivity, R.layout.newsitem,
 				BaseActivity.sNews);
         setListAdapter(newsadapter, newsadapter);
         newsadapter.notifyDataSetChanged();
@@ -36,6 +45,11 @@ public class NewsFragment extends BaseListFragment {
 
 	@Override
 	protected void onMenuRefresh() {
-    	((BaseActivity) getActivity()).getNews();
+		BaseActivity baseActivity = (BaseActivity) getActivity();
+		if (baseActivity == null) {
+			return;
+		}
+
+    	baseActivity.getNews();
 	}
 }

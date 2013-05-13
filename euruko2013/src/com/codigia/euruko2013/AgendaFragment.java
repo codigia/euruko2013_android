@@ -25,8 +25,17 @@ public class AgendaFragment extends BaseListFragment {
 
 	@Override
 	public void networkRefresh() {
+		BaseActivity baseActivity = (BaseActivity) getActivity();
+		if (baseActivity == null) {
+			return;
+		}
+
+		if (BaseActivity.sSpeeches == null) {
+			return;
+		}
+
 		AgendaItemAdapter agendaAdapter = new AgendaItemAdapter(
-				(BaseActivity) getActivity(), BaseActivity.sSpeakers,
+				baseActivity, BaseActivity.sSpeakers,
 				BaseActivity.sSpeeches);
         setListAdapter(agendaAdapter, agendaAdapter);
 	}
