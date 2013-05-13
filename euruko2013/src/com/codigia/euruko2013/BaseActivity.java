@@ -16,7 +16,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
-import com.codigia.euruko2013.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,6 +39,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.actionbarsherlock.view.MenuItem;
+import com.bugsense.trace.BugSenseHandler;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
@@ -94,6 +94,8 @@ public class BaseActivity extends SlidingFragmentActivity {
         super.onCreate(savedInstanceState);
 
         mContext = this;
+
+        BugSenseHandler.initAndStartSession(mContext, "8f78c40e");
 
         Fragment currentFragment = null;
 
@@ -155,6 +157,13 @@ public class BaseActivity extends SlidingFragmentActivity {
     }
 
     @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        BugSenseHandler.closeSession(this);
+    }
+
+    @Override
     protected void onResume() {
 		getNews();
 		getAgenda();
@@ -205,8 +214,10 @@ public class BaseActivity extends SlidingFragmentActivity {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 			} catch (JSONException e) {
 				e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 			}
 		}
 
@@ -251,8 +262,10 @@ public class BaseActivity extends SlidingFragmentActivity {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 			} catch (JSONException e) {
 				e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 			}
 		}
 
@@ -323,6 +336,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 			} catch (Exception e) {
 				Log.e(TAG, e.toString());
 				e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 				return null;
 			}
 		}
@@ -388,6 +402,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 			} catch (Exception e) {
 				Log.e(TAG, e.toString());
 				e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 				return null;
 			}
 		}
@@ -551,8 +566,9 @@ public class BaseActivity extends SlidingFragmentActivity {
                 Speaker item = new Speaker(speakersJSON.getJSONObject(k));
                 sSpeakers.add(item);
             }
-        } catch (JSONException e1) {
-            e1.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            BugSenseHandler.sendException(e);
         }
 
         return sSpeakers;
@@ -564,6 +580,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
 		} catch (JSONException e) {
 			e.printStackTrace();
+            BugSenseHandler.sendException(e);
 		}
 
 		return getSpeakers(jsonObject);
@@ -582,8 +599,9 @@ public class BaseActivity extends SlidingFragmentActivity {
                 AgendaItem item = new AgendaItem(agendaJSON.getJSONObject(k));
                 sSpeeches.add(item);
             }
-        } catch (JSONException e1) {
-            e1.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            BugSenseHandler.sendException(e);
         }
 
         return BaseActivity.sSpeeches;
@@ -594,8 +612,9 @@ public class BaseActivity extends SlidingFragmentActivity {
 
     	try {
 			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
-        } catch (JSONException e1) {
-            e1.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            BugSenseHandler.sendException(e);
         }
 
         return getAgendaItems(jsonObject);
@@ -614,8 +633,9 @@ public class BaseActivity extends SlidingFragmentActivity {
                 NewsRecord item = new NewsRecord(newsJSON.getJSONObject(k));
                 sNews.add(item);
             }
-        } catch (JSONException e1) {
-            e1.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            BugSenseHandler.sendException(e);
         }
 
         return sNews;
@@ -626,8 +646,9 @@ public class BaseActivity extends SlidingFragmentActivity {
 
         try {
 			jsonObject = new JSONObject(Utils.JSON.readAsset("news.json"));
-        } catch (JSONException e1) {
-            e1.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            BugSenseHandler.sendException(e);
         }
 
         return getNewsItems(jsonObject);

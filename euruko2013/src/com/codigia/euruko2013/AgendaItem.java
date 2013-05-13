@@ -7,6 +7,8 @@ import java.util.Locale;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bugsense.trace.BugSenseHandler;
+
 public class AgendaItem {
 
 	private static SimpleDateFormat mFormat = new SimpleDateFormat(
@@ -30,6 +32,7 @@ public class AgendaItem {
             descr = json.getString("descr");
         } catch (JSONException e) {
             e.printStackTrace();
+            BugSenseHandler.sendException(e);
         }
     }
 

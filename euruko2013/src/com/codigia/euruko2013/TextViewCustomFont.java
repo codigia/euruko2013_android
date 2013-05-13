@@ -1,5 +1,6 @@
 package com.codigia.euruko2013;
 
+import com.bugsense.trace.BugSenseHandler;
 import com.codigia.euruko2013.R;
 
 import android.content.Context;
@@ -40,6 +41,7 @@ public class TextViewCustomFont extends TextView {
 			tf = Typeface.createFromAsset(ctx.getAssets(), asset);
 		} catch (Exception e) {
 			Log.e(TAG, "Could not get typeface: " + e.getMessage());
+            BugSenseHandler.sendException(e);
 			return false;
 		}
 

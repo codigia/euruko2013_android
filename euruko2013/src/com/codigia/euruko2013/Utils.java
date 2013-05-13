@@ -12,6 +12,7 @@ import java.io.Writer;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bugsense.trace.BugSenseHandler;
 import com.devsmart.android.ui.HorizontalListView;
 
 import android.widget.AdapterView;
@@ -25,6 +26,7 @@ public class Utils {
 				if (json.has(name)) return (Long) json.getLong(name);
 			} catch (JSONException e) {
 				e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 			}
 
 			return null;
@@ -35,6 +37,7 @@ public class Utils {
 				if (json.has(name)) return json.getString(name);
 			} catch (JSONException e) {
 				e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 			}
 
 			return null;
@@ -53,8 +56,10 @@ public class Utils {
 	            }
 	        } catch (UnsupportedEncodingException e) {
 	            e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 	        } catch (IOException e) {
 	            e.printStackTrace();
+	            BugSenseHandler.sendException(e);
 	        } finally {
 	            try {
 	                is.close();

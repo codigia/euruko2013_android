@@ -3,6 +3,8 @@ package com.codigia.euruko2013;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bugsense.trace.BugSenseHandler;
+
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Twitter;
@@ -92,6 +94,7 @@ public class TwitterFragment extends BaseListFragment {
 
             } catch (TwitterException te) {
                 te.printStackTrace();
+                BugSenseHandler.sendException(te);
             	if (te.getStatusCode() == 429) {
             		myTweets.add(null);
             	}

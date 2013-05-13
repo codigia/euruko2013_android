@@ -4,6 +4,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bugsense.trace.BugSenseHandler;
 import com.codigia.euruko2013.BaseActivity.GetDrawableHandler;
 
 import android.graphics.drawable.Drawable;
@@ -25,6 +26,7 @@ public class Speaker {
 	        this.avatarURLString = json.getString("avatar");
         } catch (JSONException e) {
             e.printStackTrace();
+            BugSenseHandler.sendException(e);
         }
     }
 
