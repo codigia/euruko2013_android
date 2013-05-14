@@ -127,13 +127,13 @@
         "start" : 1372399200,
         "end" : 1372401900,
         "title" : "Registration",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372401900,
         "end" : 1372402800,
         "title" : "Welcome, info, plan",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372402800,
@@ -151,19 +151,19 @@
         "start" : 1372407300,
         "end" : 1372410000,
         "title" : "Talk I",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372410000,
         "end" : 1372412700,
         "title" : "Talk II",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372412700,
         "end" : 1372417200,
         "title" : "Lunch",
-        "descr" : "eating"
+        "descr" : "Grab some lunch... More interesting talks in 1h15m!"
     },
     {
         "start" : 1372417200,
@@ -175,7 +175,7 @@
         "start" : 1372420800,
         "end" : 1372423500,
         "title" : "Talk III",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372423500,
@@ -187,19 +187,19 @@
         "start" : 1372424400,
         "end" : 1372427100,
         "title" : "Talk IV",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372427100,
         "end" : 1372429800,
         "title" : "Talk V",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372429800,
         "end" : 1372431600,
         "title" : "Lightning Talks",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
 
 
@@ -209,7 +209,7 @@
         "start" : 1372488300,
         "end" : 1372489200,
         "title" : "Welcome",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372489200,
@@ -221,25 +221,25 @@
         "start" : 1372492800,
         "end" : 1372493700,
         "title" : "Break",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372493700,
         "end" : 1372496400,
         "title" : "Talk VI",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372496400,
         "end" : 1372499100,
         "title" : "Talk VII",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372499100,
         "end" : 1372503600,
         "title" : "Lunch",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "Grab some lunch... More interesting talks in 1h15m!"
     },
     {
         "start" : 1372503600,
@@ -251,37 +251,37 @@
         "start" : 1372507200,
         "end" : 1372509900,
         "title" : "Talk VIII",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372509900,
         "end" : 1372510800,
         "title" : "Break",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372510800,
         "end" : 1372513500,
         "title" : "Talk IX",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372513500,
         "end" : 1372516200,
         "title" : "Talk X",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372516200,
         "end" : 1372518000,
         "title" : "Lightning Talks",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     },
     {
         "start" : 1372518000,
         "end" : 1372519800,
         "title" : "Closing & Vote",
-        "descr" : "To be defined... Stay tuned!"
+        "descr" : "To be announced... Stay tuned!"
     }
 ]
 }
