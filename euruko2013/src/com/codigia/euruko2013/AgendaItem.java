@@ -23,7 +23,9 @@ public class AgendaItem {
 	public AgendaItem(JSONObject json) {
         try {
             startTime = json.getLong("start") * 1000;
-            endTime = json.getLong("end") * 1000;
+
+            // end is optional
+            endTime = json.optLong("end", 0) * 1000;
 
             // speaker is optional
             speakerId = json.optString("speaker_id", null);
