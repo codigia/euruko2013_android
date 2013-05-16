@@ -144,7 +144,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_centerHorizontal="true"
-                    android:scaleType="fitCenter"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
     
                 <ImageView

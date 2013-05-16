@@ -41,7 +41,7 @@
 	            android:id="@+id/profilePic"
 	            android:layout_width="46dp"
 	            android:layout_height="46dp"
-	            android:scaleType="fitCenter" />
+	            android:scaleType="centerCrop" />
 	        
 	        <TextView
 	            android:id="@+id/title"
