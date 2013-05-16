@@ -22,7 +22,7 @@ public class SpeechFragment extends BaseFragment {
 	public void onResume() {
 		final BaseActivity ba = (BaseActivity) getActivity();
 
-		ba.setBarTitle("Speech");
+		ba.setBarTitle("Talk");
 
 		int speechId = ba.currentSpeechPosition;
 

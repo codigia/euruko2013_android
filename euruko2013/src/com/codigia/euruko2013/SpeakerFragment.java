@@ -22,7 +22,7 @@ public class SpeakerFragment extends BaseFragment {
 
         final BaseActivity ba = (BaseActivity) getActivity();
 
-		ba.setBarTitle("Speech");
+		ba.setBarTitle("Speaker");
 
 		Speaker r = null;
 		for (Speaker s : BaseActivity.sSpeakers) {
