@@ -3,6 +3,9 @@
     <dimen name="text_size_verbage">15sp</dimen>
     <dimen name="text_size_glyphs">28sp</dimen>
 
+    <dimen name="text_size_twitter">24sp</dimen>
+    <dimen name="text_size_github">48sp</dimen>
+
     <dimen name="main_menu_height">48dp</dimen>
     <dimen name="main_menu_icon_height">38dp</dimen>
     <dimen name="main_menu_height_gaia_text">32dp</dimen>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:erk13="http://schemas.android.com/apk/res/com.codigia.euruko2013"
     android:id="@+id/mainView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -40,6 +41,38 @@
                 android:layout_marginBottom="5dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/circle_border" />
+
+            <com.codigia.euruko2013.TextViewCustomFont
+                android:id="@+id/speakerGithub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-5dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/profilePic"
+                android:gravity="right"
+                android:text="Ľ"
+                android:textSize="@dimen/text_size_github"
+                android:textColor="@color/profile_link_text"
+                android:visibility="gone"
+                erk13:customFont="sosa-regular-webfont.ttf" >
+            </com.codigia.euruko2013.TextViewCustomFont>
+
+            <com.codigia.euruko2013.TextViewCustomFont
+                android:id="@+id/speakerTwitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_toLeftOf="@+id/profilePic"
+                android:gravity="left"
+                android:text="t"
+                android:textSize="@dimen/text_size_twitter"
+                android:textColor="@color/profile_link_text"
+                android:visibility="gone"
+                erk13:customFont="sosa-regular-webfont.ttf" >
+            </com.codigia.euruko2013.TextViewCustomFont>
 
             <TextView
     	        android:id="@+id/speakerTitle"

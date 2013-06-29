@@ -30,6 +30,8 @@
     <color name="main_menu_back">@color/mainback</color>
     <color name="main_menu_text">@color/maintext</color>
 
+    <color name="profile_link_text">@color/maintext</color>
+
     <color name="full_separator">#ff888888</color>
 
     <color name="card">#ffffffff</color>

@@ -14,6 +14,8 @@ public class Speaker {
     public String name;
     public String title;
     public String bio;
+    public String githubIdString;
+    public String twitterIdString;
     public String avatarURLString;
     private Drawable mAvatar;
     
@@ -23,6 +25,8 @@ public class Speaker {
 	        this.name = json.getString("name");
 	        this.title = json.getString("title");
 	        this.bio = json.getString("bio");
+	        this.githubIdString = json.getString("github");
+	        this.twitterIdString = json.getString("twitter");
 	        this.avatarURLString = json.getString("avatar");
         } catch (JSONException e) {
             e.printStackTrace();
