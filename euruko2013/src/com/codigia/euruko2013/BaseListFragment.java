@@ -28,122 +28,118 @@ import com.devsmart.android.ui.HorizontalListView;
 
 public abstract class BaseListFragment extends SherlockFragment {
 
-	public static final int animationDuration = 450;
+    public static final int animationDuration = 450;
 
-	private ViewGroup mViewGroup;
-	private SparseArray<Parcelable> mViewState = null;
-	private int mSparseKey;
-	private boolean mIsHorizontal;
-	private boolean mShowRefresh;
-	MenuItem mRefreshMenuItem = null;
-	View mRotatingImageView;
-	Animation rotationAnimation;
-	boolean isRotating;
+    private ViewGroup mViewGroup;
+    private SparseArray<Parcelable> mViewState = null;
+    private int mSparseKey;
+    private boolean mIsHorizontal;
+    private boolean mShowRefresh;
+    MenuItem mRefreshMenuItem = null;
+    View mRotatingImageView;
+    Animation rotationAnimation;
+    boolean isRotating;
 
-	public BaseListFragment(boolean showRefresh) {
-		mShowRefresh = showRefresh;
-	}
+    public BaseListFragment(boolean showRefresh) {
+        mShowRefresh = showRefresh;
+    }
 
-	protected boolean isHorizontal() {
-		return mIsHorizontal;
-	}
+    protected boolean isHorizontal() {
+        return mIsHorizontal;
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		AnimationSet set = new AnimationSet(true);
-		set.setInterpolator(new DecelerateInterpolator(1.2f));
+        AnimationSet set = new AnimationSet(true);
+        set.setInterpolator(new DecelerateInterpolator(1.2f));
 
-		Animation animation;
+        Animation animation;
         animation = new AlphaAnimation(0.0f, 1.0f);
         animation.setDuration(animationDuration);
         set.addAnimation(animation);
 
-        animation = new TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
-            Animation.RELATIVE_TO_SELF, 0.4f, Animation.RELATIVE_TO_SELF, 0.0f
-        );
+        animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+                Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.4f,
+                Animation.RELATIVE_TO_SELF, 0.0f);
         animation.setDuration(animationDuration);
         set.addAnimation(animation);
 
-//		animation = new RotateAnimation(
-//				-15.0f,
-//				0.0f,
-//				Animation.RELATIVE_TO_SELF, 1.0f,
-//				Animation.RELATIVE_TO_SELF, 0.0f);
-//        animation.setDuration(animationDuration);
-//        set.addAnimation(animation);
+        // animation = new RotateAnimation(
+        // -15.0f,
+        // 0.0f,
+        // Animation.RELATIVE_TO_SELF, 1.0f,
+        // Animation.RELATIVE_TO_SELF, 0.0f);
+        // animation.setDuration(animationDuration);
+        // set.addAnimation(animation);
 
-		mIsHorizontal = getActivity().getResources().getConfiguration().orientation 
-				== Configuration.ORIENTATION_LANDSCAPE;
+        mIsHorizontal = getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
 
         int resid = mIsHorizontal ? R.layout.horlist : R.layout.list;
 
-    	mViewGroup = (ViewGroup) inflater.inflate(resid, null, false);
-    	mViewGroup.setLayoutAnimation(new LayoutAnimationController(set));
+        mViewGroup = (ViewGroup) inflater.inflate(resid, null, false);
+        mViewGroup.setLayoutAnimation(new LayoutAnimationController(set));
 
-		rotationAnimation = AnimationUtils.loadAnimation(getActivity(),
-				R.anim.rotate);
-		rotationAnimation.setRepeatCount(Animation.INFINITE);
+        rotationAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate);
+        rotationAnimation.setRepeatCount(Animation.INFINITE);
 
         mRotatingImageView = inflater.inflate(R.layout.refreshing, null);
 
-		return mViewGroup;
-	}
+        return mViewGroup;
+    }
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		setHasOptionsMenu(true);
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
 
-		super.onActivityCreated(savedInstanceState);
-	}
+        super.onActivityCreated(savedInstanceState);
+    }
 
-	public void onRefreshCompleted() {
-		if (mRefreshMenuItem != null) {
-			View v = mRefreshMenuItem.getActionView();
-			if (v != null) {
-				v.clearAnimation();
-				mRefreshMenuItem.setActionView(null);
-			}
-		}
+    public void onRefreshCompleted() {
+        if (mRefreshMenuItem != null) {
+            View v = mRefreshMenuItem.getActionView();
+            if (v != null) {
+                v.clearAnimation();
+                mRefreshMenuItem.setActionView(null);
+            }
+        }
 
-		isRotating = false;
-	}
+        isRotating = false;
+    }
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		super.onCreateOptionsMenu(menu, inflater);
-		if (mShowRefresh) {
-			inflater.inflate(R.menu.news_menu, menu);
-			mRefreshMenuItem = menu.getItem(0);
-		} else {
-			mRefreshMenuItem = menu.add(Menu.NONE, 0, Menu.NONE, "");
-			mRefreshMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-			mRefreshMenuItem.setActionView(R.layout.empty);
-		}
-	}
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        if (mShowRefresh) {
+            inflater.inflate(R.menu.news_menu, menu);
+            mRefreshMenuItem = menu.getItem(0);
+        } else {
+            mRefreshMenuItem = menu.add(Menu.NONE, 0, Menu.NONE, "");
+            mRefreshMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            mRefreshMenuItem.setActionView(R.layout.empty);
+        }
+    }
 
-	protected void onMenuRefresh() {
-	}
+    protected void onMenuRefresh() {
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.refresh:
-            	onMenuRefresh();
-		    	rotateIcon();
-                return true;
+        case R.id.refresh:
+            onMenuRefresh();
+            rotateIcon();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void rotateIcon() {
-    	if (isRotating) {
-    		return;
-    	}
+        if (isRotating) {
+            return;
+        }
 
-    	isRotating = true;
+        isRotating = true;
 
         mRotatingImageView.startAnimation(rotationAnimation);
 
@@ -151,47 +147,45 @@ public abstract class BaseListFragment extends SherlockFragment {
     }
 
     @Override
-	public void onPause() {
-		super.onPause();
+    public void onPause() {
+        super.onPause();
 
         if (mViewGroup != null && mViewGroup instanceof HorizontalListView) {
-    		mViewState = new SparseArray<Parcelable>();
+            mViewState = new SparseArray<Parcelable>();
             mViewGroup.saveHierarchyState(mViewState);
-    		Bundle b = new Bundle();
-    		((HorizontalListView) mViewGroup).saveState(b);
-    		mSparseKey = mViewState.size();
-    		mViewState.append(mViewState.size(), b);
+            Bundle b = new Bundle();
+            ((HorizontalListView) mViewGroup).saveState(b);
+            mSparseKey = mViewState.size();
+            mViewState.append(mViewState.size(), b);
         }
-	}
+    }
 
-	@Override
-	public void onResume() {
+    @Override
+    public void onResume() {
         if (mViewState != null) {
-        	mViewGroup.restoreHierarchyState(mViewState);
+            mViewGroup.restoreHierarchyState(mViewState);
             if (mViewGroup instanceof HorizontalListView) {
-				((HorizontalListView) mViewGroup)
-						.restoreState((Bundle) mViewState.get(mSparseKey));
+                ((HorizontalListView) mViewGroup).restoreState((Bundle) mViewState.get(mSparseKey));
             }
-        	mViewState = null;
+            mViewState = null;
         }
 
-		super.onResume();
-	}
+        super.onResume();
+    }
 
-	public abstract void networkRefresh();
+    public abstract void networkRefresh();
 
-	protected void setListAdapter(BaseAdapter adapter,
-			OnItemClickListener clickListener) {
-		if (mViewGroup instanceof ListView) {
-			ListView lv = (ListView) mViewGroup;
-			lv.setOnItemClickListener(clickListener);
-			lv.setAdapter(adapter);
-		} else if (mViewGroup instanceof HorizontalListView) {
-			HorizontalListView hlv = (HorizontalListView) mViewGroup;
-			hlv.setOnItemClickListener(clickListener);
-			hlv.setAdapter(adapter);
-		}
+    protected void setListAdapter(BaseAdapter adapter, OnItemClickListener clickListener) {
+        if (mViewGroup instanceof ListView) {
+            ListView lv = (ListView) mViewGroup;
+            lv.setOnItemClickListener(clickListener);
+            lv.setAdapter(adapter);
+        } else if (mViewGroup instanceof HorizontalListView) {
+            HorizontalListView hlv = (HorizontalListView) mViewGroup;
+            hlv.setOnItemClickListener(clickListener);
+            hlv.setAdapter(adapter);
+        }
 
-		onRefreshCompleted();
-	}
+        onRefreshCompleted();
+    }
 }

@@ -7,11 +7,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:layout_centerInParent="true"
+        android:gravity="center"
         android:text="Rate exceeded! Sorry!"
         android:textColor="#bbbbbb"
         android:textSize="12sp"
         android:textStyle="italic" />
-    
+
 </RelativeLayout>

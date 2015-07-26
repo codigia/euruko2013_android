@@ -7,7 +7,7 @@ public class NewsRecord {
     public String title;
     public String body;
     public String link;
-    
+
     public NewsRecord(JSONObject json) {
         time = Utils.JSON.getLong(json, "time") * 1000;
         title = Utils.JSON.getString(json, "title");

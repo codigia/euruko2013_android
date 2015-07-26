@@ -10,39 +10,38 @@ import android.webkit.WebViewClient;
 
 public class WebviewFragment extends BaseFragment {
 
-	WebView mWebView;
+    WebView mWebView;
 
-	@Override
-	protected int getLayout() {
-		return 0;
-	}
+    @Override
+    protected int getLayout() {
+        return 0;
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		mWebView = new WebView(getActivity());
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mWebView = new WebView(getActivity());
 
-		return mWebView;
-	}
+        return mWebView;
+    }
 
-	@SuppressLint("SetJavaScriptEnabled")
-	@Override
-	public void onResume() {
-		final BaseActivity ba = (BaseActivity) getActivity();
+    @SuppressLint("SetJavaScriptEnabled")
+    @Override
+    public void onResume() {
+        final BaseActivity ba = (BaseActivity) getActivity();
 
-		ba.setBarTitle("Webview");
+        ba.setBarTitle("Webview");
 
-		mWebView.setWebViewClient(new WebViewClient() {
+        mWebView.setWebViewClient(new WebViewClient() {
 
-			public void onPageFinished(WebView view, String url) {
-				mWebView.loadUrl("javascript: var navbar = document.getElementById('navbar-main'); navbar.style.display='none';");
-			}
-		});
+            public void onPageFinished(WebView view, String url) {
+                mWebView.loadUrl("javascript: var navbar = document.getElementById('navbar-main'); navbar.style.display='none';");
+            }
+        });
 
-		mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setJavaScriptEnabled(true);
 
-		mWebView.loadUrl(ba.currentURLString);
+        mWebView.loadUrl(ba.currentURLString);
 
         super.onResume();
-	}
+    }
 }

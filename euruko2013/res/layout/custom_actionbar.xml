@@ -11,8 +11,8 @@
         android:layout_weight="1"
         android:gravity="center"
         android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/maintext"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textStyle="bold" />
 
 </LinearLayout>

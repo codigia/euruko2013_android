@@ -11,16 +11,15 @@ import com.bugsense.trace.BugSenseHandler;
 
 public class AgendaItem {
 
-	private static SimpleDateFormat mFormat = new SimpleDateFormat(
-			"HH:mm", Locale.getDefault());
+    private static SimpleDateFormat mFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
     public long startTime;
     public long endTime;
     public String speakerId;
     public String title;
     public String descr;
-    
-	public AgendaItem(JSONObject json) {
+
+    public AgendaItem(JSONObject json) {
         try {
             startTime = json.getLong("start") * 1000;
 
@@ -39,16 +38,16 @@ public class AgendaItem {
     }
 
     public String getStartTimeFormatted() {
-    	return mFormat.format(new Date(startTime));
+        return mFormat.format(new Date(startTime));
     }
 
     public String getEndTimeFormatted() {
-    	return mFormat.format(new Date(endTime));
+        return mFormat.format(new Date(endTime));
     }
 
     @SuppressWarnings("deprecation")
-	public int getDay() {
-    	return (new Date(startTime)).getDay() - 4;
+    public int getDay() {
+        return (new Date(startTime)).getDay() - 4;
     }
 
 }

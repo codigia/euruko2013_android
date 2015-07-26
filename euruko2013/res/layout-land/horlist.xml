@@ -7,4 +7,5 @@
     android:cacheColorHint="@color/transparent"
     android:divider="@color/transparent"
     android:dividerHeight="0px" >
+
 </com.devsmart.android.ui.HorizontalListView>

@@ -6,39 +6,38 @@ import android.os.Bundle;
 
 public class SpeakersFragment extends BaseListFragment {
 
-	public SpeakersFragment() {
-		super(false);
-	}
+    public SpeakersFragment() {
+        super(false);
+    }
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		networkRefresh();
-	}
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        networkRefresh();
+    }
 
-	@Override
-	public void onResume() {
-		final BaseActivity ba = (BaseActivity) getActivity();
+    @Override
+    public void onResume() {
+        final BaseActivity ba = (BaseActivity) getActivity();
 
-		ba.setBarTitle("Speakers");
+        ba.setBarTitle("Speakers");
 
         super.onResume();
-	}
+    }
 
-	@Override
-	public void networkRefresh() {
-		BaseActivity baseActivity = (BaseActivity) getActivity();
-		if (baseActivity == null) {
-			return;
-		}
+    @Override
+    public void networkRefresh() {
+        BaseActivity baseActivity = (BaseActivity) getActivity();
+        if (baseActivity == null) {
+            return;
+        }
 
-		if (BaseActivity.sSpeakers == null) {
-			return;
-		}
+        if (BaseActivity.sSpeakers == null) {
+            return;
+        }
 
-		SpeakerAdapter speakersadapter = new SpeakerAdapter(
-				baseActivity, R.layout.speakersitem,
-				BaseActivity.sSpeakers);
+        SpeakerAdapter speakersadapter = new SpeakerAdapter(baseActivity, R.layout.speakersitem,
+                BaseActivity.sSpeakers);
         setListAdapter(speakersadapter, speakersadapter);
-	}
+    }
 }

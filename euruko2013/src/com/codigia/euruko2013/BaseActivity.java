@@ -46,23 +46,18 @@ import com.slidingmenu.lib.app.SlidingFragmentActivity;
 public class BaseActivity extends SlidingFragmentActivity {
 
     enum TAB {
-        NEWS,
-        AGENDA,
-        SPEAKERS,
-        TWITTER,
-        POI,
-        ABOUT
+        NEWS, AGENDA, SPEAKERS, TWITTER, POI, ABOUT
     }
 
     static int REQUEST_NAVIGATE = 1;
 
-	static String EXTRA_SPEAKER_ID = "extra_speaker_id";
-	static String EXTRA_SPEECH_ID = "extra_speech_id";
-	static String EXTRA_MENU = "extra_menu";
+    static String EXTRA_SPEAKER_ID = "extra_speaker_id";
+    static String EXTRA_SPEECH_ID = "extra_speech_id";
+    static String EXTRA_MENU = "extra_menu";
 
-	static ArrayList<Speaker> sSpeakers = new ArrayList<Speaker>();
-	static ArrayList<AgendaItem> sSpeeches = new ArrayList<AgendaItem>();
-	static ArrayList<NewsRecord> sNews = new ArrayList<NewsRecord>();
+    static ArrayList<Speaker> sSpeakers = new ArrayList<Speaker>();
+    static ArrayList<AgendaItem> sSpeeches = new ArrayList<AgendaItem>();
+    static ArrayList<NewsRecord> sNews = new ArrayList<NewsRecord>();
 
     static final Object LOCK = new Object();
     static Context mContext;
@@ -73,7 +68,7 @@ public class BaseActivity extends SlidingFragmentActivity {
     SlidingMenu mMainMenu;
     final static String sCurrentFragmentTag = "currentFragment";
 
-	boolean mDualPane = false;
+    boolean mDualPane = false;
 
     View mCustomActionBarView;
     TextView mCustomActionBarTitleView;
@@ -99,36 +94,32 @@ public class BaseActivity extends SlidingFragmentActivity {
 
         Fragment currentFragment = null;
 
-		if (savedInstanceState != null) {
-			currentFragment = getSupportFragmentManager().getFragment(
-					savedInstanceState, sCurrentFragmentTag);
+        if (savedInstanceState != null) {
+            currentFragment = getSupportFragmentManager().getFragment(savedInstanceState,
+                    sCurrentFragmentTag);
 
-			currentSpeakerId = savedInstanceState.getString("currentSpeakerId");
-			currentSpeechPosition = savedInstanceState
-					.getInt("currentSpeechPosition");
-			currentURLString = savedInstanceState.getString("currentURLString");
-		}
+            currentSpeakerId = savedInstanceState.getString("currentSpeakerId");
+            currentSpeechPosition = savedInstanceState.getInt("currentSpeechPosition");
+            currentURLString = savedInstanceState.getString("currentURLString");
+        }
 
-		if (currentFragment == null) {
-			mNewsFragment = new NewsFragment();
-			currentFragment = mNewsFragment;
-		}
+        if (currentFragment == null) {
+            mNewsFragment = new NewsFragment();
+            currentFragment = mNewsFragment;
+        }
 
-		// set the Above View
-		setContentView(R.layout.activity_main);
-		getSupportFragmentManager()
-		.beginTransaction()
-		.setCustomAnimations(R.anim.fadein, 0)
-		.replace(R.id.main_content, currentFragment, sCurrentFragmentTag)
-		.commit();
+        // set the Above View
+        setContentView(R.layout.activity_main);
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fadein, 0)
+                .replace(R.id.main_content, currentFragment, sCurrentFragmentTag).commit();
 
-		// set the Behind View
-		setBehindContentView(R.layout.main_menu);
-//		getSupportFragmentManager()
-//		.beginTransaction()
-//		.replace(R.id.menu_frame, new MainMenuFragment())
-//		.commit();
-		
+        // set the Behind View
+        setBehindContentView(R.layout.main_menu);
+        // getSupportFragmentManager()
+        // .beginTransaction()
+        // .replace(R.id.menu_frame, new MainMenuFragment())
+        // .commit();
+
         setSlidingActionBarEnabled(true);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -138,11 +129,9 @@ public class BaseActivity extends SlidingFragmentActivity {
         getSupportActionBar().setCustomView(R.layout.custom_actionbar);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
 
-
         mCustomActionBarView = getSupportActionBar().getCustomView();
-		mCustomActionBarTitleView = (TextView) mCustomActionBarView
-				.findViewById(R.id.title);
-		setBarTitle(getTitle());
+        mCustomActionBarTitleView = (TextView) mCustomActionBarView.findViewById(R.id.title);
+        setBarTitle(getTitle());
 
         mMainMenu = getSlidingMenu();
         mMainMenu.setMode(SlidingMenu.LEFT);
@@ -153,22 +142,21 @@ public class BaseActivity extends SlidingFragmentActivity {
 
         mMainView = findViewById(R.id.mainView);
 
-		enableHttpResponseCache();
+        enableHttpResponseCache();
     }
 
     @Override
-    public void onDestroy()
-    {
+    public void onDestroy() {
         super.onDestroy();
         BugSenseHandler.closeSession(this);
     }
 
     @Override
     protected void onResume() {
-		getNews();
-		getAgenda();
+        getNews();
+        getAgenda();
 
-		super.onResume();
+        super.onResume();
     }
 
     private void enableHttpResponseCache() {
@@ -176,369 +164,371 @@ public class BaseActivity extends SlidingFragmentActivity {
             long httpCacheSize = 10 * 1024 * 1024; // 10 MiB
             File httpCacheDir = new File(getCacheDir(), "http");
             Class.forName("android.net.http.HttpResponseCache")
-                .getMethod("install", File.class, long.class)
-                .invoke(null, httpCacheDir, httpCacheSize);
+                    .getMethod("install", File.class, long.class)
+                    .invoke(null, httpCacheDir, httpCacheSize);
         } catch (Exception httpResponseCacheNotAvailable) {
         }
     }
 
     GetJSONHandler mNewsJSONHandler = new GetJSONHandler() {
-		@Override
-		public void handle(JSONObject json) {
-			getNewsItems(json);
-			if (mNewsFragment != null) {
-				mNewsFragment.networkRefresh();
-			}
-		}
-		
-		@Override public void failed() {}
-	};
+        @Override
+        public void handle(JSONObject json) {
+            getNewsItems(json);
+            if (mNewsFragment != null) {
+                mNewsFragment.networkRefresh();
+            }
+        }
+
+        @Override
+        public void failed() {
+        }
+    };
 
     protected void getNews() {
-    	String urlString = getString(R.string.url_news);
-    	String fname = url2filename(urlString);
-		File flocal = new File(mContext.getFilesDir(), fname);
-		if (flocal.exists()) {
-			try {
-				FileInputStream is = mContext.openFileInput(fname);
-				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-				StringBuilder builder = new StringBuilder();
-				for (String line = null; (line = reader.readLine()) != null;) {
-					builder.append(line).append("\n");
-				}
-				String str = builder.toString();
-				JSONTokener tokener = new JSONTokener(str);
-				JSONObject json = new JSONObject(tokener);
-				mNewsJSONHandler.handle(json);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-			} catch (JSONException e) {
-				e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-			}
-		}
+        String urlString = getString(R.string.url_news);
+        String fname = url2filename(urlString);
+        File flocal = new File(mContext.getFilesDir(), fname);
+        if (flocal.exists()) {
+            try {
+                FileInputStream is = mContext.openFileInput(fname);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                StringBuilder builder = new StringBuilder();
+                for (String line = null; (line = reader.readLine()) != null;) {
+                    builder.append(line).append("\n");
+                }
+                String str = builder.toString();
+                JSONTokener tokener = new JSONTokener(str);
+                JSONObject json = new JSONObject(tokener);
+                mNewsJSONHandler.handle(json);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+            }
+        }
 
-		// and now spawn a network task to fetch the latest one
+        // and now spawn a network task to fetch the latest one
         new HttpGetJSONTask(mNewsJSONHandler).execute(new HttpGet(urlString));
     }
 
     GetJSONHandler mAgendaJSONHandler = new GetJSONHandler() {
-		@Override
-		public void handle(JSONObject json) {
-			getSpeakers(json);
-			if (mSpeakersFragment != null) {
-				mSpeakersFragment.networkRefresh();
-			}
+        @Override
+        public void handle(JSONObject json) {
+            getSpeakers(json);
+            if (mSpeakersFragment != null) {
+                mSpeakersFragment.networkRefresh();
+            }
 
-			getAgendaItems(json);
-			if (mAgendaFragment != null) {
-				mAgendaFragment.networkRefresh();
-			}
-		}
-		
-		@Override public void failed() {}
-	};
+            getAgendaItems(json);
+            if (mAgendaFragment != null) {
+                mAgendaFragment.networkRefresh();
+            }
+        }
+
+        @Override
+        public void failed() {
+        }
+    };
 
     protected void getAgenda() {
-    	String urlString = getString(R.string.url_agenda);
-    	String fname = url2filename(urlString);
-		File flocal = new File(mContext.getFilesDir(), fname);
-		if (flocal.exists()) {
-			try {
-				FileInputStream is = mContext.openFileInput(fname);
-				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-				StringBuilder builder = new StringBuilder();
-				for (String line = null; (line = reader.readLine()) != null;) {
-					builder.append(line).append("\n");
-				}
-				String str = builder.toString();
-				JSONTokener tokener = new JSONTokener(str);
-				JSONObject json = new JSONObject(tokener);
-				mAgendaJSONHandler.handle(json);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-			} catch (JSONException e) {
-				e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-			}
-		}
+        String urlString = getString(R.string.url_agenda);
+        String fname = url2filename(urlString);
+        File flocal = new File(mContext.getFilesDir(), fname);
+        if (flocal.exists()) {
+            try {
+                FileInputStream is = mContext.openFileInput(fname);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                StringBuilder builder = new StringBuilder();
+                for (String line = null; (line = reader.readLine()) != null;) {
+                    builder.append(line).append("\n");
+                }
+                String str = builder.toString();
+                JSONTokener tokener = new JSONTokener(str);
+                JSONObject json = new JSONObject(tokener);
+                mAgendaJSONHandler.handle(json);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+            }
+        }
 
-		// and now spawn a network task to fetch the latest one
+        // and now spawn a network task to fetch the latest one
         new HttpGetJSONTask(mAgendaJSONHandler).execute(new HttpGet(urlString));
     }
 
-	public static String url2filename(String urlString) {
-		return Base64.encodeToString(urlString.getBytes(), Base64.DEFAULT);
-	}
+    public static String url2filename(String urlString) {
+        return Base64.encodeToString(urlString.getBytes(), Base64.DEFAULT);
+    }
 
     public interface GetJSONHandler {
-    	public void handle(JSONObject json);
-    	public void failed();
+        public void handle(JSONObject json);
+
+        public void failed();
     }
 
-	public static class HttpGetJSONTask extends
-			AsyncTask<HttpUriRequest, Void, JSONObject> {
-		private static final String TAG = "EURUKO2013";
+    public static class HttpGetJSONTask extends AsyncTask<HttpUriRequest, Void, JSONObject> {
+        private static final String TAG = "EURUKO2013";
 
-		private GetJSONHandler mGetJSONHandler;
+        private GetJSONHandler mGetJSONHandler;
 
-		public HttpGetJSONTask(GetJSONHandler handler) {
-			mGetJSONHandler = handler;
-		}
+        public HttpGetJSONTask(GetJSONHandler handler) {
+            mGetJSONHandler = handler;
+        }
 
-		@Override
-		protected JSONObject doInBackground(HttpUriRequest... params) {
-			HttpUriRequest request = params[0];
-			String fname = url2filename(request.getURI().toString());
+        @Override
+        protected JSONObject doInBackground(HttpUriRequest... params) {
+            HttpUriRequest request = params[0];
+            String fname = url2filename(request.getURI().toString());
 
-			try {
-				BufferedReader reader = null;
+            try {
+                BufferedReader reader = null;
 
-				HttpClient client = new DefaultHttpClient();
-				HttpResponse response = client.execute(request);
+                HttpClient client = new DefaultHttpClient();
+                HttpResponse response = client.execute(request);
 
-				if (response.getStatusLine().getStatusCode() == 200) {
-					reader = new BufferedReader(new InputStreamReader(response
-							.getEntity().getContent(), "UTF-8"));
-				} else {
-					// TODO handle bad response codes (such as 404, etc)
-					
-					try {
-						FileInputStream is = mContext.openFileInput(fname);
-						reader = new BufferedReader(new InputStreamReader(is));
-					} catch (FileNotFoundException e) {
-						// ok, file does not exist locally either so, return
-						return null;
-					}
-				}
+                if (response.getStatusLine().getStatusCode() == 200) {
+                    reader = new BufferedReader(new InputStreamReader(response.getEntity()
+                            .getContent(), "UTF-8"));
+                } else {
+                    // TODO handle bad response codes (such as 404, etc)
 
-				StringBuilder builder = new StringBuilder();
-				for (String line = null; (line = reader.readLine()) != null;) {
-					builder.append(line).append("\n");
-				}
-				String str = builder.toString();
+                    try {
+                        FileInputStream is = mContext.openFileInput(fname);
+                        reader = new BufferedReader(new InputStreamReader(is));
+                    } catch (FileNotFoundException e) {
+                        // ok, file does not exist locally either so, return
+                        return null;
+                    }
+                }
 
-				FileOutputStream os = mContext.openFileOutput(fname,
-						MODE_PRIVATE);
-				os.write(str.getBytes());
-				os.close();
+                StringBuilder builder = new StringBuilder();
+                for (String line = null; (line = reader.readLine()) != null;) {
+                    builder.append(line).append("\n");
+                }
+                String str = builder.toString();
 
-				JSONTokener tokener = new JSONTokener(str);
-				JSONObject json = new JSONObject(tokener);
-				return json;
+                FileOutputStream os = mContext.openFileOutput(fname, MODE_PRIVATE);
+                os.write(str.getBytes());
+                os.close();
 
-			} catch (Exception e) {
-				Log.e(TAG, e.toString());
-				e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-				return null;
-			}
-		}
+                JSONTokener tokener = new JSONTokener(str);
+                JSONObject json = new JSONObject(tokener);
+                return json;
 
-		@Override
-		protected void onPostExecute(JSONObject jsonObject) {
-			// Done on UI Thread
-			if (jsonObject != null) {
-				mGetJSONHandler.handle(jsonObject);
-			} else {
-				mGetJSONHandler.failed();
-			}
-		}
-	}
+            } catch (Exception e) {
+                Log.e(TAG, e.toString());
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject jsonObject) {
+            // Done on UI Thread
+            if (jsonObject != null) {
+                mGetJSONHandler.handle(jsonObject);
+            } else {
+                mGetJSONHandler.failed();
+            }
+        }
+    }
 
     public interface GetDrawableHandler {
-    	public void handle(Drawable drawable);
-    	public void failed();
+        public void handle(Drawable drawable);
+
+        public void failed();
     }
 
-	public static class HttpGetDrawableTask extends
-			AsyncTask<HttpUriRequest, Void, Drawable> {
-		private static final String TAG = "EURUKO2013";
+    public static class HttpGetDrawableTask extends AsyncTask<HttpUriRequest, Void, Drawable> {
+        private static final String TAG = "EURUKO2013";
 
-		private GetDrawableHandler mGetDrawableHandler;
+        private GetDrawableHandler mGetDrawableHandler;
 
-		public HttpGetDrawableTask(GetDrawableHandler handler) {
-			mGetDrawableHandler = handler;
-		}
+        public HttpGetDrawableTask(GetDrawableHandler handler) {
+            mGetDrawableHandler = handler;
+        }
 
-		@Override
-		protected Drawable doInBackground(HttpUriRequest... params) {
-			HttpUriRequest request = params[0];
-			String fname = url2filename(request.getURI().toString());
+        @Override
+        protected Drawable doInBackground(HttpUriRequest... params) {
+            HttpUriRequest request = params[0];
+            String fname = url2filename(request.getURI().toString());
 
-			try {
-				FileInputStream is = mContext.openFileInput(fname);
-		        Drawable drawable = Drawable.createFromStream(is, "srcName");
-		        Log.i("erk13", "Found it locally!");
-		        return drawable;
-			} catch (FileNotFoundException e) {
-				// ok, file does not exist locally so, will continue and fetch it
-			}
+            try {
+                FileInputStream is = mContext.openFileInput(fname);
+                Drawable drawable = Drawable.createFromStream(is, "srcName");
+                Log.i("erk13", "Found it locally!");
+                return drawable;
+            } catch (FileNotFoundException e) {
+                // ok, file does not exist locally so, will continue and fetch
+                // it
+            }
 
-			HttpClient client = new DefaultHttpClient();
+            HttpClient client = new DefaultHttpClient();
 
-			try {
-				HttpResponse response = client.execute(request);
+            try {
+                HttpResponse response = client.execute(request);
 
-				// TODO handle bad response codes (such as 404, etc)
+                // TODO handle bad response codes (such as 404, etc)
 
-				InputStream is = (InputStream) response.getEntity().getContent();
-		        Bitmap bitmap = BitmapFactory.decodeStream(is);
-		        @SuppressWarnings("deprecation")
-				Drawable drawable = new BitmapDrawable(bitmap);
+                InputStream is = (InputStream) response.getEntity().getContent();
+                Bitmap bitmap = BitmapFactory.decodeStream(is);
+                @SuppressWarnings("deprecation")
+                Drawable drawable = new BitmapDrawable(bitmap);
 
-		        FileOutputStream os = mContext.openFileOutput(fname, MODE_PRIVATE);
-		        bitmap.compress(CompressFormat.PNG, 95, os);
-		        os.close();
+                FileOutputStream os = mContext.openFileOutput(fname, MODE_PRIVATE);
+                bitmap.compress(CompressFormat.PNG, 95, os);
+                os.close();
 
-		        return drawable;
+                return drawable;
 
-			} catch (Exception e) {
-				Log.e(TAG, e.toString());
-				e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-				return null;
-			}
-		}
+            } catch (Exception e) {
+                Log.e(TAG, e.toString());
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+                return null;
+            }
+        }
 
-		@Override
-		protected void onPostExecute(Drawable drawable) {
-			// Done on UI Thread
-			if (drawable != null) {
-				mGetDrawableHandler.handle(drawable);
-			} else {
-				mGetDrawableHandler.failed();
-			}
+        @Override
+        protected void onPostExecute(Drawable drawable) {
+            // Done on UI Thread
+            if (drawable != null) {
+                mGetDrawableHandler.handle(drawable);
+            } else {
+                mGetDrawableHandler.failed();
+            }
 
-//			mActivityIndicator.post(new Runnable() {
-//				@Override
-//				public void run() {
-//					mActivityIndicator.setVisibility(View.INVISIBLE);
-//				}
-//			});
-		}
-	}
+            // mActivityIndicator.post(new Runnable() {
+            // @Override
+            // public void run() {
+            // mActivityIndicator.setVisibility(View.INVISIBLE);
+            // }
+            // });
+        }
+    }
 
     @Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
-		FragmentManager fm = getSupportFragmentManager();
-		Fragment f = fm.findFragmentByTag(sCurrentFragmentTag);
-		if (f != null) {
-			fm.putFragment(outState, sCurrentFragmentTag, f);
-		}
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment f = fm.findFragmentByTag(sCurrentFragmentTag);
+        if (f != null) {
+            fm.putFragment(outState, sCurrentFragmentTag, f);
+        }
 
-		outState.putString("currentSpeakerId", currentSpeakerId);
-		outState.putInt("currentSpeechPosition", currentSpeechPosition);
-		outState.putString("currentURLString", currentURLString);
-	}
-	
-	public void showContent(Fragment fragment) {
-		getSupportFragmentManager()
-		.beginTransaction()
-		.setCustomAnimations(R.anim.fadein, R.anim.fadeout)
-		.replace(R.id.main_content, fragment, sCurrentFragmentTag)
-		.addToBackStack(null)
-		.commit();
-		getSlidingMenu().showContent();
-	}
-
-	public void showDetails(Fragment fragment) {
-		if (!mDualPane) {
-			showContent(fragment);
-			return;
-		}
-
-//		mCurrentDetailsFragment = fragment;
-//		getSupportFragmentManager()
-//		.beginTransaction()
-//		.setCustomAnimations(R.anim.fadein, R.anim.fadeout)
-//		.replace(R.id.main_details, fragment)
-//		.addToBackStack(null)
-//		.commit();
-	}
-
-    protected void setBarTitle(CharSequence title) {
-    	setTitle(title);
-    	mCustomActionBarTitleView.setText(title);
+        outState.putString("currentSpeakerId", currentSpeakerId);
+        outState.putInt("currentSpeechPosition", currentSpeechPosition);
+        outState.putString("currentURLString", currentURLString);
     }
 
-//    protected Runnable mDelayedLoad = new Runnable() {
-//		@Override
-//		public void run() {
-//			final Markers markers = new Markers(BaseActivity.this,
-//					R.drawable.ruby_marker, mViewMap);
-//			markers.add("Badminton Theater", "The EuRuKo2013 venue!",
-//					37.986067f, 23.774682f, new Runnable() {
-//						@Override
-//						public void run() {
-//							Intent browserIntent = new Intent(
-//									Intent.ACTION_VIEW,
-//									Uri.parse("http://euruko2013.org/#venue"));
-//							mContext.startActivity(browserIntent);
-//						}
-//					});
-//	        mViewMap.setBuiltInZoomControls(true);
-//	        mViewMap.getOverlays().add(markers);
-//
-//	        ((TapControlledMapView) mViewMap)
-//			    .setOnSingleTapListener(new OnSingleTapListener() {
-//			        @Override
-//			        public boolean onSingleTap(MotionEvent e) {
-//			            markers.hideAllBalloons();
-//			            return true;
-//			        }
-//			    });
-//
-//	        getSpeakers();
-//
-//		}
-//	};
+    public void showContent(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.fadein, R.anim.fadeout)
+                .replace(R.id.main_content, fragment, sCurrentFragmentTag).addToBackStack(null)
+                .commit();
+        getSlidingMenu().showContent();
+    }
+
+    public void showDetails(Fragment fragment) {
+        if (!mDualPane) {
+            showContent(fragment);
+            return;
+        }
+
+        // mCurrentDetailsFragment = fragment;
+        // getSupportFragmentManager()
+        // .beginTransaction()
+        // .setCustomAnimations(R.anim.fadein, R.anim.fadeout)
+        // .replace(R.id.main_details, fragment)
+        // .addToBackStack(null)
+        // .commit();
+    }
+
+    protected void setBarTitle(CharSequence title) {
+        setTitle(title);
+        mCustomActionBarTitleView.setText(title);
+    }
+
+    // protected Runnable mDelayedLoad = new Runnable() {
+    // @Override
+    // public void run() {
+    // final Markers markers = new Markers(BaseActivity.this,
+    // R.drawable.ruby_marker, mViewMap);
+    // markers.add("Badminton Theater", "The EuRuKo2013 venue!",
+    // 37.986067f, 23.774682f, new Runnable() {
+    // @Override
+    // public void run() {
+    // Intent browserIntent = new Intent(
+    // Intent.ACTION_VIEW,
+    // Uri.parse("http://euruko2013.org/#venue"));
+    // mContext.startActivity(browserIntent);
+    // }
+    // });
+    // mViewMap.setBuiltInZoomControls(true);
+    // mViewMap.getOverlays().add(markers);
+    //
+    // ((TapControlledMapView) mViewMap)
+    // .setOnSingleTapListener(new OnSingleTapListener() {
+    // @Override
+    // public boolean onSingleTap(MotionEvent e) {
+    // markers.hideAllBalloons();
+    // return true;
+    // }
+    // });
+    //
+    // getSpeakers();
+    //
+    // }
+    // };
 
     public void onMainMenuClick(View view) {
-        switch(view.getId()) {
+        switch (view.getId()) {
         case R.id.menuNews:
-        	if (mNewsFragment == null) {
-        		mNewsFragment = new NewsFragment();
-        	}
-        	showContent(mNewsFragment);
+            if (mNewsFragment == null) {
+                mNewsFragment = new NewsFragment();
+            }
+            showContent(mNewsFragment);
             break;
         case R.id.menuCalendar:
-        	if (mAgendaFragment == null) {
-        		mAgendaFragment = new AgendaFragment();
-        	}
-        	showContent(mAgendaFragment);
+            if (mAgendaFragment == null) {
+                mAgendaFragment = new AgendaFragment();
+            }
+            showContent(mAgendaFragment);
             break;
         case R.id.menuSpeakers:
-        	if (mSpeakersFragment == null) {
-        		mSpeakersFragment = new SpeakersFragment();
-        	}
-        	showContent(mSpeakersFragment);
+            if (mSpeakersFragment == null) {
+                mSpeakersFragment = new SpeakersFragment();
+            }
+            showContent(mSpeakersFragment);
             break;
         case R.id.menuTwitter:
-        	if (mTwitterFragment == null) {
-        		mTwitterFragment = new TwitterFragment();
-        	}
-        	showContent(mTwitterFragment);
+            if (mTwitterFragment == null) {
+                mTwitterFragment = new TwitterFragment();
+            }
+            showContent(mTwitterFragment);
             break;
         case R.id.menuMap:
-        	if (mMapFragment == null) {
-        		mMapFragment = new MapFragment();
-        	}
-        	showContent(mMapFragment);
+            if (mMapFragment == null) {
+                mMapFragment = new MapFragment();
+            }
+            showContent(mMapFragment);
             break;
         case R.id.menuAbout:
-        	if (mAboutFragment == null) {
-        		mAboutFragment = new AboutFragment();
-        	}
-        	showContent(mAboutFragment);
+            if (mAboutFragment == null) {
+                mAboutFragment = new AboutFragment();
+            }
+            showContent(mAboutFragment);
             break;
         }
 
@@ -546,19 +536,19 @@ public class BaseActivity extends SlidingFragmentActivity {
     }
 
     public void onGaiaMenuClick(View view) {
-    	if (mAboutFragment == null) {
-    		mAboutFragment = new AboutFragment();
-    	}
-    	showContent(mAboutFragment);
+        if (mAboutFragment == null) {
+            mAboutFragment = new AboutFragment();
+        }
+        showContent(mAboutFragment);
         mMainMenu.showContent();
     }
 
     private static List<Speaker> getSpeakers(JSONObject speakersJSONObject) {
-    	sSpeakers = new ArrayList<Speaker>();
+        sSpeakers = new ArrayList<Speaker>();
 
-    	if (speakersJSONObject == null) {
-    		return sSpeakers;
-    	}
+        if (speakersJSONObject == null) {
+            return sSpeakers;
+        }
 
         try {
             JSONArray speakersJSON = speakersJSONObject.getJSONArray("speakers");
@@ -574,24 +564,24 @@ public class BaseActivity extends SlidingFragmentActivity {
         return sSpeakers;
     }
 
-//    private static List<Speaker> getSpeakers() {
-//    	JSONObject jsonObject = null;
-//		try {
-//			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
-//		} catch (JSONException e) {
-//			e.printStackTrace();
-//            BugSenseHandler.sendException(e);
-//		}
-//
-//		return getSpeakers(jsonObject);
-//    }
+    // private static List<Speaker> getSpeakers() {
+    // JSONObject jsonObject = null;
+    // try {
+    // jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
+    // } catch (JSONException e) {
+    // e.printStackTrace();
+    // BugSenseHandler.sendException(e);
+    // }
+    //
+    // return getSpeakers(jsonObject);
+    // }
 
     private static List<AgendaItem> getAgendaItems(JSONObject agendaJSONObject) {
-    	sSpeeches = new ArrayList<AgendaItem>();
+        sSpeeches = new ArrayList<AgendaItem>();
 
-    	if (agendaJSONObject == null) {
-    		return sSpeeches;
-    	}
+        if (agendaJSONObject == null) {
+            return sSpeeches;
+        }
 
         try {
             JSONArray agendaJSON = agendaJSONObject.getJSONArray("agenda");
@@ -607,25 +597,25 @@ public class BaseActivity extends SlidingFragmentActivity {
         return BaseActivity.sSpeeches;
     }
 
-//    private static List<AgendaItem> getAgendaItems() {
-//    	JSONObject jsonObject = null;
-//
-//    	try {
-//			jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//            BugSenseHandler.sendException(e);
-//        }
-//
-//        return getAgendaItems(jsonObject);
-//    }
+    // private static List<AgendaItem> getAgendaItems() {
+    // JSONObject jsonObject = null;
+    //
+    // try {
+    // jsonObject = new JSONObject(Utils.JSON.readAsset("agenda.json"));
+    // } catch (JSONException e) {
+    // e.printStackTrace();
+    // BugSenseHandler.sendException(e);
+    // }
+    //
+    // return getAgendaItems(jsonObject);
+    // }
 
     private static List<NewsRecord> getNewsItems(JSONObject newsJSONObject) {
-    	sNews = new ArrayList<NewsRecord>();
+        sNews = new ArrayList<NewsRecord>();
 
-    	if (newsJSONObject == null) {
-    		return BaseActivity.sNews;
-    	}
+        if (newsJSONObject == null) {
+            return BaseActivity.sNews;
+        }
 
         try {
             JSONArray newsJSON = newsJSONObject.getJSONArray("news");
@@ -641,24 +631,24 @@ public class BaseActivity extends SlidingFragmentActivity {
         return sNews;
     }
 
-//    private static List<NewsRecord> getNewsItems() {
-//    	JSONObject jsonObject = null;
-//
-//        try {
-//			jsonObject = new JSONObject(Utils.JSON.readAsset("news.json"));
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//            BugSenseHandler.sendException(e);
-//        }
-//
-//        return getNewsItems(jsonObject);
-//    }
+    // private static List<NewsRecord> getNewsItems() {
+    // JSONObject jsonObject = null;
+    //
+    // try {
+    // jsonObject = new JSONObject(Utils.JSON.readAsset("news.json"));
+    // } catch (JSONException e) {
+    // e.printStackTrace();
+    // BugSenseHandler.sendException(e);
+    // }
+    //
+    // return getNewsItems(jsonObject);
+    // }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case android.R.id.home:
-    		toggle();
+            toggle();
             return true;
         }
 
@@ -678,17 +668,17 @@ public class BaseActivity extends SlidingFragmentActivity {
     }
 
     public void viewSpeaker(String id) {
-    	currentSpeakerId = id;
-    	showDetails(new SpeakerFragment());
+        currentSpeakerId = id;
+        showDetails(new SpeakerFragment());
     }
 
     public void viewSpeech(int position) {
-    	currentSpeechPosition = position;
-    	showDetails(new SpeechFragment());
+        currentSpeechPosition = position;
+        showDetails(new SpeechFragment());
     }
 
     public void viewURL(String urlString) {
-    	currentURLString = urlString;
-    	showDetails(new WebviewFragment());
+        currentURLString = urlString;
+        showDetails(new WebviewFragment());
     }
 }

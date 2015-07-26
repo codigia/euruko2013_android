@@ -5,29 +5,30 @@
     android:layout_height="wrap_content"
     android:background="@color/mainback" >
 
-	<LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:orientation="horizontal"
-	    android:background="@color/mainback"
-	    android:weightSum="3"
-	    android:baselineAligned="false" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mainback"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="3" >
 
-	    <FrameLayout
-	        android:id="@+id/main_content"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:layout_weight="2" />
+        <FrameLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
 
-<!-- 	    <FrameLayout
+        <!--
+     	    <FrameLayout
 	        android:id="@+id/main_details"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1" />
- -->
-	</LinearLayout>
+        -->
+    </LinearLayout>
 
-	<View
+    <View
         android:id="@+id/shadowTop"
         android:layout_width="match_parent"
         android:layout_height="5dp"

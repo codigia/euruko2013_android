@@ -10,22 +10,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true" >
-    	
-    	<RelativeLayout
-    	    android:id="@+id/whole"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
-                android:paddingTop="10dp" >
-    	
-    	    <ImageView
-    	        android:id="@+id/profilePic"
-    	        android:layout_width="128dp"
-    	        android:layout_height="128dp"
-    	        android:layout_alignParentTop="true"
+
+        <RelativeLayout
+            android:id="@+id/whole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp" >
+
+            <ImageView
+                android:id="@+id/profilePic"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-    	        android:scaleType="centerCrop"
-    	        android:src="@drawable/placeholder" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder" />
 
             <ImageView
                 android:id="@+id/profilePicMask"
@@ -38,8 +38,8 @@
             <View
                 android:layout_width="138dp"
                 android:layout_height="138dp"
-                android:layout_marginBottom="5dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/circle_border" />
 
             <com.codigia.euruko2013.TextViewCustomFont
@@ -47,13 +47,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="-5dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="-5dp"
                 android:layout_toRightOf="@+id/profilePic"
                 android:gravity="right"
                 android:text="Ľ"
-                android:textSize="@dimen/text_size_github"
                 android:textColor="@color/profile_link_text"
+                android:textSize="@dimen/text_size_github"
                 android:visibility="gone"
                 erk13:customFont="sosa-regular-webfont.ttf" >
             </com.codigia.euruko2013.TextViewCustomFont>
@@ -63,47 +63,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
                 android:layout_toLeftOf="@+id/profilePic"
                 android:gravity="left"
                 android:text="t"
-                android:textSize="@dimen/text_size_twitter"
                 android:textColor="@color/profile_link_text"
+                android:textSize="@dimen/text_size_twitter"
                 android:visibility="gone"
                 erk13:customFont="sosa-regular-webfont.ttf" >
             </com.codigia.euruko2013.TextViewCustomFont>
 
             <TextView
-    	        android:id="@+id/speakerTitle"
-    	        android:layout_width="match_parent"
-    	        android:layout_height="46dp"
-    	        android:layout_below="@+id/profilePic"
-    	        android:layout_marginTop="10dp"
-    	        android:gravity="center"
-    	        android:paddingLeft="25dp"
-    	        android:paddingRight="25dp"
-    	        android:text="TextView"
-    	        android:textColor="#888888"
-    	        android:textSize="@dimen/text_size_title"
-    	        android:textStyle="bold|italic" />
-    
-    	    <TextView
-    	        android:id="@+id/speakerBio"
-    	        android:layout_width="match_parent"
-    	        android:layout_height="wrap_content"
-    	        android:layout_below="@+id/speakerTitle"
+                android:id="@+id/speakerTitle"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_below="@+id/profilePic"
                 android:layout_marginTop="10dp"
-    	        android:gravity="left"
-    	        android:paddingLeft="25dp"
-    	        android:paddingRight="25dp"
+                android:gravity="center"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:text="TextView"
+                android:textColor="#888888"
+                android:textSize="@dimen/text_size_title"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/speakerBio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/speakerTitle"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
                 android:paddingBottom="50dp"
-    	        android:text="TextView"
-    	        android:textColor="#888888"
-    	        android:textSize="@dimen/text_size_verbage" />
-    
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:text="TextView"
+                android:textColor="#888888"
+                android:textSize="@dimen/text_size_verbage" />
         </RelativeLayout>
     </ScrollView>
 
 </RelativeLayout>
-

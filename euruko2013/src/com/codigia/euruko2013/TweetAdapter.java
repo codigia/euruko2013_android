@@ -24,35 +24,33 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class TweetAdapter extends ArrayAdapter<MyTweet> implements
-		OnItemClickListener {
+public class TweetAdapter extends ArrayAdapter<MyTweet> implements OnItemClickListener {
 
     static final int resId = R.layout.tweet;
     private TwitterFragment mTwitterFragment;
     private List<MyTweet> mTweets;
 
-	public TweetAdapter(TwitterFragment twitterFragment,
-			ArrayList<MyTweet> tweets) {
-            super(twitterFragment.getActivity(), resId, tweets);
-            mTwitterFragment = twitterFragment;
-            mTweets = tweets;
+    public TweetAdapter(TwitterFragment twitterFragment, ArrayList<MyTweet> tweets) {
+        super(twitterFragment.getActivity(), resId, tweets);
+        mTwitterFragment = twitterFragment;
+        mTweets = tweets;
     }
 
     @Override
     public boolean isEnabled(int position) {
         return false;
     };
-    
+
     @Override
     public int getItemViewType(int position) {
         return 1;
     };
-    
+
     @Override
     public int getViewTypeCount() {
         return 1;
     };
-    
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final MyTweet r = mTweets.get(position);
@@ -60,26 +58,26 @@ public class TweetAdapter extends ArrayAdapter<MyTweet> implements
         final Context ctx = mTwitterFragment.getActivity();
 
         if (r == null) {
-	        LayoutInflater vi = (LayoutInflater) ctx
-	            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	        return vi.inflate(R.layout.tweet_rate_exceeded, null);
-	    }
+            LayoutInflater vi = (LayoutInflater) ctx
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            return vi.inflate(R.layout.tweet_rate_exceeded, null);
+        }
 
         View v = convertView;
 
         int rid = resId;
         if (r.tweet == null) {
-        	rid = R.layout.tweet_loading;
+            rid = R.layout.tweet_loading;
         }
 
-		if (convertView != null && convertView.getTag() != null
-				&& ((Integer) convertView.getTag()) != rid) {
-    		v = null; // to make it inflate a new one
-    	}
+        if (convertView != null && convertView.getTag() != null
+                && ((Integer) convertView.getTag()) != rid) {
+            v = null; // to make it inflate a new one
+        }
 
-		if (v == null) {
-			LayoutInflater vi = (LayoutInflater) ctx
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (v == null) {
+            LayoutInflater vi = (LayoutInflater) ctx
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(rid, null);
         }
 
@@ -89,40 +87,39 @@ public class TweetAdapter extends ArrayAdapter<MyTweet> implements
             TextView tt = (TextView) v.findViewById(R.id.title);
             TextView su = (TextView) v.findViewById(R.id.summary);
             if (tt != null) {
-                  tt.setText(r.tweet.getUser().getName());
+                tt.setText(r.tweet.getUser().getName());
             }
-            
+
             StringBuilder sb = new StringBuilder(r.tweet.getText());
-            
+
             URLEntity[] urls = r.tweet.getURLEntities();
-            for(URLEntity url : urls) {
+            for (URLEntity url : urls) {
                 String u = url.getURL().toString();
                 sb.replace(url.getStart(), url.getEnd(), "<a href=\"" + u + "\">" + u + "</a>");
             }
-            
-            if(su != null) {
+
+            if (su != null) {
                 su.setText(Html.fromHtml(sb.toString()));
                 su.setMovementMethod(LinkMovementMethod.getInstance());
             }
-            
-			final ImageView profilePic = (ImageView) v
-					.findViewById(R.id.profilePic);
+
+            final ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
             if (profilePic != null) {
                 profilePic.setImageResource(R.drawable.placeholder);
-            	profilePic.setVisibility(View.INVISIBLE);
+                profilePic.setVisibility(View.INVISIBLE);
 
-				r.fetchProfilePicture(new GetDrawableHandler() {
-					@Override
-					public void handle(Drawable drawable) {
-						profilePic.setImageDrawable(drawable);
-						profilePic.setVisibility(View.VISIBLE);
-					}
+                r.fetchProfilePicture(new GetDrawableHandler() {
+                    @Override
+                    public void handle(Drawable drawable) {
+                        profilePic.setImageDrawable(drawable);
+                        profilePic.setVisibility(View.VISIBLE);
+                    }
 
-					@Override
-					public void failed() {
-					}
-				});
-                
+                    @Override
+                    public void failed() {
+                    }
+                });
+
                 profilePic.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -133,13 +130,12 @@ public class TweetAdapter extends ArrayAdapter<MyTweet> implements
                 });
             }
         } else {
-        	mTwitterFragment.new TwitterTask().execute();
+            mTwitterFragment.new TwitterTask().execute();
         }
         return v;
     }
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-	}
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    }
 }

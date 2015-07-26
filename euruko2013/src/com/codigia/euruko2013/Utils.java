@@ -20,88 +20,90 @@ import android.widget.ListView;
 
 public class Utils {
 
-	public static class JSON {
-		public static Long getLong(JSONObject json, String name) {
-			try {
-				if (json.has(name)) return (Long) json.getLong(name);
-			} catch (JSONException e) {
-				e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-			}
+    public static class JSON {
+        public static Long getLong(JSONObject json, String name) {
+            try {
+                if (json.has(name)) {
+                    return (Long) json.getLong(name);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+            }
 
-			return null;
-		}
+            return null;
+        }
 
-		public static String getString(JSONObject json, String name) {
-			try {
-				if (json.has(name)) return json.getString(name);
-			} catch (JSONException e) {
-				e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-			}
+        public static String getString(JSONObject json, String name) {
+            try {
+                if (json.has(name)) {
+                    return json.getString(name);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+            }
 
-			return null;
-		}
+            return null;
+        }
 
-		public static String readAsset(String filename) {
-	        InputStream is = BaseActivity.class.getClassLoader()
-	                .getResourceAsStream("assets/" + filename);
-	        Writer writer = new StringWriter();
-	        char[] buffer = new char[1024];
-	        try {
-	            Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-	            int n;
-	            while ((n = reader.read(buffer)) != -1) {
-	                writer.write(buffer, 0, n);
-	            }
-	        } catch (UnsupportedEncodingException e) {
-	            e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	            BugSenseHandler.sendException(e);
-	        } finally {
-	            try {
-	                is.close();
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
+        public static String readAsset(String filename) {
+            InputStream is = BaseActivity.class.getClassLoader().getResourceAsStream(
+                    "assets/" + filename);
+            Writer writer = new StringWriter();
+            char[] buffer = new char[1024];
+            try {
+                Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+                int n;
+                while ((n = reader.read(buffer)) != -1) {
+                    writer.write(buffer, 0, n);
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+            } catch (IOException e) {
+                e.printStackTrace();
+                BugSenseHandler.sendException(e);
+            } finally {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
-	        return writer.toString();
-	    }
-	}
+            return writer.toString();
+        }
+    }
 
-	public static class UI {
-		protected static void ensureIntoViewLi(final ListView listView,
-				final int position) {
-			listView.smoothScrollToPosition(position, position);
-			listView.post(new Runnable() {
-				@Override
-				public void run() {
-					listView.smoothScrollToPosition(position, position + 1);
-				}
-			});
-		}
+    public static class UI {
+        protected static void ensureIntoViewLi(final ListView listView, final int position) {
+            listView.smoothScrollToPosition(position, position);
+            listView.post(new Runnable() {
+                @Override
+                public void run() {
+                    listView.smoothScrollToPosition(position, position + 1);
+                }
+            });
+        }
 
-		protected static void ensureIntoViewHor(final HorizontalListView listView,
-				final int position) {
-			listView.scrollTo(position);
-			listView.post(new Runnable() {
-				@Override
-				public void run() {
-					listView.scrollTo(position + 1);
-				}
-			});
-		}
+        protected static void ensureIntoViewHor(final HorizontalListView listView,
+                final int position) {
+            listView.scrollTo(position);
+            listView.post(new Runnable() {
+                @Override
+                public void run() {
+                    listView.scrollTo(position + 1);
+                }
+            });
+        }
 
-		public static void ensureIntoView(final AdapterView<?> listView,
-				final int position) {
-			if (listView instanceof ListView) {
-				ensureIntoViewLi((ListView) listView, position);
-			} else if (listView instanceof HorizontalListView) {
-				ensureIntoViewHor((HorizontalListView) listView, position);
-			}
-		}
-	}
+        public static void ensureIntoView(final AdapterView<?> listView, final int position) {
+            if (listView instanceof ListView) {
+                ensureIntoViewLi((ListView) listView, position);
+            } else if (listView instanceof HorizontalListView) {
+                ensureIntoViewHor((HorizontalListView) listView, position);
+            }
+        }
+    }
 }

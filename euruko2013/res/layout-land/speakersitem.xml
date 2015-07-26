@@ -10,77 +10,77 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp" >
 
-	    <RelativeLayout
-	        android:id="@+id/innerContainer"
-	        android:layout_width="match_parent"
+        <RelativeLayout
+            android:id="@+id/innerContainer"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/shadowBottom"
-	        android:paddingLeft="10dp"
-	        android:paddingTop="10dp"
-	        android:paddingBottom="10dp"
-	        android:clipChildren="true"
-	        android:clipToPadding="true"
-	        android:background="@color/card" >
-	
-	        <ImageView
-	            android:id="@+id/profilePic"
-	            android:layout_width="86dp"
-	            android:layout_height="86dp"
-	            android:layout_marginLeft="5dp"
-	            android:layout_marginTop="5dp"
-	            android:layout_centerHorizontal="true"
-	            android:scaleType="centerCrop"
-	            android:src="@drawable/placeholder" />
-	    
-	        <ImageView
-	            android:id="@+id/profilePicMask"
-	            android:layout_width="86dp"
-	            android:layout_height="86dp"
-	            android:layout_marginLeft="5dp"
-	            android:layout_marginTop="5dp"
-	            android:layout_centerHorizontal="true"
-	            android:background="@drawable/circle_mask" />
-	    
-	        <View
-	            android:layout_width="96dp"
-	            android:layout_height="96dp"
-	            android:layout_marginBottom="5dp"
-	            android:layout_centerHorizontal="true"
-	            android:background="@drawable/circle_border" />
-	    
-	        <TextView
-	            android:id="@+id/name"
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:layout_below="@+id/profilePic"
-	            android:layout_marginTop="10dp"
-	            android:layout_alignParentRight="true"
-	            android:gravity="center"
-	            android:paddingLeft="10dp"
-	            android:paddingRight="10dp"
-	            android:paddingTop="10dp"
-	            android:text="Yukihiro 'Matz' Matsumoto"
-	            android:textColor="#888888"
-	            android:textSize="18sp"
-	            android:textStyle="bold" />
-	    
-	        <TextView
-	            android:id="@+id/title"
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:layout_below="@+id/name"
-	            android:layout_alignParentRight="true"
-	            android:gravity="center"
-	            android:paddingTop="10dp"
-	            android:paddingLeft="10dp"
-	            android:paddingRight="10dp"
-	            android:text="TextView"
-	            android:textColor="#888888"
-	            android:textSize="16sp"
-	            android:textStyle="bold" />
-	    </RelativeLayout>
-	
-	    <include layout="@layout/card_borders"/>
-	    
-	</RelativeLayout>
+            android:background="@color/card"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp" >
+
+            <ImageView
+                android:id="@+id/profilePic"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder" />
+
+            <ImageView
+                android:id="@+id/profilePicMask"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/circle_mask" />
+
+            <View
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/circle_border" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/profilePic"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="Yukihiro &apos;Matz&apos; Matsumoto"
+                android:textColor="#888888"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/name"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="TextView"
+                android:textColor="#888888"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <include layout="@layout/card_borders" />
+    </RelativeLayout>
+
 </RelativeLayout>

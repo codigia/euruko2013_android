@@ -2,22 +2,22 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
+
     <View
         android:id="@+id/borderTop"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/borderLeft"
         android:layout_toLeftOf="@+id/borderRight"
+        android:layout_toRightOf="@+id/borderLeft"
         android:background="@color/border" />
 
     <View
         android:id="@+id/borderLeft"
         android:layout_width="1dp"
         android:layout_height="0dp"
-        android:layout_alignTop="@+id/borderTop"
         android:layout_alignBottom="@+id/shadowBottom"
+        android:layout_alignTop="@+id/borderTop"
         android:layout_marginBottom="5dp"
         android:background="@color/border" />
 
@@ -25,9 +25,9 @@
         android:id="@+id/borderRight"
         android:layout_width="1dp"
         android:layout_height="0dp"
+        android:layout_alignBottom="@+id/shadowBottom"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/borderTop"
-        android:layout_alignBottom="@+id/shadowBottom"
         android:layout_marginBottom="5dp"
         android:background="@color/border" />
 
@@ -36,9 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_below="@+id/innerContainer"
-        android:layout_toRightOf="@+id/borderLeft"
-        android:layout_toLeftOf="@+id/borderRight"
         android:layout_marginLeft="-1dp"
         android:layout_marginRight="-1dp"
+        android:layout_toLeftOf="@+id/borderRight"
+        android:layout_toRightOf="@+id/borderLeft"
         android:background="@drawable/shadow_bottom" />
+
 </merge>

@@ -13,89 +13,88 @@ import android.widget.TextView;
 
 public class SpeechFragment extends BaseFragment {
 
-	@Override
-	protected int getLayout() {
-		return R.layout.speech;
-	}
+    @Override
+    protected int getLayout() {
+        return R.layout.speech;
+    }
 
-	@Override
-	public void onResume() {
-		final BaseActivity ba = (BaseActivity) getActivity();
+    @Override
+    public void onResume() {
+        final BaseActivity ba = (BaseActivity) getActivity();
 
-		ba.setBarTitle("Talk");
+        ba.setBarTitle("Talk");
 
-		int speechId = ba.currentSpeechPosition;
+        int speechId = ba.currentSpeechPosition;
 
-		if (speechId == -1 || speechId >= BaseActivity.sSpeeches.size()) {
-			return;
-		}
+        if (speechId == -1 || speechId >= BaseActivity.sSpeeches.size()) {
+            return;
+        }
 
-		AgendaItem mSpeech = BaseActivity.sSpeeches.get(speechId);
+        AgendaItem mSpeech = BaseActivity.sSpeeches.get(speechId);
 
-//        setBarTitle("Speech");
+        // setBarTitle("Speech");
 
-		View v = getView();
+        View v = getView();
 
         TextView startTime = (TextView) v.findViewById(R.id.startTime);
         if (startTime != null) {
-        	startTime.setText(mSpeech.getStartTimeFormatted());
+            startTime.setText(mSpeech.getStartTimeFormatted());
         }
 
         TextView day = (TextView) v.findViewById(R.id.day);
         if (day != null) {
-        	day.setText("day " + mSpeech.getDay());
+            day.setText("day " + mSpeech.getDay());
         }
 
         TextView speechTitle = (TextView) v.findViewById(R.id.speechTitle);
         if (speechTitle != null) {
-        	speechTitle.setText(mSpeech.title);
+            speechTitle.setText(mSpeech.title);
         }
 
         TextView speechDescription = (TextView) v.findViewById(R.id.speechDescription);
         if (speechDescription != null) {
-        	speechDescription.setText(Html.fromHtml(mSpeech.descr));
+            speechDescription.setText(Html.fromHtml(mSpeech.descr));
         }
 
         final ImageView profilePic = (ImageView) v.findViewById(R.id.profilePic);
         if (profilePic != null) {
-    		View profileContainer = v.findViewById(R.id.profileContainer);
+            View profileContainer = v.findViewById(R.id.profileContainer);
 
-    		Speaker speaker = null;
-        	for (Speaker s : BaseActivity.sSpeakers) {
-        		if (s.id.equals(mSpeech.speakerId)) {
-        			speaker = s;
-        			break;
-        		}
-        	}
+            Speaker speaker = null;
+            for (Speaker s : BaseActivity.sSpeakers) {
+                if (s.id.equals(mSpeech.speakerId)) {
+                    speaker = s;
+                    break;
+                }
+            }
 
-        	if (speaker != null) {
-        		profileContainer.setVisibility(View.VISIBLE);
+            if (speaker != null) {
+                profileContainer.setVisibility(View.VISIBLE);
 
-        		speaker.getAvatar(new GetDrawableHandler() {
-					@Override
-					public void handle(Drawable drawable) {
-		        		profilePic.setImageDrawable(drawable);
-					}
-					
-					@Override
-					public void failed() {
-					}
-				});
+                speaker.getAvatar(new GetDrawableHandler() {
+                    @Override
+                    public void handle(Drawable drawable) {
+                        profilePic.setImageDrawable(drawable);
+                    }
 
-        		final String sid = speaker.id;
-        		profilePic.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						ba.viewSpeaker(sid);
-					}
-				});
-        	} else {
-        		profileContainer.setVisibility(View.INVISIBLE);
-        		ba.setBarTitle("Special Section");
-        	}
+                    @Override
+                    public void failed() {
+                    }
+                });
+
+                final String sid = speaker.id;
+                profilePic.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ba.viewSpeaker(sid);
+                    }
+                });
+            } else {
+                profileContainer.setVisibility(View.INVISIBLE);
+                ba.setBarTitle("Special Section");
+            }
         }
 
-        
         super.onResume();
-	}
+    }
 }

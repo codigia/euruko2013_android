@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/main_menu_icon_height"
     android:layout_height="@dimen/main_menu_icon_height"
-    android:paddingLeft="10dp" 
-    android:paddingRight="20dp"
-    android:minWidth="@dimen/main_menu_icon_height" >
+    android:minWidth="@dimen/main_menu_icon_height"
+    android:paddingLeft="10dp"
+    android:paddingRight="20dp" >
+
 </RelativeLayout>

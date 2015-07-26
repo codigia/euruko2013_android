@@ -14,26 +14,25 @@ import com.actionbarsherlock.view.MenuItem;
 
 public abstract class BaseFragment extends SherlockFragment {
 
-	protected abstract int getLayout();
+    protected abstract int getLayout();
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		return inflater.inflate(getLayout(), null);
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(getLayout(), null);
+    }
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		setHasOptionsMenu(true);
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
 
-		super.onActivityCreated(savedInstanceState);
-	}
+        super.onActivityCreated(savedInstanceState);
+    }
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		super.onCreateOptionsMenu(menu, inflater);
-		MenuItem mi = menu.add(Menu.NONE, 0, Menu.NONE, "");
-		mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-		mi.setActionView(R.layout.empty);
-	}
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem mi = menu.add(Menu.NONE, 0, Menu.NONE, "");
+        mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        mi.setActionView(R.layout.empty);
+    }
 }

@@ -17,27 +17,26 @@ public class MyTweet {
     public MyTweet(Status tweet) {
         this.tweet = tweet;
     }
-    
-	public void fetchProfilePicture(final GetDrawableHandler drawableHandler) {
-    	if (mPicture != null) {
-    		drawableHandler.handle(mPicture);
-    	} else {
-            String pictureURLString = tweet.getUser().getProfileImageURL();
-    		if (pictureURLString != null) {
-				new BaseActivity.HttpGetDrawableTask(
-						new GetDrawableHandler() {
-							@Override
-							public void handle(Drawable drawable) {
-								mPicture = drawable;
-								drawableHandler.handle(mPicture);
-							}
 
-							@Override
-							public void failed() {
-								drawableHandler.failed();
-							}
-						}).execute(new HttpGet(pictureURLString));
-    		}
-    	}
-	}
+    public void fetchProfilePicture(final GetDrawableHandler drawableHandler) {
+        if (mPicture != null) {
+            drawableHandler.handle(mPicture);
+        } else {
+            String pictureURLString = tweet.getUser().getProfileImageURL();
+            if (pictureURLString != null) {
+                new BaseActivity.HttpGetDrawableTask(new GetDrawableHandler() {
+                    @Override
+                    public void handle(Drawable drawable) {
+                        mPicture = drawable;
+                        drawableHandler.handle(mPicture);
+                    }
+
+                    @Override
+                    public void failed() {
+                        drawableHandler.failed();
+                    }
+                }).execute(new HttpGet(pictureURLString));
+            }
+        }
+    }
 }

@@ -9,18 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true" >
-    	
-    	<RelativeLayout
-    	    android:id="@+id/whole"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
+
+        <RelativeLayout
+            android:id="@+id/whole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingTop="10dp" >
 
-            <RelativeLayout 
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/profileContainer"
-                android:layout_alignBottom="@+id/profileContainer" >
+                android:layout_alignBottom="@+id/profileContainer"
+                android:layout_alignTop="@+id/profileContainer" >
 
                 <View
                     android:id="@+id/dotted_line"
@@ -36,11 +36,11 @@
                 android:id="@+id/startTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/profileContainer"
                 android:layout_alignBottom="@+id/profileContainer"
+                android:layout_alignTop="@+id/profileContainer"
+                android:layout_marginLeft="15dp"
                 android:background="@color/mainback"
                 android:gravity="center"
-                android:layout_marginLeft="15dp"
                 android:paddingLeft="3dp"
                 android:paddingRight="4dp"
                 android:text="10:00"
@@ -48,22 +48,22 @@
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
-	        <TextView
-	            android:id="@+id/day"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_below="@+id/startTime"
-	            android:layout_marginTop="-16dp"
-	            android:layout_alignLeft="@+id/startTime"
-	            android:layout_alignRight="@+id/startTime"
-	            android:background="@color/mainback"
-	            android:gravity="center"
-	            android:paddingBottom="3dp"
-	            android:paddingRight="3dp"
-	            android:text="day 2"
-	            android:textColor="@color/maintext"
-	            android:textSize="12sp"
-	            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/startTime"
+                android:layout_alignRight="@+id/startTime"
+                android:layout_below="@+id/startTime"
+                android:layout_marginTop="-16dp"
+                android:background="@color/mainback"
+                android:gravity="center"
+                android:paddingBottom="3dp"
+                android:paddingRight="3dp"
+                android:text="day 2"
+                android:textColor="@color/maintext"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:id="@+id/profileContainer"
@@ -71,10 +71,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="15dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
                 android:background="@color/mainback"
-                android:onClick="gotoSpeaker" >
+                android:onClick="gotoSpeaker"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" >
 
                 <ImageView
                     android:id="@+id/profilePic"
@@ -85,7 +85,7 @@
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
-    
+
                 <ImageView
                     android:id="@+id/profilePicMask"
                     android:layout_width="48dp"
@@ -93,49 +93,47 @@
                     android:layout_alignLeft="@+id/profilePic"
                     android:layout_alignTop="@+id/profilePic"
                     android:background="@drawable/circle_mask_grey" />
-    
+
                 <View
                     android:layout_width="58dp"
                     android:layout_height="58dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/circle_border" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-	   	        android:layout_below="@+id/profileContainer"
-		        android:layout_marginLeft="25dp"
-		        android:layout_marginRight="25dp"
-		        android:layout_marginTop="10dp" >
+                android:layout_below="@+id/profileContainer"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp" >
 
-	            <TextView
-	    	        android:id="@+id/speechTitle"
-	    	        android:layout_width="match_parent"
-	    	        android:layout_height="wrap_content"
-	    	        android:gravity="center"
-	    	        android:text="TextView"
-	    	        android:textColor="@color/maintext"
-	    	        android:textSize="@dimen/text_size_title"
-	    	        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/speechTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textColor="@color/maintext"
+                    android:textSize="@dimen/text_size_title"
+                    android:textStyle="bold" />
 
-	    	    <TextView
-	    	        android:id="@+id/speechDescription"
-	    	        android:layout_width="match_parent"
-	    	        android:layout_height="wrap_content"
-	    	        android:layout_below="@+id/speechTitle"
-	    	        android:gravity="left"
-	                android:layout_marginTop="10dp"
-	    	        android:text="TextView"
-	    	        android:textColor="@color/maintext"
-	    	        android:textSize="@dimen/text_size_verbage"
-	                android:textStyle="italic" />
-			</RelativeLayout>
-
-	    </RelativeLayout>
+                <TextView
+                    android:id="@+id/speechDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/speechTitle"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:text="TextView"
+                    android:textColor="@color/maintext"
+                    android:textSize="@dimen/text_size_verbage"
+                    android:textStyle="italic" />
+            </RelativeLayout>
+        </RelativeLayout>
     </ScrollView>
 
 </RelativeLayout>
-

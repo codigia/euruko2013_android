@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <RelativeLayout 
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/card"
-        android:layout_alignRight="@+id/card"
         android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/card"
         android:paddingBottom="16dp" >
 
         <View
@@ -36,10 +36,10 @@
             android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_alignLeft="@+id/startTime"
+            android:layout_alignParentBottom="true"
             android:layout_alignRight="@+id/startTime"
-            android:layout_marginBottom="10dp"
-            android:layout_alignParentBottom="true" >
-            
+            android:layout_marginBottom="10dp" >
+
             <View
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
@@ -54,9 +54,9 @@
             android:layout_above="@+id/day"
             android:background="@color/mainback"
             android:gravity="center"
-            android:paddingTop="3dp"
             android:paddingLeft="5dp"
             android:paddingRight="2dp"
+            android:paddingTop="3dp"
             android:text="10:00"
             android:textColor="@color/maintext"
             android:textSize="18sp"
@@ -66,8 +66,8 @@
             android:id="@+id/day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/startTime"
+            android:layout_alignParentBottom="true"
             android:layout_alignRight="@+id/startTime"
             android:background="@color/mainback"
             android:gravity="center"
@@ -76,7 +76,6 @@
             android:textColor="@color/maintext"
             android:textSize="12sp"
             android:textStyle="bold" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -85,23 +84,23 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/dateBubbleContainer"
         android:layout_marginBottom="-15dp"
-        android:paddingTop="5dp"
+        android:clipChildren="true"
+        android:clipToPadding="true"
         android:paddingBottom="10dp"
         android:paddingRight="20dp"
-        android:clipChildren="true"
-        android:clipToPadding="true" >
+        android:paddingTop="5dp" >
 
         <RelativeLayout
             android:id="@+id/innerContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/shadowBottom"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:background="@color/card"
             android:clipChildren="true"
             android:clipToPadding="true"
-            android:background="@color/card" >
-        
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" >
+
             <TextView
                 android:id="@+id/endTime"
                 android:layout_width="wrap_content"
@@ -133,21 +132,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true" >
-                
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_alignTop="@+id/profilePic"
-                    android:layout_alignBottom="@+id/profilePic" >
-                    
+                    android:layout_alignBottom="@+id/profilePic"
+                    android:layout_alignTop="@+id/profilePic" >
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_centerInParent="true"
                         android:background="@drawable/line_fading" />
-    
                 </RelativeLayout>
-    
+
                 <ImageView
                     android:id="@+id/profilePic"
                     android:layout_width="48dp"
@@ -156,7 +154,7 @@
                     android:layout_centerHorizontal="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
-    
+
                 <ImageView
                     android:id="@+id/profilePicMask"
                     android:layout_width="48dp"
@@ -164,7 +162,7 @@
                     android:layout_alignLeft="@+id/profilePic"
                     android:layout_alignTop="@+id/profilePic"
                     android:background="@drawable/circle_mask" />
-    
+
                 <TextView
                     android:id="@+id/who"
                     android:layout_width="match_parent"
@@ -177,11 +175,10 @@
                     android:textColor="@color/maintext"
                     android:textSize="12sp"
                     android:textStyle="italic" />
-
-            </RelativeLayout>    
+            </RelativeLayout>
         </RelativeLayout>
 
-        <include layout="@layout/card_borders"/>
+        <include layout="@layout/card_borders" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -9,56 +9,55 @@
         android:id="@+id/menuLogo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/abs__action_bar_default_height"
-        android:paddingLeft="10dp"
-        android:background="@color/white" >
+        android:background="@color/white"
+        android:paddingLeft="10dp" >
 
         <ImageView
             android:layout_width="224dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:background="@color/white"
-            android:src="@drawable/logo_title"
+            android:onClick="onMainMenuClick"
             android:scaleType="fitXY"
-            android:onClick="onMainMenuClick" />
-
+            android:src="@drawable/logo_title" />
     </RelativeLayout>
-    
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/menuLogo"
         android:fillViewport="true" >
-    
+
         <LinearLayout
             android:id="@+id/menuitems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="left"
             android:orientation="vertical"
+            android:paddingBottom="120dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:paddingBottom="120dp"
-            android:gravity="left"
             android:visibility="visible" >
 
             <RelativeLayout
                 android:id="@+id/menuNews"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_menu_height"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
 
-				<com.codigia.euruko2013.TextViewCustomFont
+                <com.codigia.euruko2013.TextViewCustomFont
                     android:id="@+id/imageViewNews"
                     android:layout_width="@dimen/main_menu_icon_height"
                     android:layout_height="@dimen/main_menu_icon_height"
                     android:gravity="center"
-			        android:text="r"
-                    android:textSize="@dimen/text_size_glyphs"
+                    android:text="r"
                     android:textColor="@color/main_menu_text"
-			        erk13:customFont="sosa-regular-webfont.ttf" >
-			    </com.codigia.euruko2013.TextViewCustomFont>
+                    android:textSize="@dimen/text_size_glyphs"
+                    erk13:customFont="sosa-regular-webfont.ttf" >
+                </com.codigia.euruko2013.TextViewCustomFont>
 
                 <TextView
                     android:id="@+id/textViewNews"
@@ -66,16 +65,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewNews"
                     android:layout_alignTop="@+id/imageViewNews"
-                    android:layout_toRightOf="@+id/imageViewNews"
                     android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imageViewNews"
                     android:gravity="center_vertical"
                     android:text="News"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textStyle="bold"
-                    android:textColor="@color/main_menu_text" />
-    
+                    android:textColor="@color/main_menu_text"
+                    android:textStyle="bold" />
             </RelativeLayout>
-        
+
             <RelativeLayout
                 android:id="@+id/menuCalendar"
                 android:layout_width="match_parent"
@@ -83,15 +81,15 @@
                 android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
-        
+
                 <com.codigia.euruko2013.TextViewCustomFont
                     android:id="@+id/imageViewAgenda"
                     android:layout_width="@dimen/main_menu_icon_height"
                     android:layout_height="@dimen/main_menu_icon_height"
                     android:gravity="center"
                     android:text="Ġ"
-                    android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
+                    android:textSize="@dimen/text_size_glyphs"
                     erk13:customFont="sosa-regular-webfont.ttf" >
                 </com.codigia.euruko2013.TextViewCustomFont>
 
@@ -101,16 +99,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewAgenda"
                     android:layout_alignTop="@+id/imageViewAgenda"
-                    android:layout_toRightOf="@+id/imageViewAgenda"
                     android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imageViewAgenda"
                     android:gravity="center_vertical"
                     android:text="Agenda"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textStyle="bold"
-                    android:textColor="@color/main_menu_text" />
-    
+                    android:textColor="@color/main_menu_text"
+                    android:textStyle="bold" />
             </RelativeLayout>
-        
+
             <RelativeLayout
                 android:id="@+id/menuSpeakers"
                 android:layout_width="match_parent"
@@ -125,8 +122,8 @@
                     android:layout_height="@dimen/main_menu_icon_height"
                     android:gravity="center"
                     android:text="Ý"
-                    android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
+                    android:textSize="@dimen/text_size_glyphs"
                     erk13:customFont="sosa-regular-webfont.ttf" >
                 </com.codigia.euruko2013.TextViewCustomFont>
 
@@ -136,16 +133,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewSpeakers"
                     android:layout_alignTop="@+id/imageViewSpeakers"
-                    android:layout_toRightOf="@+id/imageViewSpeakers"
                     android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imageViewSpeakers"
                     android:gravity="center_vertical"
                     android:text="Speakers"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textStyle="bold"
-                    android:textColor="@color/main_menu_text" />
-    
+                    android:textColor="@color/main_menu_text"
+                    android:textStyle="bold" />
             </RelativeLayout>
-        
+
             <RelativeLayout
                 android:id="@+id/menuTwitter"
                 android:layout_width="match_parent"
@@ -153,15 +149,15 @@
                 android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
                 android:onClick="onMainMenuClick" >
-        
+
                 <com.codigia.euruko2013.TextViewCustomFont
                     android:id="@+id/imageViewTwitter"
                     android:layout_width="@dimen/main_menu_icon_height"
                     android:layout_height="@dimen/main_menu_icon_height"
                     android:gravity="center"
                     android:text="t"
-                    android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
+                    android:textSize="@dimen/text_size_glyphs"
                     erk13:customFont="sosa-regular-webfont.ttf" >
                 </com.codigia.euruko2013.TextViewCustomFont>
 
@@ -171,16 +167,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewTwitter"
                     android:layout_alignTop="@+id/imageViewTwitter"
-                    android:layout_toRightOf="@+id/imageViewTwitter"
                     android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imageViewTwitter"
                     android:gravity="center_vertical"
                     android:text="Twitter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textStyle="bold"
-                    android:textColor="@color/main_menu_text" />
-    
+                    android:textColor="@color/main_menu_text"
+                    android:textStyle="bold" />
             </RelativeLayout>
-        
+
             <RelativeLayout
                 android:id="@+id/menuMap"
                 android:layout_width="match_parent"
@@ -195,8 +190,8 @@
                     android:layout_height="@dimen/main_menu_icon_height"
                     android:gravity="center"
                     android:text="n"
-                    android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
+                    android:textSize="@dimen/text_size_glyphs"
                     erk13:customFont="sosa-regular-webfont.ttf" >
                 </com.codigia.euruko2013.TextViewCustomFont>
 
@@ -206,16 +201,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewMap"
                     android:layout_alignTop="@+id/imageViewMap"
-                    android:layout_toRightOf="@+id/imageViewMap"
                     android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imageViewMap"
                     android:gravity="center_vertical"
                     android:text="Map"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textStyle="bold"
-                    android:textColor="@color/main_menu_text" />
-        
+                    android:textColor="@color/main_menu_text"
+                    android:textStyle="bold" />
             </RelativeLayout>
-    
+
             <RelativeLayout
                 android:id="@+id/menuAbout"
                 android:layout_width="match_parent"
@@ -230,8 +224,8 @@
                     android:layout_height="@dimen/main_menu_icon_height"
                     android:gravity="center"
                     android:text="i"
-                    android:textSize="@dimen/text_size_glyphs"
                     android:textColor="@color/main_menu_text"
+                    android:textSize="@dimen/text_size_glyphs"
                     erk13:customFont="sosa-regular-webfont.ttf" >
                 </com.codigia.euruko2013.TextViewCustomFont>
 
@@ -241,14 +235,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageViewAbout"
                     android:layout_alignTop="@+id/imageViewAbout"
-                    android:layout_toRightOf="@+id/imageViewAbout"
                     android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imageViewAbout"
                     android:gravity="center_vertical"
                     android:text="About"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textStyle="bold"
-                    android:textColor="@color/main_menu_text" />
-        
+                    android:textColor="@color/main_menu_text"
+                    android:textStyle="bold" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
@@ -264,8 +257,8 @@
         android:id="@+id/imageViewFold"
         android:layout_width="120dp"
         android:layout_height="170dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:scaleType="fitXY"
         android:src="@drawable/pagefold" />
 
@@ -273,11 +266,11 @@
         android:id="@+id/menuGaia"
         android:layout_width="match_parent"
         android:layout_height="@dimen/main_menu_height"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:paddingLeft="3dp"
+        android:layout_alignParentLeft="true"
+        android:onClick="onGaiaMenuClick"
         android:paddingBottom="2dp"
-        android:onClick="onGaiaMenuClick" >
+        android:paddingLeft="3dp" >
 
         <ImageView
             android:id="@+id/imageViewGaia"
@@ -285,7 +278,6 @@
             android:layout_height="@dimen/main_menu_height"
             android:padding="4dp"
             android:src="@drawable/icon_gaia" />
-
     </RelativeLayout>
 
 </RelativeLayout>
